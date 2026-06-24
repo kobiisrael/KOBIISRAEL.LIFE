@@ -95,6 +95,21 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 - ✅ Per-page SEO: `{Project Title} | Kobi Israel`, description seeded from intro statement
 - ✅ Tested: 19/19 project pages + 2/2 404 paths + 2/2 nav regressions + mobile layout — 100% pass
 
+### Limited Edition Prints page (`/prints`) — 2026-06-24
+- ✅ Cinematic hero (title "Limited Edition Prints", subtitle, intro, View Available Works + Request Print Availability CTAs)
+- ✅ Collector Viewing Room — narrow editorial intro
+- ✅ Selected Print Collections — 10 collection cards (Cuba Love Story, River of Three Crossings, Fragments of Life, Intimate Strangers, Views, Parisian Postcards, Investigating Things Past, Masculinity/Military Archive, Portraits and Bodies, Landscapes and Exile); each links to the matching project detail page
+- ✅ Works Available by Inquiry — 8 placeholder artwork cards with full metadata grid (series, year, medium, dimensions, edition, availability, price). Each "Request Details" button prefills the inquiry form via forwardRef API
+- ✅ Print Information — 10 info blocks (Medium, Edition, Signature, Certificate of Authenticity, Condition, Framing, Shipping, Availability, Price on Request, Secondary Market Notes)
+- ✅ Artist, Archive and Provenance — 8 trust groups, all "To be confirmed by artist"
+- ✅ Request Print Availability form — Full collector inquiry form: name, email, phone (optional), country, artwork of interest, preferred size, budget range (optional), interest type (5 options: Collecting, Curatorial/Gallery, Institutional, Press, Other), message, consent checkbox. Submit blocked without consent. Posts to `/api/inquiries`
+- ✅ Gallery / Museum / Institutional Inquiries — 8 institutional fields + dedicated CTA that flips the form's inquiry_type to "institutional" and scrolls
+- ✅ Secondary Market and Rare Works — discreet placeholder section
+- ✅ Related Archive — 6 cross-archive links (Still, Moving, Books, CV, Archive Notes, Contact)
+- ✅ Backend extended: `InquiryCreate`/`Inquiry` accept optional `phone`, `country`, `preferred_size`, `budget_range`, `consent`; `InquiryType` literal adds `"institutional"`
+- ✅ Per-page SEO: title `Limited Edition Prints | Kobi Israel`, keyword-rich meta description
+- ✅ Tested: backend 12/12 pytest + frontend 81/81 Playwright assertions (form prefill from card, institutional flip, consent guard, regression across all earlier pages) — 100% pass
+
 ## Backlog (prioritised)
 
 ### P0 — content readiness (artist must supply)
