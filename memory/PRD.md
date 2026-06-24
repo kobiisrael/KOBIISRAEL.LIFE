@@ -208,6 +208,27 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 - ✅ ProjectDetail.jsx wrapper updated to pass through slug + extended metadata fields
 - ✅ Tested: backend 21/21 pytest + frontend full suite (14 new sections × 2 representative projects + lightbox keyboard/backdrop/request flow + consent gate + 10-route regression + mobile 390px) — 100% pass; zero console errors
 
+### Individual Artwork Detail / Print Record template (`/prints/:slug`) — 2026-06-24
+- ✅ New standalone page `ArtworkRecord.jsx` covering all 12 spec sections plus hero + footer
+- ✅ Hero with title, series ("From <series>" or TBC placeholder), year/location/medium row, caption, 3 CTAs (Request Artwork Details, Request Print Availability, Back to Project — last only when series_slug exists)
+- ✅ Premium viewing layout: large click-to-enlarge image on the left + side panel on the right (Availability headline, price, 6 quick metadata fields, Inquire/Licensing CTAs)
+- ✅ Click-to-enlarge lightbox with Escape + backdrop close + body-scroll lock
+- ✅ 4 alternate-view thumbnail placeholders
+- ✅ Artwork Details — 20 structured metadata fields (Title, Series/Project, Year, Location, Medium, Print type, Paper type, Image size, Paper size, Frame size, Edition size, Edition number, Signature, Certificate, Condition, Framing status, Availability, Price, Archive status, Last updated)
+- ✅ Artwork Note section with TBC placeholder text
+- ✅ Project Context section with project metadata + View Full Project (or Browse Projects fallback) CTA
+- ✅ Print Availability — 11 placeholder fields + Request Print Availability CTA
+- ✅ Provenance, Exhibition & Publication History — 3-column layout
+- ✅ Related Works grid — 4 placeholder cards
+- ✅ Related Media — 6 cards (Moving Image, Book, Archive Note, Exhibition, Text, Sound/Music)
+- ✅ Artwork Inquiry form — name, email, phone (opt), country, readonly artwork title + series (auto-filled from slug), 9 inquiry types, preferred size (opt), budget range (opt), message, required consent. Submitted flag clears on resume typing.
+- ✅ Licensing & Reproduction — 8 use-case grid + Request Licensing Information CTA
+- ✅ Archive Record status block with 8 possible status labels + "Availability to be confirmed" default
+- ✅ Slug-derived display title (e.g. `cuba-soldier-portrait-01` → `Cuba Soldier Portrait 01`) — no fabricated records; `ARTWORK_REGISTRY` is empty by design per content-accuracy rules
+- ✅ Per-page SEO: title `[Title] from [Series] | Kobi Israel` (or just `[Title] | Kobi Israel`), spec-compliant meta description
+- ✅ Backend: no schema changes; POST /api/inquiries already accepts the artwork payload
+- ✅ Tested across iterations 13 & 14: backend 21/21 pytest + frontend full suite (18 sections + lightbox 4-way close + 6 CTAs scroll + consent gate + 11-route regression + mobile 390px + bug-fix retest) — 100% pass
+
 ## Backlog (prioritised)
 
 ### P0 — content readiness (artist must supply)
