@@ -1,6 +1,25 @@
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { applyPageSeo, breadcrumbSchema } from "@/lib/seo";
 
 export default function Placeholder({ title, intro }) {
+  useEffect(() => {
+    applyPageSeo({
+      title: `${title} | Kobi Israel`,
+      description: `${title} — Kobi Israel artist archive. ${intro || ""}`.slice(0, 155),
+      path: `/${title.toLowerCase()}`,
+      jsonLd: [
+        {
+          id: "placeholder-breadcrumb",
+          data: breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: title, path: `/${title.toLowerCase()}` },
+          ]),
+        },
+      ],
+    });
+  }, [title, intro]);
+
   return (
     <section className="min-h-screen pt-40 pb-32">
       <div className="container-ki max-w-3xl">

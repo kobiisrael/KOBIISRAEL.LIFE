@@ -3,31 +3,46 @@ import { Link, useParams } from "react-router-dom";
 import { JOURNAL_NOTES } from "@/data/site";
 import { JOURNAL } from "@/constants/testIds";
 import NotFound from "@/pages/NotFound";
-
-const setMeta = (name, content) => {
-  let el = document.querySelector(`meta[name="${name}"]`);
-  if (!el) {
-    el = document.createElement("meta");
-    el.setAttribute("name", name);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("content", content);
-};
+import { applyPageSeo, breadcrumbSchema, articleSchema } from "@/lib/seo";
 
 export default function JournalEntry() {
   const { slug } = useParams();
   const note = useMemo(() => JOURNAL_NOTES.find((n) => n.slug === slug), [slug]);
 
   useEffect(() => {
-    if (!note) return;
+    if (!note) return undefined;
     const prev = document.title;
-    document.title = `${note.title} | Journal | Kobi Israel`;
-    setMeta("description", note.excerpt);
+    const path = `/journal/${slug}`;
+    applyPageSeo({
+      title: `${note.title} | Journal | Kobi Israel`,
+      description: (note.excerpt || `${note.title} — archive note by Kobi Israel.`).slice(0, 155),
+      path,
+      ogType: "article",
+      jsonLd: [
+        {
+          id: "entry-breadcrumb",
+          data: breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Journal", path: "/journal" },
+            { name: note.title, path },
+          ]),
+        },
+        {
+          id: "entry-article",
+          data: articleSchema({
+            name: note.title,
+            description: note.excerpt,
+            path,
+            category: note.category,
+          }),
+        },
+      ],
+    });
     window.scrollTo(0, 0);
     return () => {
       document.title = prev;
     };
-  }, [note]);
+  }, [note, slug]);
 
   if (!note) {
     return (

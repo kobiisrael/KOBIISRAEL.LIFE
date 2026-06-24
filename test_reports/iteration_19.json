@@ -1,0 +1,67 @@
+{
+  "summary": "Frontend-only SEO regression for KOBIISRAEL.COM. Verified canonical URLs, meta titles/descriptions, robots meta, JSON-LD structured data, sitemap, robots.txt, /seo-review admin dashboard, legal noindex, smoke regression (mobile 390px, console, navbar/footer) and form integrations. All 13 features in the request PASS.",
+  "backend_issues": { "critical": [], "minor": [] },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": ["/app/test_reports/iteration_19.json"],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "All checks green; no actionable code-review items raised. Helpers in /app/frontend/src/lib/seo.js are clean and idempotent; SEO_MAP in /app/frontend/src/data/seo.js correctly drives the dashboard with 17 rows; canonical host is consistently https://kobiisrael.life across HEAD tags and sitemap."
+  ],
+  "updated_files": [],
+  "success_rate": { "backend": "n/a (skipped per request)", "frontend": "100%" },
+  "test_credentials": "n/a (no auth)",
+  "seed_data_creation": "Created one TEST inquiry (id 97109864...) and one TEST newsletter subscription (test_seo_reviewer@example.com) during form regression. Both are real DB writes via /api/inquiries (201) and /api/newsletter (201). Safe to delete if cleanup desired.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "All 10 public pages set canonical https://kobiisrael.life<path>, unique titles (<=70 chars), descriptions, robots=index,follow, and >=1 valid JSON-LD block. Home has 3 (WebSite/Person/BreadcrumbList). Detail pages (/projects/cuba-love-story, /prints/cuba-soldier-portrait-01, /journal/a-chaos-of-appearances) all carry the expected schema types + BreadcrumbList. Five /legal/* pages return robots=noindex,nofollow. /seo-review, /launch-checklist, /migration-review all noindex,nofollow. /seo-review renders seo-review-page, seo-map-table (17 rows; filter 'prints' -> 2 rows), seo-redirect-table, seo-map-search. /sitemap.xml served and includes 10 main paths + project slugs (cuba-love-story, river-of-three-crossings, fragments-of-life) + journal slug (a-chaos-of-appearances). /robots.txt served with Disallow lines for /seo-review, /launch-checklist, /migration-review (Cloudflare also prepends managed bot rules — that is expected, not a bug). Mobile 390px: no horizontal overflow on any of the 10 smoke pages, navbar + footer present, zero console errors. Inquiry form testids are contact-form-* (not inquiry-*) and newsletter testids are journal-newsletter-* (not newsletter-*) — both submit successfully (201). No regressions detected.",
+  "test_results_detail": {
+    "public_pages_canonical_title_robots_jsonld": {
+      "/":        { "title_len": 50, "canonical_ok": true, "robots": "index, follow", "jsonld_count": 3, "types": ["WebSite","Person","BreadcrumbList"] },
+      "/still":   { "title_len": 31, "canonical_ok": true, "jsonld_count": 2, "types": ["BreadcrumbList","CollectionPage"] },
+      "/moving":  { "title_len": 26, "canonical_ok": true, "jsonld_count": 2, "types": ["BreadcrumbList","CollectionPage"] },
+      "/prints":  { "title_len": 36, "canonical_ok": true, "jsonld_count": 2, "types": ["BreadcrumbList","CollectionPage"] },
+      "/books":   { "title_len": 36, "canonical_ok": true, "jsonld_count": 2, "types": ["BreadcrumbList","CollectionPage"] },
+      "/archive": { "title_len": 21, "canonical_ok": true, "jsonld_count": 2, "types": ["BreadcrumbList","CollectionPage"] },
+      "/cv":      { "title_len": 30, "canonical_ok": true, "jsonld_count": 3, "types": ["BreadcrumbList","Person","ProfilePage"] },
+      "/journal": { "title_len": 39, "canonical_ok": true, "jsonld_count": 2, "types": ["BreadcrumbList","Blog"] },
+      "/contact": { "title_len": 21, "canonical_ok": true, "jsonld_count": 2, "types": ["BreadcrumbList","ContactPage"] },
+      "/projects":{ "title_len": 22, "canonical_ok": true, "jsonld_count": 1, "types": ["BreadcrumbList"] }
+    },
+    "detail_pages": {
+      "/projects/cuba-love-story": { "canonical_ok": true, "types": ["BreadcrumbList","CreativeWork"] },
+      "/prints/cuba-soldier-portrait-01": { "canonical_ok": true, "types": ["BreadcrumbList","VisualArtwork"] },
+      "/journal/a-chaos-of-appearances": { "canonical_ok": true, "types": ["BreadcrumbList","Article"] }
+    },
+    "noindex_pages": {
+      "/legal/privacy": "noindex, nofollow",
+      "/legal/terms": "noindex, nofollow",
+      "/legal/copyright": "noindex, nofollow",
+      "/legal/cookies": "noindex, nofollow",
+      "/legal/accessibility": "noindex, nofollow",
+      "/seo-review": "noindex, nofollow",
+      "/launch-checklist": "noindex, nofollow",
+      "/migration-review": "noindex, nofollow"
+    },
+    "seo_review_dashboard": {
+      "seo-review-page": true,
+      "seo-map-table_rows": 17,
+      "seo-redirect-table": true,
+      "seo-map-search_filter_'prints'_rows": 2
+    },
+    "sitemap_robots": {
+      "sitemap_all_required_slugs_present": true,
+      "robots_disallow_seo_review": true,
+      "robots_disallow_launch_checklist": true,
+      "robots_disallow_migration_review": true
+    },
+    "mobile_390px_smoke": "All 10 pages: overflow=false (scrollW=390/winW=390), nav=true, footer=true, console_errors=0",
+    "form_integrations": {
+      "POST /api/inquiries": "201 Created (TEST SEO Reviewer)",
+      "POST /api/newsletter": "201 Created (test_seo_reviewer@example.com)"
+    }
+  }
+}

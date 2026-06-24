@@ -9,29 +9,44 @@ import StillMovingBridge from "@/components/moving/StillMovingBridge";
 import SoundVoiceMusic from "@/components/moving/SoundVoiceMusic";
 import ArchiveFragments from "@/components/moving/ArchiveFragments";
 import { MOVING } from "@/constants/testIds";
-
-const setMeta = (name, content) => {
-  let el = document.querySelector(`meta[name="${name}"]`);
-  if (!el) {
-    el = document.createElement("meta");
-    el.setAttribute("name", name);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("content", content);
-};
+import { applyPageSeo, breadcrumbSchema } from "@/lib/seo";
 
 export default function Moving() {
   useEffect(() => {
     const previousTitle = document.title;
-    document.title = "Moving Image | Kobi Israel";
-    setMeta(
-      "description",
-      "Moving-image archive of Kobi Israel, featuring film fragments, video works, visual diaries and experimental works exploring memory, masculinity, desire, exile, identity and time."
+    applyPageSeo({
+      title: "Moving Image | Kobi Israel",
+      description:
+        "Moving image and film works by Kobi Israel — short films, video art, visual diaries and travelogue works. Screenings and curator inquiries.",
+      path: "/moving",
+      jsonLd: [
+        {
+          id: "moving-breadcrumb",
+          data: breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Moving Image", path: "/moving" },
+          ]),
+        },
+        {
+          id: "moving-collection",
+          data: {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            name: "Moving Image",
+            url: "https://kobiisrael.life/moving",
+            about: { "@type": "Person", name: "Kobi Israel" },
+            inLanguage: "en",
+          },
+        },
+      ],
+    });
+    const k = document.querySelector('meta[name="keywords"]') || document.createElement("meta");
+    k.setAttribute("name", "keywords");
+    k.setAttribute(
+      "content",
+      "Kobi Israel moving image, Kobi Israel film, Kobi Israel video art, Kobi Israel Cuba Love Story film, experimental filmmaker London, artist film archive, queer video art, photography and moving image, visual diary film, autobiographical filmmaking, memory and film, moving image artist",
     );
-    setMeta(
-      "keywords",
-      "Kobi Israel moving image, Kobi Israel film, Kobi Israel video art, Kobi Israel Cuba Love Story film, experimental filmmaker London, artist film archive, queer video art, photography and moving image, visual diary film, autobiographical filmmaking, memory and film, moving image artist"
-    );
+    if (!k.parentNode) document.head.appendChild(k);
     window.scrollTo(0, 0);
     return () => {
       document.title = previousTitle;

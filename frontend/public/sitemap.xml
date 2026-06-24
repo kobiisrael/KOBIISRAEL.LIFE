@@ -3,12 +3,39 @@
   <url><loc>https://kobiisrael.life/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
   <url><loc>https://kobiisrael.life/still</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://kobiisrael.life/moving</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://kobiisrael.life/projects</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://kobiisrael.life/prints</loc><changefreq>monthly</changefreq><priority>0.9</priority></url>
   <url><loc>https://kobiisrael.life/books</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://kobiisrael.life/archive</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://kobiisrael.life/cv</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://kobiisrael.life/journal</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
   <url><loc>https://kobiisrael.life/contact</loc><changefreq>yearly</changefreq><priority>0.7</priority></url>
+
+  <!-- Project detail pages -->
+  <url><loc>https://kobiisrael.life/projects/cuba-love-story</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://kobiisrael.life/projects/river-of-three-crossings</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kobiisrael.life/projects/fragments-of-life</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kobiisrael.life/projects/intimate-strangers</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://kobiisrael.life/projects/views</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kobiisrael.life/projects/parisian-postcards</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kobiisrael.life/projects/investigating-things-past</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kobiisrael.life/projects/military-masculinity-archive</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kobiisrael.life/projects/soho-urban-encounters</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kobiisrael.life/projects/portraits-and-bodies</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kobiisrael.life/projects/landscapes-and-exile</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kobiisrael.life/projects/personal-archive</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
+
+  <!-- Featured journal notes -->
+  <url><loc>https://kobiisrael.life/journal/a-chaos-of-appearances</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kobiisrael.life/journal/still-images-as-memory-objects</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kobiisrael.life/journal/when-the-still-image-begins-to-move</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kobiisrael.life/journal/cuba-love-story-notes-from-the-archive</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kobiisrael.life/journal/masculinity-as-performance</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kobiisrael.life/journal/the-stranger-and-the-witness</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kobiisrael.life/journal/rooms-bodies-and-borders</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://kobiisrael.life/journal/memory-does-not-return-whole</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+
+  <!-- Legal placeholders (kept low priority; remove from sitemap if launching with noindex) -->
   <url><loc>https://kobiisrael.life/legal/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://kobiisrael.life/legal/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://kobiisrael.life/legal/copyright</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>

@@ -10,41 +10,38 @@ import CredibilityStrip from "@/components/sections/CredibilityStrip";
 import ArtistStatement from "@/components/sections/ArtistStatement";
 import CurrentProjects from "@/components/sections/CurrentProjects";
 import ContactSection from "@/components/sections/ContactSection";
+import {
+  applyPageSeo,
+  websiteSchema,
+  personSchema,
+  breadcrumbSchema,
+} from "@/lib/seo";
 
-const HOME_TITLE = "Kobi Israel | Photography, Moving Image & Limited Editions";
+const HOME_TITLE = "Kobi Israel | Photography, Moving Image and Prints";
 const HOME_DESC =
-  "Photography, moving image and autobiographical archives of masculinity, desire, exile and memory. Limited edition prints, books, archive and artist CV.";
+  "Official website of Kobi Israel, photographer and filmmaker. Still and moving image works, prints, books, archive notes and artist CV.";
 const HOME_OG_TITLE = "Kobi Israel — Still & Moving Diaries";
 const HOME_OG_DESC =
   "An archive of photography, moving image, books and limited edition prints — masculinity, desire, exile and memory.";
 
-const setMeta = (name, content) => {
-  let el = document.querySelector(`meta[name="${name}"]`);
-  if (!el) {
-    el = document.createElement("meta");
-    el.setAttribute("name", name);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("content", content);
-};
-
-const setOG = (property, content) => {
-  let el = document.querySelector(`meta[property="${property}"]`);
-  if (!el) {
-    el = document.createElement("meta");
-    el.setAttribute("property", property);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("content", content);
-};
-
 export default function Home() {
   useEffect(() => {
-    document.title = HOME_TITLE;
-    setMeta("description", HOME_DESC);
-    setOG("og:title", HOME_OG_TITLE);
-    setOG("og:description", HOME_OG_DESC);
-    setOG("og:type", "website");
+    applyPageSeo({
+      title: HOME_TITLE,
+      description: HOME_DESC,
+      path: "/",
+      ogTitle: HOME_OG_TITLE,
+      ogDescription: HOME_OG_DESC,
+      ogType: "website",
+      jsonLd: [
+        { id: "home-website", data: websiteSchema() },
+        { id: "home-person", data: personSchema() },
+        {
+          id: "home-breadcrumb",
+          data: breadcrumbSchema([{ name: "Home", path: "/" }]),
+        },
+      ],
+    });
   }, []);
   return (
     <>

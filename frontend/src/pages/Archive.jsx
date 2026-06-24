@@ -9,12 +9,7 @@ import {
   ARCHIVE_MYTHOLOGY, ARCHIVE_RELATED_LINKS, ARCHIVE_INQUIRY_TYPE_OPTIONS,
 } from "@/data/site";
 import { ARCHIVE } from "@/constants/testIds";
-
-const setMeta = (name, content) => {
-  let el = document.querySelector(`meta[name="${name}"]`);
-  if (!el) { el = document.createElement("meta"); el.setAttribute("name", name); document.head.appendChild(el); }
-  el.setAttribute("content", content);
-};
+import { applyPageSeo, breadcrumbSchema } from "@/lib/seo";
 
 const ArchiveInquiryForm = forwardRef(function ArchiveInquiryForm(_, ref) {
   const [f, setF] = useState({ name:"", email:"", organisation:"", country:"", inquiry_type:"curatorial", area:"", message:"", consent:false });
@@ -88,9 +83,39 @@ export default function Archive() {
 
   useEffect(() => {
     const prev = document.title;
-    document.title = "Archive | Kobi Israel";
-    setMeta("description", "Archive of Kobi Israel, featuring photography projects, moving-image works, books, limited edition prints, texts, exhibitions, press materials and autobiographical research notes.");
-    setMeta("keywords", "Kobi Israel archive, Kobi Israel photography archive, Kobi Israel artist archive, Kobi Israel projects, Kobi Israel moving image archive, Kobi Israel books, Kobi Israel prints, Kobi Israel exhibitions, queer photography archive, autobiographical photography archive, photography and memory archive, Israeli photographer archive, artist research library");
+    applyPageSeo({
+      title: "Archive | Kobi Israel",
+      description:
+        "Archive of Kobi Israel, including photography projects, moving-image works, books, prints, texts, exhibitions and research materials.",
+      path: "/archive",
+      jsonLd: [
+        {
+          id: "archive-breadcrumb",
+          data: breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Archive", path: "/archive" },
+          ]),
+        },
+        {
+          id: "archive-collection",
+          data: {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            name: "Archive",
+            url: "https://kobiisrael.life/archive",
+            about: { "@type": "Person", name: "Kobi Israel" },
+            inLanguage: "en",
+          },
+        },
+      ],
+    });
+    const k = document.querySelector('meta[name="keywords"]') || document.createElement("meta");
+    k.setAttribute("name", "keywords");
+    k.setAttribute(
+      "content",
+      "Kobi Israel archive, Kobi Israel photography archive, Kobi Israel artist archive, Kobi Israel projects, Kobi Israel moving image archive, Kobi Israel books, Kobi Israel prints, Kobi Israel exhibitions, queer photography archive, autobiographical photography archive, photography and memory archive, Israeli photographer archive, artist research library",
+    );
+    if (!k.parentNode) document.head.appendChild(k);
     window.scrollTo(0, 0);
     return () => { document.title = prev; };
   }, []);

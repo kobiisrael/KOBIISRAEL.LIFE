@@ -1,16 +1,7 @@
 import { useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import NotFound from "@/pages/NotFound";
-
-const setMeta = (name, content) => {
-  let el = document.querySelector(`meta[name="${name}"]`);
-  if (!el) {
-    el = document.createElement("meta");
-    el.setAttribute("name", name);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("content", content);
-};
+import { applyPageSeo } from "@/lib/seo";
 
 const PLACEHOLDERS = {
   privacy: {
@@ -128,16 +119,17 @@ export default function Legal() {
   useEffect(() => {
     if (!doc) return undefined;
     const prev = document.title;
-    document.title = `${doc.title} | Kobi Israel`;
-    setMeta(
-      "description",
-      `${doc.title} for the Kobi Israel website — placeholder text. Final wording to be reviewed before launch.`
-    );
+    applyPageSeo({
+      title: `${doc.title} | Kobi Israel`,
+      description: `${doc.title} for the Kobi Israel website — placeholder text. Final wording to be reviewed before launch.`,
+      path: `/legal/${slug}`,
+      robots: "noindex, nofollow",
+    });
     window.scrollTo(0, 0);
     return () => {
       document.title = prev;
     };
-  }, [doc]);
+  }, [doc, slug]);
 
   if (!doc) return <NotFound slug={slug} />;
 

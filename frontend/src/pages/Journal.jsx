@@ -17,16 +17,7 @@ import {
   JOURNAL_RELATED_LINKS,
 } from "@/data/site";
 import { JOURNAL } from "@/constants/testIds";
-
-const setMeta = (name, content) => {
-  let el = document.querySelector(`meta[name="${name}"]`);
-  if (!el) {
-    el = document.createElement("meta");
-    el.setAttribute("name", name);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("content", content);
-};
+import { applyPageSeo, breadcrumbSchema } from "@/lib/seo";
 
 function NewsletterForm() {
   const [email, setEmail] = useState("");
@@ -127,15 +118,39 @@ export default function Journal() {
 
   useEffect(() => {
     const prev = document.title;
-    document.title = "Journal and Archive Notes | Kobi Israel";
-    setMeta(
-      "description",
-      "Archive notes, artist texts, visual diary fragments and reflections by Kobi Israel on photography, moving image, masculinity, desire, exile, memory, books and personal mythology."
+    applyPageSeo({
+      title: "Journal and Archive Notes | Kobi Israel",
+      description:
+        "Archive notes and writing by Kobi Israel — short reflective texts on photography, memory, masculinity, desire, exile and moving image.",
+      path: "/journal",
+      jsonLd: [
+        {
+          id: "journal-breadcrumb",
+          data: breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Journal", path: "/journal" },
+          ]),
+        },
+        {
+          id: "journal-blog",
+          data: {
+            "@context": "https://schema.org",
+            "@type": "Blog",
+            name: "Journal and Archive Notes",
+            url: "https://kobiisrael.life/journal",
+            author: { "@type": "Person", name: "Kobi Israel" },
+            inLanguage: "en",
+          },
+        },
+      ],
+    });
+    const k = document.querySelector('meta[name="keywords"]') || document.createElement("meta");
+    k.setAttribute("name", "keywords");
+    k.setAttribute(
+      "content",
+      "Kobi Israel journal, Kobi Israel archive notes, Kobi Israel artist writing, Kobi Israel essays, photography and memory writing, artist visual diary, queer photography writing, autobiographical photography notes, moving image artist notes, photography archive essays, Kobi Israel artist statement, Kobi Israel personal mythology",
     );
-    setMeta(
-      "keywords",
-      "Kobi Israel journal, Kobi Israel archive notes, Kobi Israel artist writing, Kobi Israel essays, photography and memory writing, artist visual diary, queer photography writing, autobiographical photography notes, moving image artist notes, photography archive essays, Kobi Israel artist statement, Kobi Israel personal mythology"
-    );
+    if (!k.parentNode) document.head.appendChild(k);
     window.scrollTo(0, 0);
     return () => {
       document.title = prev;

@@ -4,20 +4,15 @@ import { X } from "lucide-react";
 import { toast } from "sonner";
 import { getArtworkRecord } from "@/data/artworks";
 import { submitInquiry } from "@/lib/api";
+import {
+  applyPageSeo,
+  breadcrumbSchema,
+  visualArtworkSchema,
+} from "@/lib/seo";
 
 const TBC = "To be confirmed by artist";
 const field = (v) => (v && String(v).trim() ? v : TBC);
 const listField = (arr) => (Array.isArray(arr) && arr.length > 0 ? arr : [TBC]);
-
-const setMeta = (name, content) => {
-  let el = document.querySelector(`meta[name="${name}"]`);
-  if (!el) {
-    el = document.createElement("meta");
-    el.setAttribute("name", name);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("content", content);
-};
 
 const INQUIRY_TYPE_OPTIONS = [
   { value: "collector", label: "Collector" },
@@ -295,16 +290,40 @@ export default function ArtworkRecord() {
     if (!artwork) return undefined;
     const prevTitle = document.title;
     const projectPart = artwork.series ? ` from ${artwork.series}` : "";
-    document.title = `${artwork.title}${projectPart} | Kobi Israel`;
-    setMeta(
-      "description",
-      `${artwork.title} by Kobi Israel${projectPart}. Artwork record, print details, archive context and collector inquiry information. Availability, edition and pricing to be confirmed.`
-    );
+    const title = `${artwork.title}${projectPart} | Kobi Israel`;
+    const description = `${artwork.title} by Kobi Israel${projectPart}. Artwork record, print details, archive context and collector inquiry.`;
+    const path = `/prints/${slug}`;
+    applyPageSeo({
+      title,
+      description: description.slice(0, 155),
+      path,
+      ogType: "article",
+      jsonLd: [
+        {
+          id: "artwork-breadcrumb",
+          data: breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Limited Edition Prints", path: "/prints" },
+            { name: artwork.title, path },
+          ]),
+        },
+        {
+          id: "artwork-visualartwork",
+          data: visualArtworkSchema({
+            name: artwork.title,
+            description,
+            path,
+            year: artwork.year,
+            medium: artwork.medium,
+          }),
+        },
+      ],
+    });
     window.scrollTo(0, 0);
     return () => {
       document.title = prevTitle;
     };
-  }, [artwork]);
+  }, [artwork, slug]);
 
   const scrollToInquiry = useCallback(() => {
     inquiryRef.current?.scrollIntoView({ behavior: "smooth" });

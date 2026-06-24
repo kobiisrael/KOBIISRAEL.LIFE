@@ -10,31 +10,46 @@ import InstitutionalInquiry from "@/components/prints/InstitutionalInquiry";
 import SecondaryMarket from "@/components/prints/SecondaryMarket";
 import RelatedArchive from "@/components/prints/RelatedArchive";
 import { PRINTS } from "@/constants/testIds";
-
-const setMeta = (name, content) => {
-  let el = document.querySelector(`meta[name="${name}"]`);
-  if (!el) {
-    el = document.createElement("meta");
-    el.setAttribute("name", name);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("content", content);
-};
+import { applyPageSeo, breadcrumbSchema } from "@/lib/seo";
 
 export default function Prints() {
   const formRef = useRef(null);
 
   useEffect(() => {
     const previousTitle = document.title;
-    document.title = "Limited Edition Prints | Kobi Israel";
-    setMeta(
-      "description",
-      "Signed limited edition fine art photography prints by Kobi Israel. Collector inquiries for selected photographic works exploring masculinity, desire, exile, memory, landscape and identity."
+    applyPageSeo({
+      title: "Limited Edition Prints | Kobi Israel",
+      description:
+        "Signed limited edition photography prints by Kobi Israel. Collector inquiries for selected works exploring masculinity, desire, exile and memory.",
+      path: "/prints",
+      jsonLd: [
+        {
+          id: "prints-breadcrumb",
+          data: breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Limited Edition Prints", path: "/prints" },
+          ]),
+        },
+        {
+          id: "prints-collection",
+          data: {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            name: "Limited Edition Prints",
+            url: "https://kobiisrael.life/prints",
+            about: { "@type": "Person", name: "Kobi Israel" },
+            inLanguage: "en",
+          },
+        },
+      ],
+    });
+    const k = document.querySelector('meta[name="keywords"]') || document.createElement("meta");
+    k.setAttribute("name", "keywords");
+    k.setAttribute(
+      "content",
+      "Kobi Israel prints, Kobi Israel limited edition prints, Kobi Israel photography prints, Kobi Israel Cuba Love Story print, fine art photography prints, signed photography prints, limited edition C-type prints, queer photography prints, homoerotic photography prints, Israeli photographer prints, London fine art photography, collector photography prints",
     );
-    setMeta(
-      "keywords",
-      "Kobi Israel prints, Kobi Israel limited edition prints, Kobi Israel photography prints, Kobi Israel Cuba Love Story print, fine art photography prints, signed photography prints, limited edition C-type prints, queer photography prints, homoerotic photography prints, Israeli photographer prints, London fine art photography, collector photography prints"
-    );
+    if (!k.parentNode) document.head.appendChild(k);
     window.scrollTo(0, 0);
     return () => {
       document.title = previousTitle;

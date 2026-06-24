@@ -15,16 +15,7 @@ import {
   CONTACT_RELATED_LINKS,
 } from "@/data/site";
 import { CONTACT } from "@/constants/testIds";
-
-const setMeta = (name, content) => {
-  let el = document.querySelector(`meta[name="${name}"]`);
-  if (!el) {
-    el = document.createElement("meta");
-    el.setAttribute("name", name);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("content", content);
-};
+import { applyPageSeo, breadcrumbSchema, contactPageSchema } from "@/lib/seo";
 
 const inputCls =
   "w-full bg-transparent border-b border-ki-border focus:border-ki-gold outline-none text-ki-fg placeholder:text-ki-muted py-3 transition-colors";
@@ -303,15 +294,29 @@ export default function Contact() {
 
   useEffect(() => {
     const prev = document.title;
-    document.title = "Contact | Kobi Israel";
-    setMeta(
-      "description",
-      "Contact Kobi Israel for collector inquiries, limited edition prints, gallery and curator inquiries, press, publications, moving-image screenings, archive research and professional correspondence."
+    applyPageSeo({
+      title: "Contact | Kobi Israel",
+      description:
+        "Contact and professional inquiries for Kobi Israel — collector, curator, museum, press, film/screening and book inquiries.",
+      path: "/contact",
+      jsonLd: [
+        {
+          id: "contact-breadcrumb",
+          data: breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Contact", path: "/contact" },
+          ]),
+        },
+        { id: "contact-page", data: contactPageSchema() },
+      ],
+    });
+    const k = document.querySelector('meta[name="keywords"]') || document.createElement("meta");
+    k.setAttribute("name", "keywords");
+    k.setAttribute(
+      "content",
+      "Contact Kobi Israel, Kobi Israel print inquiry, Kobi Israel collector inquiry, Kobi Israel gallery inquiry, Kobi Israel curator inquiry, Kobi Israel press inquiry, Kobi Israel limited edition prints, Kobi Israel film screening, Kobi Israel archive research, Kobi Israel photography licensing, Kobi Israel books inquiry",
     );
-    setMeta(
-      "keywords",
-      "Contact Kobi Israel, Kobi Israel print inquiry, Kobi Israel collector inquiry, Kobi Israel gallery inquiry, Kobi Israel curator inquiry, Kobi Israel press inquiry, Kobi Israel limited edition prints, Kobi Israel film screening, Kobi Israel archive research, Kobi Israel photography licensing, Kobi Israel books inquiry"
-    );
+    if (!k.parentNode) document.head.appendChild(k);
     window.scrollTo(0, 0);
     return () => {
       document.title = prev;

@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /launch-checklist
 Disallow: /migration-review
+Disallow: /seo-review
 
 Sitemap: https://kobiisrael.life/sitemap.xml

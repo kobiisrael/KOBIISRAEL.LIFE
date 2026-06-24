@@ -4,16 +4,12 @@ import ProjectDetailTemplate from "@/components/project/ProjectDetailTemplate";
 import VideoWorkDetail from "@/components/video/VideoWorkDetail";
 import NotFound from "@/pages/NotFound";
 import { getProject } from "@/lib/projects";
-
-const setMeta = (name, content) => {
-  let el = document.querySelector(`meta[name="${name}"]`);
-  if (!el) {
-    el = document.createElement("meta");
-    el.setAttribute("name", name);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("content", content);
-};
+import {
+  applyPageSeo,
+  breadcrumbSchema,
+  creativeWorkSchema,
+  removeJsonLd,
+} from "@/lib/seo";
 
 export default function ProjectDetail() {
   const { slug } = useParams();
@@ -22,11 +18,38 @@ export default function ProjectDetail() {
   useEffect(() => {
     window.scrollTo(0, 0);
     if (project) {
-      document.title = `${project.title} | Kobi Israel`;
-      setMeta(
-        "description",
-        `${project.title} — ${project.intro_statement || "Project page on the Kobi Israel artist archive."}`
-      );
+      const path = `/projects/${slug}`;
+      const description =
+        project.intro_statement ||
+        `${project.title} by Kobi Israel — project page in the artist archive.`;
+      applyPageSeo({
+        title: `${project.title} | Kobi Israel`,
+        description: description.slice(0, 155),
+        path,
+        ogType: "article",
+        jsonLd: [
+          {
+            id: "project-breadcrumb",
+            data: breadcrumbSchema([
+              { name: "Home", path: "/" },
+              { name: "Projects", path: "/projects" },
+              { name: project.title, path },
+            ]),
+          },
+          {
+            id: "project-creativework",
+            data: creativeWorkSchema({
+              name: project.title,
+              description,
+              path,
+              year: project.year_range,
+            }),
+          },
+        ],
+      });
+    } else {
+      removeJsonLd("project-breadcrumb");
+      removeJsonLd("project-creativework");
     }
   }, [slug, project]);
 

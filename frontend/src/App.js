@@ -18,6 +18,7 @@ import ArtworkRecord from "@/pages/ArtworkRecord";
 import Legal from "@/pages/Legal";
 import LaunchChecklist from "@/pages/LaunchChecklist";
 import MigrationReview from "@/pages/MigrationReview";
+import SEOReview from "@/pages/SEOReview";
 import NotFound from "@/pages/NotFound";
 import Placeholder from "@/pages/Placeholder";
 
@@ -65,6 +66,7 @@ function App() {
             <Route path="/legal/:slug" element={<Legal />} />
             <Route path="/launch-checklist" element={<LaunchChecklist />} />
             <Route path="/migration-review" element={<MigrationReview />} />
+            <Route path="/seo-review" element={<SEOReview />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

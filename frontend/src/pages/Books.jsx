@@ -10,33 +10,50 @@ import PublicationHistory from "@/components/books/PublicationHistory";
 import BooksInquiryForm from "@/components/books/BooksInquiryForm";
 import BooksRelatedArchive from "@/components/books/BooksRelatedArchive";
 import { BOOKS } from "@/constants/testIds";
-
-const setMeta = (name, content) => {
-  let el = document.querySelector(`meta[name="${name}"]`);
-  if (!el) {
-    el = document.createElement("meta");
-    el.setAttribute("name", name);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("content", content);
-};
+import { applyPageSeo, breadcrumbSchema } from "@/lib/seo";
 
 export default function Books() {
   const formRef = useRef(null);
 
   useEffect(() => {
     const previousTitle = document.title;
-    document.title = "Books and Publications | Kobi Israel";
-    setMeta(
-      "description",
-      "Books, catalogues and publications by Kobi Israel, including photographic works, artist books, visual diaries and archive texts exploring masculinity, desire, exile, memory and identity."
+    applyPageSeo({
+      title: "Books and Publications | Kobi Israel",
+      description:
+        "Books, catalogues and publications by Kobi Israel. Monographs, artist publications, exhibition catalogues and PDF archive.",
+      path: "/books",
+      jsonLd: [
+        {
+          id: "books-breadcrumb",
+          data: breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "Books and Publications", path: "/books" },
+          ]),
+        },
+        {
+          id: "books-collection",
+          data: {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            name: "Books and Publications",
+            url: "https://kobiisrael.life/books",
+            about: { "@type": "Person", name: "Kobi Israel" },
+            inLanguage: "en",
+          },
+        },
+      ],
+    });
+    const k = document.querySelector('meta[name="keywords"]') || document.createElement("meta");
+    k.setAttribute("name", "keywords");
+    k.setAttribute(
+      "content",
+      "Kobi Israel books, Kobi Israel Cuba Love Story book, Kobi Israel photography book, artist books photography, queer photography book, photography catalogue Kobi Israel, fine art photography books, autobiographical photography book, visual diary photography, photography and memory book, limited edition photography book",
     );
-    setMeta(
-      "keywords",
-      "Kobi Israel books, Kobi Israel Cuba Love Story book, Kobi Israel photography book, artist books photography, queer photography book, photography catalogue Kobi Israel, fine art photography books, autobiographical photography book, visual diary photography, photography and memory book, limited edition photography book"
-    );
+    if (!k.parentNode) document.head.appendChild(k);
     window.scrollTo(0, 0);
-    return () => { document.title = previousTitle; };
+    return () => {
+      document.title = previousTitle;
+    };
   }, []);
 
   const scrollToForm = useCallback(() => {

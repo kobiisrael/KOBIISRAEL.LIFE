@@ -11,31 +11,47 @@ import ProfessionalMaterials from "@/components/cv/ProfessionalMaterials";
 import ProfessionalInquiries from "@/components/cv/ProfessionalInquiries";
 import CVContactForm from "@/components/cv/CVContactForm";
 import { CV } from "@/constants/testIds";
-
-const setMeta = (name, content) => {
-  let el = document.querySelector(`meta[name="${name}"]`);
-  if (!el) {
-    el = document.createElement("meta");
-    el.setAttribute("name", name);
-    document.head.appendChild(el);
-  }
-  el.setAttribute("content", content);
-};
+import { applyPageSeo, breadcrumbSchema, personSchema } from "@/lib/seo";
 
 export default function CVPage() {
   const formRef = useRef(null);
 
   useEffect(() => {
     const previousTitle = document.title;
-    document.title = "CV and Biography | Kobi Israel";
-    setMeta(
-      "description",
-      "Biography, CV, exhibitions, collections, publications and selected history of Kobi Israel, photographer, filmmaker and visual artist working with masculinity, desire, memory, exile and identity."
+    applyPageSeo({
+      title: "CV and Biography | Kobi Israel",
+      description:
+        "CV and biography of Kobi Israel — exhibitions, collections, publications and press history of the photographer and filmmaker.",
+      path: "/cv",
+      ogType: "profile",
+      jsonLd: [
+        {
+          id: "cv-breadcrumb",
+          data: breadcrumbSchema([
+            { name: "Home", path: "/" },
+            { name: "CV and Biography", path: "/cv" },
+          ]),
+        },
+        { id: "cv-person", data: personSchema() },
+        {
+          id: "cv-profilepage",
+          data: {
+            "@context": "https://schema.org",
+            "@type": "ProfilePage",
+            mainEntity: personSchema(),
+            url: "https://kobiisrael.life/cv",
+            inLanguage: "en",
+          },
+        },
+      ],
+    });
+    const k = document.querySelector('meta[name="keywords"]') || document.createElement("meta");
+    k.setAttribute("name", "keywords");
+    k.setAttribute(
+      "content",
+      "Kobi Israel CV, Kobi Israel biography, Kobi Israel photographer biography, Kobi Israel exhibitions, Kobi Israel collections, Kobi Israel publications, Kobi Israel artist CV, Kobi Israel fine art photography, Israeli photographer London, queer photographer biography, photography exhibitions Kobi Israel",
     );
-    setMeta(
-      "keywords",
-      "Kobi Israel CV, Kobi Israel biography, Kobi Israel photographer biography, Kobi Israel exhibitions, Kobi Israel collections, Kobi Israel publications, Kobi Israel artist CV, Kobi Israel fine art photography, Israeli photographer London, queer photographer biography, photography exhibitions Kobi Israel"
-    );
+    if (!k.parentNode) document.head.appendChild(k);
     window.scrollTo(0, 0);
     return () => { document.title = previousTitle; };
   }, []);
