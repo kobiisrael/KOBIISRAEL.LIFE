@@ -83,3 +83,44 @@ export const STILL = {
 	noteCard: (slug) => `still-note-${slug}`,
 	noteCta: (slug) => `still-note-cta-${slug}`,
 };
+
+export const MOVING = {
+	page: 'moving-page',
+	// Hero
+	heroTitle: 'moving-hero-title',
+	heroSubtitle: 'moving-hero-subtitle',
+	heroIntro: 'moving-hero-intro',
+	heroCtaWorks: 'moving-hero-cta-works',
+	heroCtaCurator: 'moving-hero-cta-curator',
+	// Curatorial
+	curatorialHeading: 'moving-curatorial-heading',
+	// Works index
+	worksHeading: 'moving-works-heading',
+	filtersBar: 'moving-filters-bar',
+	filterBtn: (slug) => `moving-filter-${slug}`,
+	grid: 'moving-works-grid',
+	emptyState: 'moving-empty-state',
+	card: (slug) => `moving-card-${slug}`,
+	cardCta: (slug) => `moving-card-cta-${slug}`,
+	// Featured
+	featuredHeading: 'moving-featured-heading',
+	featuredWatchCta: 'moving-featured-watch-cta',
+	featuredPhotographyCta: 'moving-featured-photography-cta',
+	featuredCuratorCta: 'moving-featured-curator-cta',
+	// Statement
+	statementHeading: 'moving-statement-heading',
+	// Curator pathway
+	curatorHeading: 'moving-curator-heading',
+	curatorRequestCta: 'moving-curator-request-cta',
+	// Still ↔ Moving bridge
+	bridgeHeading: 'moving-bridge-heading',
+	bridgeCard: (slug) => `moving-bridge-${slug}`,
+	bridgeCta: (slug) => `moving-bridge-cta-${slug}`,
+	// Sound, voice, music
+	soundHeading: 'moving-sound-heading',
+	soundCta: 'moving-sound-cta',
+	// Archive fragments
+	fragmentsHeading: 'moving-fragments-heading',
+	fragmentCard: (slug) => `moving-fragment-${slug}`,
+	fragmentCta: (slug) => `moving-fragment-cta-${slug}`,
+};

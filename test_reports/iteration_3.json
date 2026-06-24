@@ -1,0 +1,23 @@
+{
+  "summary": "Frontend Playwright verification of new /moving page (KOBIISRAEL.COM). All 113 functional assertions passed after correcting one test-script selector for the homepage regression. /moving loads with correct title 'Moving Image | Kobi Israel', moving-page testid present, hero (title='Moving', subtitle, intro, both CTAs anchoring correctly), curatorial heading 'When the Still Image Begins to Move', 12 work cards with matching CTAs, 10 filter buttons, filter behaviour verified (music-sound->1, wip->7, travelogue->3, all->12), featured Cuba Love Story block (heading + Duration/Format/Language/Screening metadata + 3 CTAs incl. watch-excerpt linking to /projects/cuba-love-story), statement heading, curator pathway (#moving-curator anchor + request CTA), Still<->Moving bridge (3 cards + 3 CTAs), Sound/Voice/Music section (CTA -> /projects/music-sound-works), Archive Fragments (10 cards + 10 CTAs), no autoplay video/audio (0 <video>/<audio> elements on page), mobile (390px) hero legible, filters bar horizontally scrollable (overflowX=auto, scrollWidth 1546 > clientWidth 390), cards stack to single column. Regression PASS: /still still-page testid present, 12 still cards, military filter -> 2 cards, homepage has 7 works cards (testid prefix 'works-card-'), nav has 10 links.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": ["/app/test_reports/iteration_3.json"],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Title race condition reported in iteration_2 is now resolved on /moving — document.title correctly reads 'Moving Image | Kobi Israel' on direct load (no override by App.js). Main agent should confirm the same fix applies to /still and /projects/:slug if not already validated.",
+    "Sound/Voice/Music CTA hard-links to /projects/music-sound-works; this project is currently marked 'work in progress' in the moving works list. Confirm the project-detail route handles that slug gracefully (project-not-found fallback already noted as a gap in iteration_2 RCA for ProjectDetail.jsx)."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a (frontend-only review)", "frontend": "100% (113/113 functional assertions)"},
+  "test_credentials": "n/a",
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Homepage selected-works cards use data-testid prefix 'works-card-{slug}' (NOT 'home-work-card-*'). When counting card-level testids that share a prefix with their CTAs (e.g., 'moving-card-*' vs 'moving-card-cta-*', 'still-card-*' vs 'still-card-cta-*', 'works-card-*' vs 'works-card-cta-*', 'moving-fragment-*' vs 'moving-fragment-cta-*'), filter out CTA testids explicitly — a plain prefix match double-counts. All /moving page testids/filters/sections verified working; no retest needed unless code changes. No autoplay confirmed (page renders only poster-style cards with static play indicators; zero <video>/<audio> elements present).",
+  "rca of the issue": "n/a — no functional bugs found. The only initial test failure (homepage works card count = 0) was a script-side selector error (looked for non-existent 'home-work-card-*' testid). Corrected to 'works-card-*' (excluding 'works-card-cta-*') and the homepage returned the expected 7 cards."
+}

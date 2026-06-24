@@ -5,6 +5,7 @@ import { Toaster } from "@/components/ui/sonner";
 import Layout from "@/components/layout/Layout";
 import Home from "@/pages/Home";
 import Still from "@/pages/Still";
+import Moving from "@/pages/Moving";
 import ProjectDetail from "@/pages/ProjectDetail";
 import Placeholder from "@/pages/Placeholder";
 
@@ -38,7 +39,7 @@ function App() {
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
             <Route path="/still" element={<Still />} />
-            <Route path="/moving" element={<Placeholder title="Moving" intro="Moving-image works — page in preparation." />} />
+            <Route path="/moving" element={<Moving />} />
             <Route path="/projects" element={<Placeholder title="Projects" intro="Project archive — page in preparation." />} />
             <Route path="/projects/:slug" element={<ProjectDetail />} />
             <Route path="/prints" element={<Placeholder title="Prints" intro="Signed limited edition prints — page in preparation." />} />

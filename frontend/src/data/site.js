@@ -318,3 +318,248 @@ export const ARTIST_STATEMENT =
 export const CONCEPT_HEADING = "A Chaos of Appearances";
 export const CONCEPT_BODY =
   "An archive of fragments: soldiers, strangers, landscapes, lovers, cities, childhood, exile and the unstable theatre of memory.";
+
+// ============================================================
+// MOVING / FILM / VIDEO ARCHIVE
+// ============================================================
+
+export const MOVING_HERO = {
+  image:
+    "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=85&w=1920",
+  alt:
+    "Cinematic moving-image hero placeholder — final hero still or video loop to be selected by artist.",
+};
+
+export const MOVING_CURATORIAL_IMAGE = {
+  image:
+    "https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&q=85&w=1400",
+  alt:
+    "Curatorial moving-image still — placeholder. Final reference image to be supplied by artist.",
+};
+
+export const MOVING_FILTERS = [
+  { slug: "all", label: "All" },
+  { slug: "short-films", label: "Short Films" },
+  { slug: "video-art", label: "Video Art" },
+  { slug: "visual-diaries", label: "Visual Diaries" },
+  { slug: "music-sound", label: "Music / Sound" },
+  { slug: "travelogue", label: "Travelogue" },
+  { slug: "autobiography", label: "Autobiography" },
+  { slug: "queer", label: "Queer / Desire" },
+  { slug: "archive-fragments", label: "Archive Fragments" },
+  { slug: "wip", label: "Works in Progress" },
+];
+
+// Moving works — 12 entries, all placeholder content.
+export const MOVING_WORKS = [
+  {
+    slug: "cuba-love-story",
+    title: "Cuba, Love Story",
+    year_range: "Years to be confirmed by artist",
+    duration: "Duration to be confirmed",
+    format: "HD / digital — format to be confirmed",
+    status: "Completed",
+    synopsis:
+      "A moving-image investigation into masculinity, militarism, desire, memory and the charged space between observation and longing.",
+    tags: ["short-films", "autobiography", "queer", "travelogue"],
+    featured: true,
+  },
+  {
+    slug: "a-chaos-of-appearances",
+    title: "A Chaos of Appearances",
+    year_range: "Years to be confirmed by artist",
+    duration: "Duration to be confirmed",
+    format: "Digital video — format to be confirmed",
+    status: "Work in Progress",
+    synopsis:
+      "An assemblage of soldiers, strangers, cities and lovers — the unstable theatre of remembered appearance set in motion.",
+    tags: ["video-art", "autobiography", "archive-fragments", "wip"],
+  },
+  {
+    slug: "still-and-moving-diaries",
+    title: "Still & Moving Diaries",
+    year_range: "Ongoing",
+    duration: "Variable",
+    format: "Digital video and stills — format to be confirmed",
+    status: "Work in Progress",
+    synopsis:
+      "A diaristic project where photographs become rhythm, voice, light and time.",
+    tags: ["visual-diaries", "autobiography", "wip"],
+  },
+  {
+    slug: "fragments-of-life",
+    title: "Fragments of Life",
+    year_range: "Years to be confirmed by artist",
+    duration: "Duration to be confirmed",
+    format: "Digital video — format to be confirmed",
+    status: "Archive",
+    synopsis:
+      "Short cinematic fragments collected from daily life, intimacy and ordinary light.",
+    tags: ["visual-diaries", "autobiography", "archive-fragments"],
+  },
+  {
+    slug: "river-of-three-crossings",
+    title: "River of Three Crossings",
+    year_range: "Years to be confirmed by artist",
+    duration: "Duration to be confirmed",
+    format: "Digital video — format to be confirmed",
+    status: "Work in Progress",
+    synopsis:
+      "Three crossings between landscape, biography and the porous edges of a remembered self.",
+    tags: ["short-films", "travelogue", "autobiography", "wip"],
+  },
+  {
+    slug: "intimate-strangers",
+    title: "Intimate Strangers",
+    year_range: "Years to be confirmed by artist",
+    duration: "Duration to be confirmed",
+    format: "Digital video — format to be confirmed",
+    status: "Archive",
+    synopsis:
+      "Brief moving-image encounters: men watched, filmed and remembered between cities.",
+    tags: ["video-art", "queer", "archive-fragments"],
+  },
+  {
+    slug: "investigating-things-past",
+    title: "Investigating Things Past",
+    year_range: "Years to be confirmed by artist",
+    duration: "Duration to be confirmed",
+    format: "Digital video and archival materials",
+    status: "Work in Progress",
+    synopsis:
+      "A moving archive in which childhood, exile and recollection are continually re-read on screen.",
+    tags: ["video-art", "autobiography", "archive-fragments", "wip"],
+  },
+  {
+    slug: "personal-archive-films",
+    title: "Personal Archive Films",
+    year_range: "Ongoing",
+    duration: "Variable",
+    format: "Mixed — Super 8, MiniDV, digital (to be confirmed)",
+    status: "Archive",
+    synopsis:
+      "Private film and video archive: family footage, marginal recordings, working notes.",
+    tags: ["archive-fragments", "autobiography", "visual-diaries"],
+  },
+  {
+    slug: "music-sound-works",
+    title: "Music / Sound Works",
+    year_range: "Years to be confirmed by artist",
+    duration: "Variable",
+    format: "Sound, voice and moving image",
+    status: "Work in Progress",
+    synopsis:
+      "Sound, voice and music explorations developed alongside the moving-image archive.",
+    tags: ["music-sound", "wip"],
+  },
+  {
+    slug: "experimental-film-fragments",
+    title: "Experimental Film Fragments",
+    year_range: "Years to be confirmed by artist",
+    duration: "Variable short fragments",
+    format: "Digital video and analogue transfers",
+    status: "Archive",
+    synopsis:
+      "Short experimental sequences testing rhythm, repetition, montage and silence.",
+    tags: ["video-art", "archive-fragments"],
+  },
+  {
+    slug: "travelogue-works",
+    title: "Travelogue Works",
+    year_range: "Years to be confirmed by artist",
+    duration: "Variable",
+    format: "Digital video — format to be confirmed",
+    status: "Work in Progress",
+    synopsis:
+      "Moving-image notes from journeys — Cuba, Paris, London and points between.",
+    tags: ["travelogue", "visual-diaries", "wip"],
+  },
+  {
+    slug: "future-film-projects",
+    title: "Future Film Projects",
+    year_range: "In development",
+    duration: "—",
+    format: "—",
+    status: "To be confirmed",
+    synopsis:
+      "Film and moving-image projects currently in development. Synopses to be confirmed by the artist.",
+    tags: ["wip"],
+  },
+];
+
+export const FEATURED_MOVING = {
+  slug: "cuba-love-story",
+  title: "Cuba, Love Story",
+  description:
+    "A moving-image and photographic investigation into masculinity, militarism, homoerotic codes, desire, memory and the tension between observation and longing.",
+  image:
+    "https://images.unsplash.com/photo-1568322445389-495f4a7d20d4?auto=format&fit=crop&q=85&w=1800",
+  alt:
+    "Cuba, Love Story — featured moving-image still (placeholder, to be replaced with artist's selected still).",
+  duration: "Duration to be confirmed by artist",
+  format: "HD / digital — format to be confirmed",
+  language: "Language and subtitles to be confirmed",
+  screening_status: "Screening status to be confirmed",
+};
+
+export const MOVING_STATEMENT =
+  "The moving-image works should be understood as visual diaries rather than conventional films. They gather fragments of travel, memory, body, voice, silence, city, landscape and desire into a cinematic archive of lived experience.";
+
+// Curator / screening pathway
+export const CURATOR_PATHWAY = [
+  { label: "Screening copies", value: "Available on request — formats to be confirmed by artist." },
+  { label: "Installation formats", value: "Single-channel, multi-channel and gallery installation — to be discussed." },
+  { label: "Artist talks", value: "Available on request, subject to schedule." },
+  { label: "Q&A availability", value: "Available in person and online, subject to schedule." },
+  { label: "Festival submissions", value: "Welcomed via direct curator contact." },
+  { label: "Museum / gallery presentations", value: "Welcomed via direct curator contact." },
+  { label: "Educational licensing", value: "University and library licensing on request." },
+  { label: "Press kit", value: "Available on request — to be confirmed by artist." },
+  { label: "Technical specifications", value: "Resolution, codec, runtime and aspect ratio confirmed per work." },
+  { label: "Contact", value: "Use the curator inquiry form below or write directly to the studio." },
+];
+
+// Still ↔ Moving connection cards
+export const STILL_MOVING_BRIDGE = [
+  {
+    slug: "photography-into-film",
+    title: "Photography into Film",
+    note: "How a photographed gesture, gaze or street becomes a sequence in time.",
+  },
+  {
+    slug: "memory-into-sequence",
+    title: "Memory into Sequence",
+    note: "How remembered images return as rhythm, repetition and montage.",
+  },
+  {
+    slug: "archive-into-voice",
+    title: "Archive into Voice",
+    note: "How the working archive finds voice through sound, narration and music.",
+  },
+];
+
+// Sound, voice, music section — placeholder fields
+export const SOUND_VOICE_MUSIC = {
+  project_title: "Music project title — to be confirmed by artist.",
+  sound_work: "Sound work title — to be confirmed by artist.",
+  voice_over: "Voice-over text — to be supplied by the artist.",
+  soundtrack: "Video soundtrack — to be confirmed.",
+  streaming_link: "Streaming link — to be confirmed by artist.",
+  related_visual: "Related visual project — to be confirmed.",
+  artist_note:
+    "Sound and music are part of the moving-image archive: a continuing exploration of voice, silence and rhythm in dialogue with the image.",
+};
+
+// Archive fragments — 10 short experimental / diary pieces
+export const MOVING_FRAGMENTS = [
+  { slug: "cities", title: "Cities", note: "Streets, traffic, strangers and the breath of urban time.", status: "Archive" },
+  { slug: "bodies", title: "Bodies", note: "The photographed body in motion — gesture, skin, breath.", status: "Archive" },
+  { slug: "rooms", title: "Rooms", note: "Interiors as theatre of the self: hotel rooms, studios, kitchens.", status: "Archive" },
+  { slug: "travel", title: "Travel", note: "Windows, platforms, runways — the texture of moving through.", status: "Work in Progress" },
+  { slug: "memory", title: "Memory", note: "Fragments returning out of order, in their own light.", status: "Archive" },
+  { slug: "exile", title: "Exile", note: "Departure, return and the geography of leaving, set in motion.", status: "Work in Progress" },
+  { slug: "family", title: "Family", note: "Inherited gestures, archival film, voices remembered.", status: "Archive" },
+  { slug: "desire", title: "Desire", note: "Looking, longing, withholding — the rhythm of attention.", status: "Archive" },
+  { slug: "silence", title: "Silence", note: "Held breath, dropped sound, the image alone.", status: "Work in Progress" },
+  { slug: "night", title: "Night", note: "Cities and bodies under low light — the night as another country.", status: "Archive" },
+];
