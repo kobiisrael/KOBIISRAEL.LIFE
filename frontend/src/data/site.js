@@ -563,3 +563,239 @@ export const MOVING_FRAGMENTS = [
   { slug: "silence", title: "Silence", note: "Held breath, dropped sound, the image alone.", status: "Work in Progress" },
   { slug: "night", title: "Night", note: "Cities and bodies under low light — the night as another country.", status: "Archive" },
 ];
+
+// ============================================================
+// LIMITED EDITION PRINTS
+// ============================================================
+
+export const PRINTS_HERO = {
+  image:
+    "https://images.unsplash.com/photo-1554907984-15263bfd63bd?auto=format&fit=crop&q=85&w=1920",
+  alt:
+    "Limited edition prints hero — placeholder. Final hero artwork to be selected by artist.",
+};
+
+export const PRINTS_VIEWING_IMAGE = {
+  image:
+    "https://images.unsplash.com/photo-1577083553180-e58dffe85ad7?auto=format&fit=crop&q=85&w=1200",
+  alt:
+    "Collector viewing room visual — placeholder. Final image to be selected by artist.",
+};
+
+// 10 print collection cards. Slugs match existing project slugs from STILL_PROJECTS so they can link.
+export const PRINT_COLLECTIONS = [
+  {
+    slug: "cuba-love-story",
+    title: "Cuba, Love Story",
+    description: "Long-form photographic investigation of masculinity, militarism and desire.",
+    edition_status: "Edition status to be confirmed by artist",
+    availability: "Selected prints available by inquiry",
+  },
+  {
+    slug: "river-of-three-crossings",
+    title: "River of Three Crossings",
+    description: "Crossings between landscape, biography and the porous edges of a remembered self.",
+    edition_status: "Edition status to be confirmed by artist",
+    availability: "Availability to be confirmed",
+  },
+  {
+    slug: "fragments-of-life",
+    title: "Fragments of Life",
+    description: "Ongoing diaristic series collecting daily life, intimacy and ordinary light.",
+    edition_status: "Edition status to be confirmed by artist",
+    availability: "Selected prints available by inquiry",
+  },
+  {
+    slug: "intimate-strangers",
+    title: "Intimate Strangers",
+    description: "Brief encounters: men met, watched, photographed and remembered.",
+    edition_status: "Edition status to be confirmed by artist",
+    availability: "Selected prints available by inquiry",
+  },
+  {
+    slug: "views",
+    title: "Views",
+    description: "A typology of windows, thresholds and the interior weather of looking out.",
+    edition_status: "Edition status to be confirmed by artist",
+    availability: "Availability to be confirmed",
+  },
+  {
+    slug: "parisian-postcards",
+    title: "Parisian Postcards",
+    description: "Letters in image form from a city of strangers, kept and never sent.",
+    edition_status: "Edition status to be confirmed by artist",
+    availability: "Availability to be confirmed",
+  },
+  {
+    slug: "investigating-things-past",
+    title: "Investigating Things Past",
+    description: "An autobiographical archive in which childhood, exile and recollection return.",
+    edition_status: "Edition status to be confirmed by artist",
+    availability: "Availability to be confirmed",
+  },
+  {
+    slug: "military-masculinity-archive",
+    title: "Masculinity / Military Archive",
+    description: "Working archive of uniforms, gestures and the codes of trained male bodies.",
+    edition_status: "Edition status to be confirmed by artist",
+    availability: "Availability to be confirmed",
+  },
+  {
+    slug: "portraits-and-bodies",
+    title: "Portraits and Bodies",
+    description: "The photographed body — desired, observed, dressed, undressed, remembered.",
+    edition_status: "Edition status to be confirmed by artist",
+    availability: "Selected prints available by inquiry",
+  },
+  {
+    slug: "landscapes-and-exile",
+    title: "Landscapes and Exile",
+    description: "Landscapes carrying biography: borders, returns, the geography of leaving.",
+    edition_status: "Edition status to be confirmed by artist",
+    availability: "Availability to be confirmed",
+  },
+];
+
+// Available works grid — 8 placeholder artwork cards.
+export const PRINTS_AVAILABLE_WORKS = [
+  {
+    slug: "artwork-tbc-01",
+    title: "Untitled — title to be confirmed by artist",
+    series: "Cuba, Love Story",
+    year: "Year to be confirmed",
+    medium: "Archival pigment print — to be confirmed",
+    dimensions: "Dimensions to be confirmed",
+    edition: "Edition to be confirmed",
+    availability: "Availability to be confirmed",
+    price: "Price on request",
+  },
+  {
+    slug: "artwork-tbc-02",
+    title: "Untitled — title to be confirmed by artist",
+    series: "Intimate Strangers",
+    year: "Year to be confirmed",
+    medium: "Archival pigment print — to be confirmed",
+    dimensions: "Dimensions to be confirmed",
+    edition: "Edition to be confirmed",
+    availability: "Availability to be confirmed",
+    price: "Price on request",
+  },
+  {
+    slug: "artwork-tbc-03",
+    title: "Untitled — title to be confirmed by artist",
+    series: "Portraits and Bodies",
+    year: "Year to be confirmed",
+    medium: "Archival pigment print — to be confirmed",
+    dimensions: "Dimensions to be confirmed",
+    edition: "Edition to be confirmed",
+    availability: "Availability to be confirmed",
+    price: "Price on request",
+  },
+  {
+    slug: "artwork-tbc-04",
+    title: "Untitled — title to be confirmed by artist",
+    series: "Fragments of Life",
+    year: "Year to be confirmed",
+    medium: "Archival pigment print — to be confirmed",
+    dimensions: "Dimensions to be confirmed",
+    edition: "Edition to be confirmed",
+    availability: "Availability to be confirmed",
+    price: "Price on request",
+  },
+  {
+    slug: "artwork-tbc-05",
+    title: "Untitled — title to be confirmed by artist",
+    series: "Cuba, Love Story",
+    year: "Year to be confirmed",
+    medium: "Archival pigment print — to be confirmed",
+    dimensions: "Dimensions to be confirmed",
+    edition: "Edition to be confirmed",
+    availability: "Availability to be confirmed",
+    price: "Price on request",
+  },
+  {
+    slug: "artwork-tbc-06",
+    title: "Untitled — title to be confirmed by artist",
+    series: "Views",
+    year: "Year to be confirmed",
+    medium: "Archival pigment print — to be confirmed",
+    dimensions: "Dimensions to be confirmed",
+    edition: "Edition to be confirmed",
+    availability: "Availability to be confirmed",
+    price: "Price on request",
+  },
+  {
+    slug: "artwork-tbc-07",
+    title: "Untitled — title to be confirmed by artist",
+    series: "Parisian Postcards",
+    year: "Year to be confirmed",
+    medium: "Archival pigment print — to be confirmed",
+    dimensions: "Dimensions to be confirmed",
+    edition: "Edition to be confirmed",
+    availability: "Availability to be confirmed",
+    price: "Price on request",
+  },
+  {
+    slug: "artwork-tbc-08",
+    title: "Untitled — title to be confirmed by artist",
+    series: "Landscapes and Exile",
+    year: "Year to be confirmed",
+    medium: "Archival pigment print — to be confirmed",
+    dimensions: "Dimensions to be confirmed",
+    edition: "Edition to be confirmed",
+    availability: "Availability to be confirmed",
+    price: "Price on request",
+  },
+];
+
+export const PRINT_INFO_BLOCKS = [
+  { slug: "medium", label: "Medium", value: "Archival pigment print on fine art paper. Exact paper, ink and process to be confirmed by artist per work." },
+  { slug: "edition", label: "Edition", value: "Signed limited edition with numbered certificate. Edition sizes to be confirmed by artist per work." },
+  { slug: "signature", label: "Signature", value: "Each print hand-signed by the artist on verso." },
+  { slug: "certificate", label: "Certificate of Authenticity", value: "Numbered certificate of authenticity included, signed by the artist." },
+  { slug: "condition", label: "Condition", value: "Each print produced and inspected to archival standards. Condition reports available on request." },
+  { slug: "framing", label: "Framing", value: "Bespoke museum-grade framing available on request. Frame details to be confirmed per work." },
+  { slug: "shipping", label: "Shipping", value: "International shipping with insurance and condition reporting on delivery. Shipping policy to be confirmed by artist." },
+  { slug: "availability", label: "Availability", value: "Availability to be confirmed by artist per work. Some works may be sold out or held in private collections." },
+  { slug: "price", label: "Price on Request", value: "Prices are confirmed by the artist or representative on inquiry, subject to size, edition status and condition." },
+  { slug: "secondary-market", label: "Secondary Market Notes", value: "Notes for works previously placed in private collections available on request, case by case." },
+];
+
+export const COLLECTOR_TRUST = [
+  { heading: "Selected exhibitions", items: ["To be confirmed by artist"] },
+  { heading: "Selected public collections", items: ["To be confirmed by artist"] },
+  { heading: "Selected private collections", items: ["To be confirmed by artist"] },
+  { heading: "Selected publications", items: ["To be confirmed by artist"] },
+  { heading: "Selected awards", items: ["To be confirmed by artist"] },
+  { heading: "Selected books", items: ["To be confirmed by artist"] },
+  { heading: "Gallery history", items: ["To be confirmed by artist"] },
+  { heading: "Press history", items: ["To be confirmed by artist"] },
+];
+
+export const INSTITUTIONAL_PATHWAY = [
+  { label: "Exhibition proposals", value: "Welcomed via direct curator contact." },
+  { label: "Archive research", value: "Researcher access on request, subject to materials availability." },
+  { label: "Institutional acquisition", value: "Discussed case by case with the artist or representative." },
+  { label: "Publication requests", value: "Editorial and academic publication requests welcomed." },
+  { label: "Image licensing", value: "Licensing fees and conditions confirmed per request." },
+  { label: "Artist talks", value: "Available on request, subject to schedule." },
+  { label: "Screening connections", value: "Curatorial introductions to the moving-image archive on request." },
+  { label: "Book and print collaborations", value: "Welcomed via direct contact with the studio." },
+];
+
+export const PRINTS_RELATED_LINKS = [
+  { slug: "still", label: "Still", to: "/still" },
+  { slug: "moving", label: "Moving", to: "/moving" },
+  { slug: "books", label: "Books", to: "/books" },
+  { slug: "cv", label: "CV", to: "/cv" },
+  { slug: "archive", label: "Archive Notes", to: "/archive" },
+  { slug: "contact", label: "Contact", to: "/contact" },
+];
+
+export const INQUIRY_TYPE_OPTIONS = [
+  { value: "collector", label: "Collecting" },
+  { value: "gallery_curator", label: "Curatorial / Gallery" },
+  { value: "institutional", label: "Institutional" },
+  { value: "press", label: "Press" },
+  { value: "general", label: "Other" },
+];

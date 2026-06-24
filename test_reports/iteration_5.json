@@ -1,0 +1,32 @@
+{
+  "summary": "Full backend + frontend verification of /prints (Limited Edition Prints / Collector Inquiry). Backend: 12/12 pytest tests pass — POST /api/inquiries accepts all 5 InquiryType literals (general, collector, gallery_curator, press, institutional), echoes back new optional fields (phone, country, preferred_size, budget_range, consent), rejects invalid inquiry_type with 422, and homepage-style payloads without optional fields still return 201 with null optional fields (no regression). Frontend: 81/81 Playwright assertions pass — document title 'Limited Edition Prints | Kobi Israel', all data-testids present (page root, hero CTAs+anchors, viewing room, 10 collection cards with view/inquire links, 8 available works with Request Details buttons, print info heading, trust heading, secondary heading, related heading + 6 related links, full inquiry form with all 12 testids + 5 select options), Request Details prefills artwork field with 'Untitled — title to be confirmed by artist' and sets inquiry_type='collector' and scrolls form into view, Institutional CTA flips select to 'institutional', submission without consent fires sonner toast 'Please confirm consent…' and DOES NOT POST to /api/inquiries, submission with consent POSTs and receives 201, success element 'Thank you for your inquiry…' renders, and 'Inquiry sent. Thank you.' toast shows. Regression: homepage 7 works cards, /still 12 cards (military filter→2), /moving 12 cards (wip filter→7), /nonexistent renders 404, PRINTS nav link → /prints. Mobile 390px: hero legible, collection cards stack to 342px width, form fields stack, consent checkbox + label readable.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_backend.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "server.py InquiryCreate / Inquiry models cleanly extended with optional phone, country, preferred_size, budget_range, consent fields; InquiryType Literal correctly includes 'institutional'. Pydantic rejects unknown inquiry_type values with 422 (verified).",
+    "CollectorInquiryForm.jsx uses forwardRef + useImperativeHandle exposing setInquiryType + setArtworkInterest — verified that AvailableWorks Request Details and InstitutionalInquiry CTA both reliably mutate form state without re-rendering issues.",
+    "Form submission correctly short-circuits via the !form.consent guard BEFORE the network call (verified with request listener — zero POSTs fired without consent). This is the correct UX pattern.",
+    "Sonner toast 'Inquiry sent. Thank you.' AND inline prints-inquiry-success element both appear post-submit — slight redundancy but acceptable as the success element persists while the toast auto-dismisses.",
+    "All 10 collection cards link to /projects/{slug} where slugs exist in lib/projects.js (verified cuba-love-story link target). No risk of 404s from collection navigation.",
+    "Minor: artwork input prefills with 'Untitled — title to be confirmed by artist' (the placeholder artwork title from PRINTS_AVAILABLE_WORKS) rather than the series name 'Cuba, Love Story'. This is by design per AvailableWorks.onInquire callback contract (passes artwork title, not series). Series is appended into the message body as '(Cuba, Love Story)' context. Acceptable but worth noting if the intent was to prefill with the series-level title."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_backend.py (added 5 new tests: prints optional fields, institutional type, homepage regression, invalid inquiry_type, all 5 valid types)"
+  ],
+  "success_rate": {"backend": "100% (12/12)", "frontend": "100% (81/81 assertions across content, interactions, regression, mobile)"},
+  "test_credentials": "n/a — no auth in this app",
+  "seed_data_creation": "Created TEST_-prefixed inquiry records via API (TEST_Collector, TEST_PrintsCollector, TEST_Institution, TEST_Homepage, TEST_general, TEST_collector, TEST_gallery_curator, TEST_press, TEST_institutional) and TEST_PW_User via UI submission. All persist in db.inquiries; cleanup not strictly required since collection is append-only and inquiry_type/email uniqueness is not enforced.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "/prints page is fully built and integrated. Backend InquiryCreate accepts 5 inquiry_types and 5 new optional fields (phone, country, preferred_size, budget_range, consent). Form ref API: formRef.current.setInquiryType(type) + formRef.current.setArtworkInterest(artwork, series). Sonner toasts use [data-sonner-toast] selector. All 10 collection slugs render: cuba-love-story, river-of-three-crossings, fragments-of-life, intimate-strangers, views, parisian-postcards, investigating-things-past, military-masculinity-archive, portraits-and-bodies, landscapes-and-exile. All 8 available artwork slugs: artwork-tbc-01..artwork-tbc-08. All 6 related links: still, moving, books, cv, archive, contact.",
+  "rca of the issue": "n/a — no functional defects found across backend or frontend. All MVP acceptance criteria for the Limited Edition Prints page verified passing."
+}

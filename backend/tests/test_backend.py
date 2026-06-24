@@ -80,6 +80,100 @@ def test_create_inquiry_invalid_email(client):
     assert r.status_code == 422
 
 
+# ---------- Prints / Collector inquiry — new optional fields ----------
+def test_create_inquiry_with_prints_optional_fields(client):
+    """Full collector inquiry from /prints form with phone, country, size, budget, consent."""
+    payload = {
+        "name": "TEST_PrintsCollector",
+        "email": f"test_prints_{uuid.uuid4().hex[:8]}@example.com",
+        "inquiry_type": "collector",
+        "subject": "Cuba, Love Story",
+        "message": "I would like to inquire about a print of Cuba, Love Story.",
+        "project_interest": "Cuba, Love Story",
+        "phone": "+44 20 7946 0000",
+        "country": "United Kingdom",
+        "preferred_size": "60 × 80 cm",
+        "budget_range": "£3,000 – £8,000",
+        "consent": True,
+    }
+    r = client.post(f"{API}/inquiries", json=payload)
+    assert r.status_code == 201, r.text
+    data = r.json()
+    # Echo back assertions
+    assert data["phone"] == payload["phone"]
+    assert data["country"] == payload["country"]
+    assert data["preferred_size"] == payload["preferred_size"]
+    assert data["budget_range"] == payload["budget_range"]
+    assert data["consent"] is True
+    assert data["inquiry_type"] == "collector"
+    assert "id" in data and "created_at" in data
+
+
+def test_create_inquiry_institutional_type(client):
+    """Institutional inquiry type must be accepted."""
+    payload = {
+        "name": "TEST_Institution",
+        "email": f"test_inst_{uuid.uuid4().hex[:8]}@example.com",
+        "inquiry_type": "institutional",
+        "message": "Institutional inquiry from museum.",
+        "consent": True,
+    }
+    r = client.post(f"{API}/inquiries", json=payload)
+    assert r.status_code == 201, r.text
+    data = r.json()
+    assert data["inquiry_type"] == "institutional"
+    # Optional fields not provided should be None
+    assert data["phone"] is None
+    assert data["country"] is None
+    assert data["preferred_size"] is None
+    assert data["budget_range"] is None
+
+
+def test_create_inquiry_homepage_regression_no_optional_fields(client):
+    """Homepage contact form regression — no new optional fields."""
+    payload = {
+        "name": "TEST_Homepage",
+        "email": f"test_home_{uuid.uuid4().hex[:8]}@example.com",
+        "inquiry_type": "general",
+        "subject": "General question",
+        "message": "Hello from homepage form.",
+        "project_interest": "Cuba, Love Story",
+    }
+    r = client.post(f"{API}/inquiries", json=payload)
+    assert r.status_code == 201, r.text
+    data = r.json()
+    assert data["inquiry_type"] == "general"
+    assert data["phone"] is None
+    assert data["country"] is None
+    assert data["consent"] is None
+
+
+def test_create_inquiry_invalid_inquiry_type(client):
+    """Invalid inquiry_type (e.g., 'random_string') must be rejected with 422."""
+    payload = {
+        "name": "TEST_BadType",
+        "email": f"test_bad_{uuid.uuid4().hex[:8]}@example.com",
+        "inquiry_type": "random_string",
+        "message": "msg",
+    }
+    r = client.post(f"{API}/inquiries", json=payload)
+    assert r.status_code == 422
+
+
+def test_create_inquiry_all_valid_types(client):
+    """All 5 InquiryType literals are accepted."""
+    for itype in ["general", "collector", "gallery_curator", "press", "institutional"]:
+        payload = {
+            "name": f"TEST_{itype}",
+            "email": f"test_{itype}_{uuid.uuid4().hex[:6]}@example.com",
+            "inquiry_type": itype,
+            "message": f"Inquiry of type {itype}.",
+        }
+        r = client.post(f"{API}/inquiries", json=payload)
+        assert r.status_code == 201, f"{itype} failed: {r.text}"
+        assert r.json()["inquiry_type"] == itype
+
+
 # ---------- Newsletter ----------
 def test_newsletter_subscribe_and_idempotent(client):
     email = f"news_{uuid.uuid4().hex[:8]}@example.com"
@@ -87,15 +181,12 @@ def test_newsletter_subscribe_and_idempotent(client):
     assert r1.status_code == 201, r1.text
     id1 = r1.json()["id"]
 
-    # Idempotent — same email returns existing
     r2 = client.post(f"{API}/newsletter", json={"email": email})
     assert r2.status_code in (200, 201)
     assert r2.json()["id"] == id1
 
-    # List
     lr = client.get(f"{API}/newsletter")
     assert lr.status_code == 200
     emails = [x["email"] for x in lr.json()]
     assert email in emails
-    # No duplicates
     assert emails.count(email) == 1

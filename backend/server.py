@@ -39,7 +39,7 @@ class StatusCheckCreate(BaseModel):
     client_name: str
 
 
-InquiryType = Literal["general", "collector", "gallery_curator", "press"]
+InquiryType = Literal["general", "collector", "gallery_curator", "press", "institutional"]
 
 
 class InquiryCreate(BaseModel):
@@ -49,6 +49,12 @@ class InquiryCreate(BaseModel):
     subject: Optional[str] = Field(default=None, max_length=300)
     message: str = Field(min_length=1, max_length=5000)
     project_interest: Optional[str] = Field(default=None, max_length=200)
+    # Optional fields used by the Limited Edition Prints collector inquiry form
+    phone: Optional[str] = Field(default=None, max_length=50)
+    country: Optional[str] = Field(default=None, max_length=100)
+    preferred_size: Optional[str] = Field(default=None, max_length=100)
+    budget_range: Optional[str] = Field(default=None, max_length=100)
+    consent: Optional[bool] = None
 
 
 class Inquiry(BaseModel):
@@ -60,6 +66,11 @@ class Inquiry(BaseModel):
     subject: Optional[str] = None
     message: str
     project_interest: Optional[str] = None
+    phone: Optional[str] = None
+    country: Optional[str] = None
+    preferred_size: Optional[str] = None
+    budget_range: Optional[str] = None
+    consent: Optional[bool] = None
     created_at: str = Field(default_factory=_iso_now)
 
 

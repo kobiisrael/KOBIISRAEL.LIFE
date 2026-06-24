@@ -124,3 +124,53 @@ export const MOVING = {
 	fragmentCard: (slug) => `moving-fragment-${slug}`,
 	fragmentCta: (slug) => `moving-fragment-cta-${slug}`,
 };
+
+export const PRINTS = {
+	page: 'prints-page',
+	// Hero
+	heroTitle: 'prints-hero-title',
+	heroSubtitle: 'prints-hero-subtitle',
+	heroIntro: 'prints-hero-intro',
+	heroCtaWorks: 'prints-hero-cta-works',
+	heroCtaInquire: 'prints-hero-cta-inquire',
+	// Viewing room
+	viewingHeading: 'prints-viewing-heading',
+	// Collections
+	collectionsHeading: 'prints-collections-heading',
+	collectionsGrid: 'prints-collections-grid',
+	collectionCard: (slug) => `prints-collection-${slug}`,
+	collectionView: (slug) => `prints-collection-view-${slug}`,
+	collectionInquire: (slug) => `prints-collection-inquire-${slug}`,
+	// Available works
+	availableHeading: 'prints-available-heading',
+	availableGrid: 'prints-available-grid',
+	availableCard: (slug) => `prints-available-${slug}`,
+	availableRequest: (slug) => `prints-available-request-${slug}`,
+	// Print information
+	infoHeading: 'prints-info-heading',
+	// Trust
+	trustHeading: 'prints-trust-heading',
+	// Inquiry form
+	inquiryHeading: 'prints-inquiry-heading',
+	inquiryForm: 'prints-inquiry-form',
+	inquiryName: 'prints-inquiry-name',
+	inquiryEmail: 'prints-inquiry-email',
+	inquiryPhone: 'prints-inquiry-phone',
+	inquiryCountry: 'prints-inquiry-country',
+	inquiryArtwork: 'prints-inquiry-artwork',
+	inquirySize: 'prints-inquiry-size',
+	inquiryBudget: 'prints-inquiry-budget',
+	inquiryType: 'prints-inquiry-type',
+	inquiryMessage: 'prints-inquiry-message',
+	inquiryConsent: 'prints-inquiry-consent',
+	inquirySubmit: 'prints-inquiry-submit',
+	inquirySuccess: 'prints-inquiry-success',
+	// Institutional
+	institutionalHeading: 'prints-institutional-heading',
+	institutionalCta: 'prints-institutional-cta',
+	// Secondary market
+	secondaryHeading: 'prints-secondary-heading',
+	// Related archive
+	relatedHeading: 'prints-related-heading',
+	relatedLink: (slug) => `prints-related-${slug}`,
+};
