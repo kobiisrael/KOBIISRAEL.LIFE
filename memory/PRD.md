@@ -249,6 +249,18 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 - ✅ Collection claims (Madonna, Elton John, George Michael, Joe Wright, NPG) preserved but flagged 'needs-review' — never published unconfirmed
 - ✅ Tested: backend 21/21 pytest + frontend all selector/structure/nav/regression assertions pass; only "issue" was a prose miscount in the task description (data has 23 group exhibitions matching the Wix source; the prose said 24) — no code or data fix needed
 
+### Final homepage copywriting upgrade — 2026-06-24
+- ✅ Refined HERO subtitle to singular "moving image" + added `HERO_COPY_OPTIONS` constant with 3 hero options + recommendation rationale (Option 2 implemented)
+- ✅ ARTIST_STATEMENT updated to use the artist's own Wix language: "remembrance of things past", "empty landscapes, intimate encounters and touristic travelogues as backdrops for an inside quest"
+- ✅ CONCEPT_BODY refined: "An archive of fragments — soldiers and strangers, lovers and landscapes, cities, childhood and exile. Still and moving diaries from the unstable theatre of memory."
+- ✅ FEATURED_PROJECT (Cuba) description now uses the artist's verbatim Wix wording: "The confusing and bewildering paradox of the masculine and militarist blended with the homoerotic in Cuba — evoking the artist's own memories of growing up in young, macho and militarist Israel."
+- ✅ SPLIT_MEDIA still+moving descriptions refined; moving now names real existing projects (A Cuban Love Story, Parisian Postcards, Investigating Things Past)
+- ✅ All 7 SELECTED_PROJECTS entries updated with real Wix-confirmed year ranges, locations, mediums and verbatim descriptions: Cuba 1993–2012, River of Three Crossings 2001–2017, Fragments of Life 2000–2007 Tel-Aviv, Intimate Strangers 2001–2006 Soho London, Views 1999–2003 Israel, Parisian Postcards 2010 (three-channel video, 18 min), Investigating Things Past 2023– (110mm negatives)
+- ✅ Homepage SEO metadata: title 58/60 chars, description 151/155 chars, OG title + OG description + OG type set (also baked into public/index.html for first-paint)
+- ✅ Alt-text placeholders updated to spec format: "[Image type] by Kobi Israel, details to be confirmed."
+- ✅ Fixed `lib/projects.js` getProject(): now threads medium/format/status/description fields onto the template; intro_statement priority flipped so the verbatim Wix descriptions win over enrichment placeholders
+- ✅ Tested across iterations 17 + 18: backend 21/21 pytest + frontend full homepage assertions (SEO, content, forbidden-phrase check, alt, 7-card grid, CTAs, mobile overflow, 15-route regression with zero console errors) + bug-fix retest (Parisian Postcards + Investigating Things Past medium/year/location render correctly, Cuba intro is now Wix-verbatim, hero subtitle singular) — 100% pass
+
 ## Backlog (prioritised)
 
 ### P0 — content readiness (artist must supply)
