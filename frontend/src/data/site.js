@@ -16,7 +16,49 @@ export const NAV_ITEMS = [
 export const HERO = {
   image:
     "https://images.unsplash.com/photo-1540172777610-b15b605dd68d?auto=format&fit=crop&q=85&w=1920",
-  alt: "Cinematic moody portrait — hero placeholder (To be replaced with artist's selected work).",
+  alt: "Cinematic archive image by Kobi Israel, details to be confirmed.",
+};
+
+// Hero copy options — Option 2 (recommended) is currently used in Hero.jsx.
+// The full set is preserved here so the artist can swap easily.
+export const HERO_COPY_OPTIONS = {
+  recommended: "option-2",
+  option_1: {
+    overline: "Still & Moving Diaries",
+    title: "Kobi Israel",
+    positioning: "Photography, moving image and autobiographical archives.",
+    paragraph:
+      "An archive of masculinity, desire, exile and memory — soldiers, strangers, lovers, landscapes, cities and time.",
+    primary_cta: { label: "View Selected Works", to: "#selected-works" },
+    secondary_cta: { label: "Explore the Archive", to: "/archive" },
+  },
+  option_2: {
+    overline: "Still & Moving Diaries",
+    title: "Kobi Israel",
+    positioning:
+      "Photography, moving image and autobiographical archives of masculinity, desire, exile and memory.",
+    paragraph: null,
+    primary_cta: { label: "View Selected Works", to: "#selected-works" },
+    secondary_cta: { label: "Collector Inquiries", to: "#contact" },
+  },
+  option_3: {
+    overline: "Archive · Vol. 01",
+    title: "A Chaos of Appearances",
+    positioning:
+      "Still and moving diaries from the work of Kobi Israel — photography, moving image, books and prints.",
+    paragraph: null,
+    primary_cta: { label: "View Selected Works", to: "#selected-works" },
+    secondary_cta: { label: "Request Print Availability", to: "#contact" },
+  },
+  // Why Option 2 is recommended:
+  // Curatorial clarity — names the artist and the medium plainly.
+  // Emotional power — the four-theme cadence (masculinity, desire, exile, memory)
+  // does the atmospheric work without an extra paragraph.
+  // Collector credibility — the second CTA goes straight to Collector Inquiries.
+  // Archive identity — "Still & Moving Diaries" is the artist's own phrase.
+  // SEO usefulness — the positioning line carries "photography, moving image,
+  // autobiographical archives, masculinity, desire, exile, memory" in a natural sentence.
+  // Visual compatibility — short copy sits cleanly over a large cinematic image.
 };
 
 export const STILL_HERO = {
@@ -52,11 +94,11 @@ export const STILL_PROJECTS = [
   {
     slug: "cuba-love-story",
     title: "Cuba, Love Story",
-    year_range: "Years to be confirmed by artist",
+    year_range: "1993–2012",
     location: "Cuba",
-    medium: "Photography and moving image",
+    medium: "Photography (and related film)",
     description:
-      "A long-term photographic and moving-image investigation into masculinity, militarism, homoerotic codes, memory and desire.",
+      "The confusing and bewildering paradox of the masculine and militarist blended with the homoerotic in Cuba — the artist's own memories of growing up in young, macho and militarist Israel.",
     tags: ["autobiography", "masculinity", "queer", "military", "travel", "books", "prints"],
     status: "Published",
     featured: true,
@@ -64,66 +106,67 @@ export const STILL_PROJECTS = [
   {
     slug: "river-of-three-crossings",
     title: "River of Three Crossings",
-    year_range: "Years to be confirmed by artist",
-    location: "Location to be confirmed",
+    year_range: "2001–2017",
+    location: "Multiple",
     medium: "Photography",
     description:
-      "Crossings between landscape, biography and the porous edges of a remembered self.",
+      "A travelogue around the mythic, nomadic nature of landscape — landscape as a stage on which to cast desire, identity and personal history.",
     tags: ["autobiography", "travel", "landscape"],
     status: "Archive",
   },
   {
     slug: "fragments-of-life",
     title: "Fragments of Life",
-    year_range: "Years to be confirmed by artist",
-    location: "Location to be confirmed",
-    medium: "Photography and archive",
+    year_range: "2000–2007",
+    location: "Tel-Aviv, Israel",
+    medium: "Photography — staged images",
     description:
-      "An ongoing diaristic series collecting fragments of daily life, intimacy and ordinary light.",
+      "Staged images of recollection, conflict and trapped emotion — adolescence in a deeply conservative and traditional society.",
     tags: ["autobiography", "portraits"],
     status: "Archive",
   },
   {
     slug: "intimate-strangers",
     title: "Intimate Strangers",
-    year_range: "Years to be confirmed by artist",
-    location: "Location to be confirmed",
+    year_range: "2001–2006",
+    location: "Soho, London, UK",
     medium: "Portrait photography",
-    description: "A study of brief encounters: men met, watched, photographed and remembered.",
+    description:
+      "Portraits of foreigners in a city full of immigrants — the brief contract between watcher and watched.",
     tags: ["queer", "portraits", "urban", "prints"],
     status: "Available Prints",
   },
   {
     slug: "views",
     title: "Views",
-    year_range: "Years to be confirmed by artist",
-    location: "Location to be confirmed",
+    year_range: "1999–2003",
+    location: "Israel",
     medium: "Photography",
-    description:
-      "A quiet typology of windows, thresholds and the interior weather of looking out.",
-    tags: ["landscape", "urban"],
+    description: "The thin line between homo-erotic and homo-social in army life.",
+    tags: ["landscape", "urban", "masculinity", "military", "queer"],
     status: "Archive",
   },
   {
     slug: "parisian-postcards",
     title: "Parisian Postcards",
-    year_range: "Years to be confirmed by artist",
+    year_range: "2010",
     location: "Paris",
-    medium: "Photography",
-    description: "Letters in image form from a city of strangers, kept and never sent.",
-    tags: ["travel", "urban"],
-    status: "To be confirmed",
+    medium: "Three-channel video installation, 18 min",
+    description:
+      "An autobiographical investigation of personal family narratives — still and moving image fractured into time and space.",
+    tags: ["travel", "urban", "moving-image"],
+    status: "Published",
   },
   {
     slug: "investigating-things-past",
     title: "Investigating Things Past",
-    year_range: "Years to be confirmed by artist",
-    location: "Location to be confirmed",
-    medium: "Photography and archive",
+    year_range: "2023– (work in progress)",
+    location: "Archive — 1982–1987 negatives",
+    medium: "Still & moving images installation",
     description:
-      "An autobiographical archive in which childhood, exile and recollection are continually re-read.",
-    tags: ["autobiography"],
-    status: "Archive",
+      "Seven 110mm negatives, separated by hand from a forgotten envelope — involuntary memories returning out of order, in their own light.",
+    tags: ["autobiography", "memory"],
+    status: "Work in progress",
   },
   {
     slug: "military-masculinity-archive",
@@ -189,36 +232,36 @@ export const FEATURED_PROJECT = {
   slug: "cuba-love-story",
   title: "Cuba, Love Story",
   description:
-    "A long-term photographic and moving-image investigation into masculinity, militarism, homoerotic codes, memory and desire.",
+    "The confusing and bewildering paradox of the masculine and militarist blended with the homoerotic in Cuba — evoking the artist's own memories of growing up in young, macho and militarist Israel.",
   image:
     "https://images.unsplash.com/photo-1568322445389-495f4a7d20d4?auto=format&fit=crop&q=85&w=1600",
-  alt: "Cuba, Love Story — featured project visual placeholder (To be replaced with artist's selected work).",
+  alt: "Image from Cuba, Love Story by Kobi Israel, details to be confirmed.",
 };
 
 export const FEATURED_STILL = {
   slug: "cuba-love-story",
   title: "Cuba, Love Story",
   description:
-    "A photographic and moving-image investigation into masculinity, militarism, desire, memory and the charged space between observation and longing.",
+    "The confusing and bewildering paradox of the masculine and militarist blended with the homoerotic in Cuba — evoking the artist's own memories of growing up in young, macho and militarist Israel.",
   image:
     "https://images.unsplash.com/photo-1568322445389-495f4a7d20d4?auto=format&fit=crop&q=85&w=1800",
-  alt: "Cuba, Love Story — featured still placeholder (To be replaced with artist's selected work).",
+  alt: "Image from Cuba, Love Story by Kobi Israel, details to be confirmed.",
 };
 
 export const SPLIT_MEDIA = {
   still: {
     image:
       "https://images.unsplash.com/photo-1610303871783-491dc6d0a165?auto=format&fit=crop&q=85&w=1200",
-    alt: "Still images section — placeholder image.",
+    alt: "Still photography image by Kobi Israel, details to be confirmed.",
     description:
-      "Photographs as held breath. Portraits, landscapes, fragments and remembered rooms.",
+      "Photographs as held breath. Portraits, landscapes and remembered rooms carrying memory forward.",
   },
   moving: {
     image:
       "https://images.unsplash.com/photo-1638638977172-9f7169a77930?auto=format&fit=crop&q=85&w=1200",
-    alt: "Moving images section — placeholder image.",
+    alt: "Moving-image still by Kobi Israel, details to be confirmed.",
     description:
-      "Films, video diaries and moving-image excerpts. Time as another way of looking.",
+      "A Cuban Love Story, Parisian Postcards, Investigating Things Past. Time as another way of looking.",
   },
 };
 
@@ -313,11 +356,11 @@ export const ARCHIVE_NOTES = [
 ];
 
 export const ARTIST_STATEMENT =
-  "Kobi Israel's work is autobiographical in nature, using photography and moving images to explore identity, desire, masculinity, memory and the emotional traces left by places, people and time.";
+  "Kobi Israel's work is autobiographical in nature, investigating the remembrance of things past — empty landscapes, intimate encounters and touristic travelogues as backdrops for an inside quest and reflection. Still and moving images of masculinity, desire, exile and the self as witness.";
 
 export const CONCEPT_HEADING = "A Chaos of Appearances";
 export const CONCEPT_BODY =
-  "An archive of fragments: soldiers, strangers, landscapes, lovers, cities, childhood, exile and the unstable theatre of memory.";
+  "An archive of fragments — soldiers and strangers, lovers and landscapes, cities, childhood and exile. Still and moving diaries from the unstable theatre of memory.";
 
 // ============================================================
 // MOVING / FILM / VIDEO ARCHIVE
