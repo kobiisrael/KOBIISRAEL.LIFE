@@ -38,7 +38,7 @@ def test_project_detail_valid(client):
     assert r.status_code == 200
     data = r.json()
     assert data["slug"] == "cuba-love-story"
-    assert data["featured"] == True
+    assert data["featured"]
 
 
 def test_project_detail_invalid(client):
@@ -104,7 +104,7 @@ def test_create_inquiry_with_prints_optional_fields(client):
     assert data["country"] == payload["country"]
     assert data["preferred_size"] == payload["preferred_size"]
     assert data["budget_range"] == payload["budget_range"]
-    assert data["consent"] == True
+    assert data["consent"]
     assert data["inquiry_type"] == "collector"
     assert "id" in data and "created_at" in data
 
@@ -178,7 +178,7 @@ def test_create_inquiry_books_types(client):
         data = r.json()
         assert data["inquiry_type"] == itype
         assert data["country"] == "France"
-        assert data["consent"] == True
+        assert data["consent"]
 
 
 def test_create_inquiry_cv_new_types(client):
@@ -197,7 +197,7 @@ def test_create_inquiry_cv_new_types(client):
         assert r.status_code == 201, f"{itype} failed: {r.text}"
         data = r.json()
         assert data["inquiry_type"] == itype
-        assert data["consent"] == True
+        assert data["consent"]
 
 
 def test_create_inquiry_all_valid_types(client):
@@ -310,7 +310,7 @@ def test_create_inquiry_curatorial(client):
     assert data["inquiry_type"] == "curatorial"
     assert data["project_interest"] == "Cuba, Love Story"
     assert data["country"] == "Germany"
-    assert data["consent"] == True
+    assert data["consent"]
 
 
 
@@ -338,7 +338,7 @@ def test_create_inquiry_book_inquiry_with_org_and_deadline(client):
     assert data["deadline"] == "by 15 September"
     assert data["project_interest"] == "Cuba, Love Story"
     assert data["country"] == "Spain"
-    assert data["consent"] == True
+    assert data["consent"]
     assert "id" in data and isinstance(data["id"], str)
 
 
