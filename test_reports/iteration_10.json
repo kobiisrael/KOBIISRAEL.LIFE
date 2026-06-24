@@ -1,0 +1,30 @@
+{
+  "summary": "Iteration 10 regression verification for code-quality refactor (array-index key replacement, useMemo extraction in ProjectDetail/ProjectDetailTemplate, silenced craco console.warn, PEP-8 `is True` -> `== True` in backend tests). Backend: 21/21 pytest pass (unchanged). Frontend Playwright across 2 sessions covered: 4 project detail variants (cuba-love-story, river-of-three-crossings, a-chaos-of-appearances, non-existent-slug) + 10 regression routes (/ /still /moving /prints /books /archive /cv /journal /journal/a-chaos-of-appearances /contact) + contact-form consent gate + mobile 390x844 overflow on /projects/cuba-love-story and /contact. RESULTS: cuba project-title='Cuba, Love Story', both project-badge-still and project-badge-moving render (counts=1,1), project-moving-detail renders (count=1), project-moving-stub NOT shown (count=0, correct since hasMoving=true), gallery placeholders=6, exhibition_history list=2 <li>, publication_history list=2 <li>. a-chaos-of-appearances: project-badge-still=0, project-badge-moving=1, project-moving-detail=1, project-moving-stub=0 — matches expected moving-only behaviour. non-existent-slug: project-not-found element renders (count=1). All 10 regression routes loaded with 0 console errors (excluding favicon). Mobile (390x844): horizontal overflow = 0px on both /projects/cuba-love-story and /contact. Contact form consent gate: filled name+email+message+inquiry_type without checking consent checkbox, clicked Send Inquiry — 0 POSTs to /api/inquiries sent, visible error message 'Please confirm consent to reply before sending the inquiry' rendered. ZERO console errors across the entire run.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_backend.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "ProjectDetail.jsx useMemo extraction is semantically identical to the prior inline-object construction — verified across 3 representative project pages (cuba=still+moving, chaos=moving-only, river=still+moving via current data). All conditional sections (project-moving-detail vs project-moving-stub) still render correctly based on hasMoving.",
+    "ProjectDetailTemplate.jsx fallbackArtwork useMemo correctly depends only on project.title (line 28-31) — no stale-state risk since the entire project object is replaced on slug change, which triggers React's natural reconciliation and the useMemo recomputation.",
+    "Array-index key replacement uses content-derived keys with index suffix (e.g., `exh-${x}-${i}`, `pub-${x}-${i}`) — this preserves uniqueness for duplicate strings while improving stability for list reorders. Acceptable pattern for read-only static lists.",
+    "Gallery fallback key `${img?.url || 'gallery-' + i}` correctly falls back to index when no URL — note: if a gallery item is ever added with the same URL twice, React will warn about duplicate keys. Currently all 6 placeholder blocks use `gallery-${i}` (different) so safe.",
+    "Press quotes key `q.source || 'press-quote-' + i` could collide if two quotes share the same source string. Currently no such data exists; safe but worth noting if future data has duplicate sources.",
+    "NON-ISSUE / OBSERVATION on review_request accuracy: The request states river-of-three-crossings is 'still-only' with project-moving-stub expected to show. However, /app/frontend/src/data/site.js places this slug in BOTH STILL_PROJECTS (line 65) and MOVING_WORKS (line 401), so getProject() returns hasStill=true AND hasMoving=true, and project-moving-detail (NOT stub) is rendered. This is the CORRECT behaviour for the current data — not a regression from the refactor. If main agent intended river-of-three-crossings to be still-only, the data registry needs to be updated, not the components."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100% (21/21 pytest)", "frontend": "100% (4 project variants + 10 regression routes + consent gate + mobile overflow — all assertions pass, 0 console errors)"},
+  "test_credentials": "n/a — no auth in this app",
+  "seed_data_creation": "No seed data created in this iteration. Consent-blocked submit test confirms NO inquiry row was created (0 POSTs).",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Code-quality refactor verified clean: useMemo extraction in ProjectDetail.jsx (templateProject + movingWork) and ProjectDetailTemplate.jsx (fallbackArtwork) introduces no regressions. Array-index keys replaced with content-derived keys across ArtworkDetail, PublicationDetail, VideoWorkDetail, ProjectDetailTemplate — all list renders verified. Backend pytest count unchanged at 21/21. NOTE: river-of-three-crossings has both hasStill=true AND hasMoving=true per current data/site.js — if main agent wants it to be still-only, edit the data registry, not the components. CONTACT form consent gate works correctly client-side (0 network POSTs when unchecked).",
+  "rca of the issue": "No issues found. The only discrepancy between the review_request and actual behaviour (river-of-three-crossings expected to be still-only) is due to outdated assumptions in the request, not a code-quality refactor regression — the project slug exists in both STILL_PROJECTS and MOVING_WORKS arrays in /app/frontend/src/data/site.js."
+}

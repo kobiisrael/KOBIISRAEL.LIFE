@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { useParams } from "react-router-dom";
 import ProjectDetailTemplate from "@/components/project/ProjectDetailTemplate";
 import VideoWorkDetail from "@/components/video/VideoWorkDetail";
@@ -30,31 +30,52 @@ export default function ProjectDetail() {
     }
   }, [slug, project]);
 
+  const templateProject = useMemo(
+    () =>
+      project
+        ? {
+            title: project.title,
+            subtitle: project.subtitle,
+            year_range: project.year_range,
+            location: project.location,
+            intro_statement: project.intro_statement,
+            hero_image: project.hero_image,
+            hero_alt: project.hero_alt,
+            hasStill: project.hasStill,
+            hasMoving: project.hasMoving,
+            gallery_images: project.gallery_images,
+            selected_works: project.selected_works,
+            book: project.book,
+            exhibition_history: project.exhibition_history,
+            publication_history: project.publication_history,
+            press_quotes: project.press_quotes,
+          }
+        : null,
+    [project]
+  );
+
+  const movingWork = useMemo(
+    () =>
+      project?.hasMoving
+        ? {
+            title: project.moving.title,
+            subtitle: "Moving-image work",
+            year: project.moving.year_range,
+            duration: project.moving.duration,
+            format: project.moving.format,
+            synopsis: project.moving.synopsis,
+          }
+        : null,
+    [project]
+  );
+
   if (!project) {
     return <NotFound slug={slug} />;
   }
 
   return (
     <>
-      <ProjectDetailTemplate
-        project={{
-          title: project.title,
-          subtitle: project.subtitle,
-          year_range: project.year_range,
-          location: project.location,
-          intro_statement: project.intro_statement,
-          hero_image: project.hero_image,
-          hero_alt: project.hero_alt,
-          hasStill: project.hasStill,
-          hasMoving: project.hasMoving,
-          gallery_images: project.gallery_images,
-          selected_works: project.selected_works,
-          book: project.book,
-          exhibition_history: project.exhibition_history,
-          publication_history: project.publication_history,
-          press_quotes: project.press_quotes,
-        }}
-      />
+      <ProjectDetailTemplate project={templateProject} />
 
       {project.hasMoving && (
         <section className="container-ki" data-testid="project-moving-detail">
@@ -62,16 +83,7 @@ export default function ProjectDetail() {
           <h2 className="font-serif text-3xl sm:text-4xl tracking-tight text-ki-fg">
             Moving-image work
           </h2>
-          <VideoWorkDetail
-            work={{
-              title: project.moving.title,
-              subtitle: "Moving-image work",
-              year: project.moving.year_range,
-              duration: project.moving.duration,
-              format: project.moving.format,
-              synopsis: project.moving.synopsis,
-            }}
-          />
+          <VideoWorkDetail work={movingWork} />
         </section>
       )}
     </>

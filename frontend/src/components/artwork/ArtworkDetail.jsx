@@ -98,7 +98,7 @@ export default function ArtworkDetail({ artwork = {}, inquireTo = "/#contact" })
                 </div>
                 <ul className="mt-3 space-y-1.5">
                   {items.map((it, i) => (
-                    <li key={i} className="text-sm text-ki-fg/75 leading-snug">
+                    <li key={`${label}-${it}-${i}`} className="text-sm text-ki-fg/75 leading-snug">
                       {it}
                     </li>
                   ))}

@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { Link } from "react-router-dom";
 import ArtworkDetail from "@/components/artwork/ArtworkDetail";
 
@@ -24,6 +25,10 @@ export default function ProjectDetailTemplate({ project = {} }) {
   const TBC = "To be confirmed by artist";
   const field = (v) => (v && String(v).trim() ? v : TBC);
   const listField = (arr) => (Array.isArray(arr) && arr.length > 0 ? arr : [TBC]);
+  const fallbackArtwork = useMemo(
+    () => ({ title: field(project.title), series: field(project.title) }),
+    [project.title]
+  );
 
   return (
     <article className="pt-40 pb-32" data-testid="project-detail">
@@ -98,7 +103,7 @@ export default function ProjectDetailTemplate({ project = {} }) {
             : Array.from({ length: 6 })
           ).map((img, i) => (
             <div
-              key={i}
+              key={img?.url || `gallery-${i}`}
               className="relative aspect-[4/5] bg-ki-elevated border border-ki-border/60 overflow-hidden"
             >
               {img?.url ? (
@@ -130,9 +135,11 @@ export default function ProjectDetailTemplate({ project = {} }) {
         <div className="overline">Selected Works</div>
         <h2 className="sr-only">Selected Works</h2>
         {project.selected_works && project.selected_works.length > 0 ? (
-          project.selected_works.map((w, i) => <ArtworkDetail key={i} artwork={w} />)
+          project.selected_works.map((w, i) => (
+            <ArtworkDetail key={w?.slug || w?.title || `selected-${i}`} artwork={w} />
+          ))
         ) : (
-          <ArtworkDetail artwork={{ title: field(project.title), series: field(project.title) }} />
+          <ArtworkDetail artwork={fallbackArtwork} />
         )}
       </section>
 
@@ -214,7 +221,7 @@ export default function ProjectDetailTemplate({ project = {} }) {
             </div>
             <ul className="mt-4 space-y-2">
               {listField(project.exhibition_history).map((x, i) => (
-                <li key={i} className="text-sm text-ki-fg/75 leading-snug">
+                <li key={`exh-${x}-${i}`} className="text-sm text-ki-fg/75 leading-snug">
                   {x}
                 </li>
               ))}
@@ -226,7 +233,7 @@ export default function ProjectDetailTemplate({ project = {} }) {
             </div>
             <ul className="mt-4 space-y-2">
               {listField(project.publication_history).map((x, i) => (
-                <li key={i} className="text-sm text-ki-fg/75 leading-snug">
+                <li key={`pub-${x}-${i}`} className="text-sm text-ki-fg/75 leading-snug">
                   {x}
                 </li>
               ))}
@@ -241,7 +248,7 @@ export default function ProjectDetailTemplate({ project = {} }) {
         {project.press_quotes && project.press_quotes.length > 0 ? (
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-10">
             {project.press_quotes.map((q, i) => (
-              <blockquote key={i} className="border-l-2 border-ki-gold pl-6">
+              <blockquote key={q.source || `press-quote-${i}`} className="border-l-2 border-ki-gold pl-6">
                 <p className="font-serif italic text-xl text-ki-fg/90 leading-relaxed">&ldquo;{q.quote}&rdquo;</p>
                 <footer className="mt-4 text-[11px] uppercase tracking-[0.28em] text-ki-muted">
                   {q.source || TBC}

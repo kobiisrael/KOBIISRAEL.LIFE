@@ -125,7 +125,7 @@ export default function VideoWorkDetail({ work = {} }) {
           {(work.stills && work.stills.length > 0 ? work.stills : Array.from({ length: 6 })).map(
             (s, i) => (
               <div
-                key={i}
+                key={s?.url || `still-${i}`}
                 className="relative aspect-video bg-ki-elevated border border-ki-border/60 overflow-hidden"
               >
                 {s?.url ? (
@@ -164,7 +164,7 @@ export default function VideoWorkDetail({ work = {} }) {
             <div className="text-[10px] uppercase tracking-[0.26em] text-ki-gold/90">{label}</div>
             <ul className="mt-3 space-y-1.5">
               {items.map((it, i) => (
-                <li key={i} className="text-sm text-ki-fg/75 leading-snug">
+                <li key={`${label}-${it}-${i}`} className="text-sm text-ki-fg/75 leading-snug">
                   {it}
                 </li>
               ))}
@@ -179,7 +179,7 @@ export default function VideoWorkDetail({ work = {} }) {
           <div className="overline">Press</div>
           <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-10">
             {work.press_quotes.map((q, i) => (
-              <blockquote key={i} className="border-l-2 border-ki-gold pl-6">
+              <blockquote key={q.source || `press-quote-${i}`} className="border-l-2 border-ki-gold pl-6">
                 <p className="font-serif italic text-xl text-ki-fg/90 leading-relaxed">
                   &ldquo;{q.quote}&rdquo;
                 </p>

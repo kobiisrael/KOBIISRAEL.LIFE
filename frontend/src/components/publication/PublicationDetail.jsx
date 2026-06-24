@@ -82,7 +82,7 @@ export default function PublicationDetail({ book = {} }) {
             <div className="text-[10px] uppercase tracking-[0.26em] text-ki-gold/90">Contributors</div>
             <ul className="mt-3 space-y-1.5">
               {listField(book.contributors).map((c, i) => (
-                <li key={i} className="text-sm text-ki-fg/80">{c}</li>
+                <li key={`contributor-${c}-${i}`} className="text-sm text-ki-fg/80">{c}</li>
               ))}
             </ul>
           </div>
@@ -108,7 +108,7 @@ export default function PublicationDetail({ book = {} }) {
         <div className="overline">Book Spreads</div>
         <div className="mt-5 grid grid-cols-2 md:grid-cols-3 gap-3 md:gap-4">
           {(book.spreads && book.spreads.length > 0 ? book.spreads : Array.from({ length: 6 })).map((s, i) => (
-            <div key={i} className="relative aspect-[3/2] bg-ki-elevated border border-ki-border/60 overflow-hidden">
+            <div key={s?.url || `spread-${i}`} className="relative aspect-[3/2] bg-ki-elevated border border-ki-border/60 overflow-hidden">
               {s?.url ? (
                 <img src={s.url} alt={s.alt || `Spread ${i + 1}`} loading="lazy"
                   className="absolute inset-0 w-full h-full object-cover opacity-90" />
@@ -148,7 +148,7 @@ export default function PublicationDetail({ book = {} }) {
           <div className="overline">Press</div>
           <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-10">
             {book.press_quotes.map((q, i) => (
-              <blockquote key={i} className="border-l-2 border-ki-gold pl-6">
+              <blockquote key={q.source || `press-quote-${i}`} className="border-l-2 border-ki-gold pl-6">
                 <p className="font-serif italic text-xl text-ki-fg/90 leading-relaxed">&ldquo;{q.quote}&rdquo;</p>
                 <footer className="mt-4 text-[11px] uppercase tracking-[0.28em] text-ki-muted">{q.source || TBC}</footer>
               </blockquote>
@@ -162,7 +162,7 @@ export default function PublicationDetail({ book = {} }) {
         <div className="overline">Exhibition History</div>
         <ul className="mt-5 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2">
           {listField(book.exhibition_history).map((x, i) => (
-            <li key={i} className="text-sm text-ki-fg/80 leading-snug">{x}</li>
+            <li key={`exh-${x}-${i}`} className="text-sm text-ki-fg/80 leading-snug">{x}</li>
           ))}
         </ul>
       </section>
