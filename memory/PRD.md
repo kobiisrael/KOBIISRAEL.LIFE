@@ -239,6 +239,16 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 - ✅ `public/sitemap.xml` listing all 14 public URLs with appropriate changefreq + priority
 - ✅ Tested: backend 21/21 pytest + frontend FULL site-wide regression (4 footer cols × every page, 24 footer testids, 5 legal pages × {title/H1/sections/placeholder phrase}, launch-checklist 5/43, 404 + project-not-found backward-compat, footer navigation flows, 12-route regression with zero console errors, mobile 390px no overflow on /, /launch-checklist, /legal/privacy) — 100% pass
 
+### Content migration system (Wix → KOBIISRAEL.COM) — 2026-06-24
+- ✅ All 6 Wix source pages crawled and content extracted verbatim
+- ✅ Structured `migration.js` data module: 5 homepage fragments (Borges epigraph + artist statements), 9 project records with real descriptions and year ranges (Cuba Love Story 1993–2012, River of Three Crossings 2001–2017, Fragments of Life 2000–2007, Intimate Strangers 2001–2006, Views 1999–2003, Parisian Postcards 2010, Investigating Things Past 2023–, Promised Lands trilogy, Boulevards of Broken Dreams 1996), full prints facts (C-type, 80×100cm ed.5 / 50×60cm ed.10, collection claims), 6 book records with ISBN/publisher/dimensions/price tiers, FULL CV (1970 born, education×5, solo×5, group×23, catalogues×4, monographs×2, anthologies×4, awards×7, film×1), 19-row mapping table, 17-entry redirect map, 18-item missing-content checklist
+- ✅ Admin dashboard at `/migration-review` (noindex,nofollow + robots.txt Disallow) with 11 sections covering: confirmed contact, source pages, homepage fragments, project records, prints facts, book records, CV preview, mapping table, redirect map, missing-content checklist, quality check
+- ✅ **Confirmed artist email recovered: `kobi.israel.photography@gmail.com`** — surfaced in dashboard for easy replacement of TBC placeholders in footer and Contact section
+- ✅ **Confirmed biography facts**: born 1970 Tel-Aviv, lives/works London, MA Central Saint Martins 2010
+- ✅ Distinctive artist voice preserved verbatim — Borges epigraph, "remembrance of things past", "homoerotic codes", trilogy framing (Canaan/America/Hampstead Heath), "still and moving diaries"
+- ✅ Collection claims (Madonna, Elton John, George Michael, Joe Wright, NPG) preserved but flagged 'needs-review' — never published unconfirmed
+- ✅ Tested: backend 21/21 pytest + frontend all selector/structure/nav/regression assertions pass; only "issue" was a prose miscount in the task description (data has 23 group exhibitions matching the Wix source; the prose said 24) — no code or data fix needed
+
 ## Backlog (prioritised)
 
 ### P0 — content readiness (artist must supply)
