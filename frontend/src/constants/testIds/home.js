@@ -174,3 +174,54 @@ export const PRINTS = {
 	relatedHeading: 'prints-related-heading',
 	relatedLink: (slug) => `prints-related-${slug}`,
 };
+
+export const BOOKS = {
+	page: 'books-page',
+	// Hero
+	heroTitle: 'books-hero-title',
+	heroSubtitle: 'books-hero-subtitle',
+	heroIntro: 'books-hero-intro',
+	heroCtaView: 'books-hero-cta-view',
+	heroCtaInquire: 'books-hero-cta-inquire',
+	// Editorial intro
+	editorialHeading: 'books-editorial-heading',
+	// Publications index
+	indexHeading: 'books-index-heading',
+	indexGrid: 'books-index-grid',
+	card: (slug) => `books-card-${slug}`,
+	cardView: (slug) => `books-card-view-${slug}`,
+	cardInquire: (slug) => `books-card-inquire-${slug}`,
+	// Featured
+	featuredHeading: 'books-featured-heading',
+	featuredRelatedProject: 'books-featured-related-project',
+	featuredRequest: 'books-featured-request',
+	featuredCollector: 'books-featured-collector',
+	// Purchase
+	purchaseHeading: 'books-purchase-heading',
+	purchaseRequestCta: 'books-purchase-request-cta',
+	// PDF archive
+	pdfHeading: 'books-pdf-heading',
+	pdfCard: (slug) => `books-pdf-${slug}`,
+	pdfCta: (slug) => `books-pdf-cta-${slug}`,
+	// Texts
+	textsHeading: 'books-texts-heading',
+	textCard: (slug) => `books-text-${slug}`,
+	textCta: (slug) => `books-text-cta-${slug}`,
+	// Publication history
+	historyHeading: 'books-history-heading',
+	// Inquiry form
+	inquiryHeading: 'books-inquiry-heading',
+	inquiryForm: 'books-inquiry-form',
+	inquiryName: 'books-inquiry-name',
+	inquiryEmail: 'books-inquiry-email',
+	inquiryCountry: 'books-inquiry-country',
+	inquiryBook: 'books-inquiry-book',
+	inquiryType: 'books-inquiry-type',
+	inquiryMessage: 'books-inquiry-message',
+	inquiryConsent: 'books-inquiry-consent',
+	inquirySubmit: 'books-inquiry-submit',
+	inquirySuccess: 'books-inquiry-success',
+	// Related archive
+	relatedHeading: 'books-related-heading',
+	relatedLink: (slug) => `books-related-${slug}`,
+};

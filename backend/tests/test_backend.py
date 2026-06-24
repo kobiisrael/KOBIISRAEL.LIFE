@@ -160,9 +160,30 @@ def test_create_inquiry_invalid_inquiry_type(client):
     assert r.status_code == 422
 
 
+def test_create_inquiry_books_types(client):
+    """Books-page InquiryType literals must be accepted: purchase, signed_copy, research."""
+    for itype in ["purchase", "signed_copy", "research"]:
+        payload = {
+            "name": f"TEST_books_{itype}",
+            "email": f"test_books_{itype}_{uuid.uuid4().hex[:6]}@example.com",
+            "inquiry_type": itype,
+            "subject": "Cuba, Love Story",
+            "message": f"Books inquiry of type {itype}.",
+            "project_interest": "Cuba, Love Story",
+            "country": "France",
+            "consent": True,
+        }
+        r = client.post(f"{API}/inquiries", json=payload)
+        assert r.status_code == 201, f"{itype} failed: {r.text}"
+        data = r.json()
+        assert data["inquiry_type"] == itype
+        assert data["country"] == "France"
+        assert data["consent"] is True
+
+
 def test_create_inquiry_all_valid_types(client):
-    """All 5 InquiryType literals are accepted."""
-    for itype in ["general", "collector", "gallery_curator", "press", "institutional"]:
+    """All 8 InquiryType literals are accepted (regression + books additions)."""
+    for itype in ["general", "collector", "gallery_curator", "press", "institutional", "purchase", "signed_copy", "research"]:
         payload = {
             "name": f"TEST_{itype}",
             "email": f"test_{itype}_{uuid.uuid4().hex[:6]}@example.com",

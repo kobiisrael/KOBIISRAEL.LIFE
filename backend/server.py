@@ -39,7 +39,16 @@ class StatusCheckCreate(BaseModel):
     client_name: str
 
 
-InquiryType = Literal["general", "collector", "gallery_curator", "press", "institutional"]
+InquiryType = Literal[
+    "general",
+    "collector",
+    "gallery_curator",
+    "press",
+    "institutional",
+    "purchase",
+    "signed_copy",
+    "research",
+]
 
 
 class InquiryCreate(BaseModel):

@@ -799,3 +799,239 @@ export const INQUIRY_TYPE_OPTIONS = [
   { value: "press", label: "Press" },
   { value: "general", label: "Other" },
 ];
+
+// ============================================================
+// BOOKS, CATALOGUES AND PUBLICATIONS
+// ============================================================
+
+export const BOOKS_HERO = {
+  image:
+    "https://images.unsplash.com/photo-1535954741680-a2e24eb05418?auto=format&fit=crop&q=85&w=1920",
+  alt: "Books hero — fine art photography book placeholder. Final hero image to be selected by artist.",
+};
+
+export const BOOKS_EDITORIAL_IMAGE = {
+  image:
+    "https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&q=85&w=1200",
+  alt: "Editorial introduction visual — book spreads / archive material placeholder.",
+};
+
+// 10 publication cards. Slugs match project slugs where applicable so View Publication can link
+// to the corresponding project detail page.
+export const PUBLICATIONS = [
+  {
+    slug: "cuba-love-story",
+    title: "Cuba, Love Story",
+    subtitle: "Photographic monograph — to be confirmed by artist",
+    year: "Year to be confirmed",
+    publisher: "Publisher to be confirmed",
+    format: "Hardcover — details to be confirmed",
+    isbn: "ISBN to be confirmed",
+    price: "Price on request",
+    availability: "Signed copy availability to be confirmed",
+    description:
+      "A photographic and cinematic journey through Cuba, masculinity, military culture, desire and memory.",
+    related_project: "cuba-love-story",
+    featured: true,
+  },
+  {
+    slug: "fragments-of-life",
+    title: "Fragments of Life",
+    subtitle: "Artist book — to be confirmed by artist",
+    year: "Year to be confirmed",
+    publisher: "Publisher to be confirmed",
+    format: "Softcover — details to be confirmed",
+    isbn: "ISBN to be confirmed",
+    price: "Price on request",
+    availability: "Availability to be confirmed",
+    description: "Diaristic fragments collecting daily life, intimacy and ordinary light.",
+    related_project: "fragments-of-life",
+  },
+  {
+    slug: "river-of-three-crossings",
+    title: "River of Three Crossings",
+    subtitle: "Photographic book — to be confirmed by artist",
+    year: "Year to be confirmed",
+    publisher: "Publisher to be confirmed",
+    format: "Hardcover — details to be confirmed",
+    isbn: "ISBN to be confirmed",
+    price: "Price on request",
+    availability: "Availability to be confirmed",
+    description: "Crossings between landscape, biography and the porous edges of a remembered self.",
+    related_project: "river-of-three-crossings",
+  },
+  {
+    slug: "intimate-strangers",
+    title: "Intimate Strangers",
+    subtitle: "Portrait book — to be confirmed by artist",
+    year: "Year to be confirmed",
+    publisher: "Publisher to be confirmed",
+    format: "Hardcover — details to be confirmed",
+    isbn: "ISBN to be confirmed",
+    price: "Price on request",
+    availability: "Availability to be confirmed",
+    description: "Brief encounters: men met, watched, photographed and remembered.",
+    related_project: "intimate-strangers",
+  },
+  {
+    slug: "a-chaos-of-appearances",
+    title: "A Chaos of Appearances",
+    subtitle: "Visual diary — to be confirmed by artist",
+    year: "Year to be confirmed",
+    publisher: "Publisher to be confirmed",
+    format: "Softcover — details to be confirmed",
+    isbn: "ISBN to be confirmed",
+    price: "Price on request",
+    availability: "Availability to be confirmed",
+    description: "Soldiers, strangers, cities and lovers — the unstable theatre of remembered appearance.",
+    related_project: "a-chaos-of-appearances",
+  },
+  {
+    slug: "artist-catalogues",
+    title: "Artist Catalogues",
+    subtitle: "Selected artist catalogues",
+    year: "Years to be confirmed",
+    publisher: "Publishers to be confirmed",
+    format: "Various formats — to be confirmed",
+    isbn: "Multiple ISBNs — to be confirmed",
+    price: "Prices on request",
+    availability: "Availability to be confirmed",
+    description: "Selected artist catalogues across solo and group presentations.",
+  },
+  {
+    slug: "exhibition-catalogues",
+    title: "Exhibition Catalogues",
+    subtitle: "Catalogues from selected exhibitions",
+    year: "Years to be confirmed",
+    publisher: "Publishers to be confirmed",
+    format: "Various formats — to be confirmed",
+    isbn: "Multiple ISBNs — to be confirmed",
+    price: "Prices on request",
+    availability: "Availability to be confirmed",
+    description: "Catalogues produced around selected exhibition projects.",
+  },
+  {
+    slug: "pdf-archive",
+    title: "PDF Archive",
+    subtitle: "Digital publications and artist PDFs",
+    year: "Ongoing",
+    publisher: "Self-published",
+    format: "Digital PDF",
+    isbn: "—",
+    price: "Price on request",
+    availability: "Access by inquiry",
+    description: "Selected artist PDFs, project notes and digital publications.",
+  },
+  {
+    slug: "upcoming-publications",
+    title: "Upcoming Publications",
+    subtitle: "Forthcoming books and catalogues",
+    year: "In development",
+    publisher: "Publishers to be confirmed",
+    format: "Formats to be confirmed",
+    isbn: "ISBNs to be confirmed",
+    price: "Pricing to be confirmed",
+    availability: "Forthcoming — please inquire",
+    description: "New publications currently in development with the artist and collaborators.",
+  },
+  {
+    slug: "selected-essays-and-texts",
+    title: "Selected Essays and Texts",
+    subtitle: "Writing connected to the archive",
+    year: "Years to be confirmed",
+    publisher: "Various — to be confirmed",
+    format: "Print and digital",
+    isbn: "Where applicable — to be confirmed",
+    price: "—",
+    availability: "Reading copies on request",
+    description: "Essays, notes and texts written around the photographic and moving-image work.",
+  },
+];
+
+export const FEATURED_BOOK = {
+  slug: "cuba-love-story",
+  title: "Cuba, Love Story",
+  description:
+    "A photographic and cinematic journey through Cuba, masculinity, military culture, desire, memory and the charged encounter between stranger, witness and image.",
+  cover_alt:
+    "Cuba, Love Story — featured book cover placeholder. To be replaced with artist's selected cover.",
+  metadata: [
+    ["Publisher", "Publisher to be confirmed"],
+    ["Format", "Hardcover — details to be confirmed"],
+    ["Pages", "Page count to be confirmed"],
+    ["ISBN", "ISBN to be confirmed"],
+    ["Language", "Language to be confirmed"],
+    ["Edition", "Edition to be confirmed"],
+    ["Signed copies", "Availability to be confirmed"],
+    ["Price", "Price on request"],
+  ],
+  related_project: "cuba-love-story",
+};
+
+export const PURCHASE_BLOCKS = [
+  { label: "Available books", value: "Selected titles available — please inquire for current list." },
+  { label: "Signed copies", value: "Signed copy availability to be confirmed per title by the artist." },
+  { label: "Standard copies", value: "Where applicable — to be confirmed by artist." },
+  { label: "Sold out titles", value: "Some titles may be sold out or out of print." },
+  { label: "PDF editions", value: "Selected PDFs available by inquiry." },
+  { label: "Shipping", value: "International shipping arranged with insurance — costs confirmed per order." },
+  { label: "Price", value: "Price on request — confirmed by the artist or representative." },
+  { label: "Condition", value: "All copies inspected before despatch. Condition notes available on request." },
+  { label: "Rare / out-of-print", value: "Rare and out-of-print works subject to confirmation case by case." },
+  { label: "Secondary market", value: "Notes on secondary market availability on request." },
+];
+
+export const PDF_ARCHIVE_CARDS = [
+  { slug: "artist-statement", title: "Artist Statement PDF", description: "Artist statement and biography document — file to be supplied.", file_type: "PDF · file to be supplied", access: "Access by inquiry" },
+  { slug: "selected-essays", title: "Selected Essays", description: "Essays connected to the archive — files to be supplied.", file_type: "PDF · files to be supplied", access: "Access by inquiry" },
+  { slug: "exhibition-catalogues", title: "Exhibition Catalogues", description: "Selected exhibition catalogue PDFs.", file_type: "PDF · to be supplied", access: "Access by inquiry" },
+  { slug: "project-notes", title: "Project Notes", description: "Working notes connected to individual projects.", file_type: "PDF · to be supplied", access: "Access by inquiry" },
+  { slug: "press-pdfs", title: "Press PDFs", description: "Selected press features and writing about the work.", file_type: "PDF · to be supplied", access: "Access by inquiry" },
+  { slug: "book-samples", title: "Book Samples", description: "Sample spreads from selected publications.", file_type: "PDF · to be supplied", access: "Access by inquiry" },
+  { slug: "archive-texts", title: "Archive Texts", description: "Texts from the working archive.", file_type: "PDF · to be supplied", access: "Access by inquiry" },
+];
+
+export const TEXTS_ESSAYS = [
+  { slug: "memory", title: "Memory", description: "Notes on the photograph as a memory object.", category: "Memory", date: "Date to be confirmed" },
+  { slug: "masculinity", title: "Masculinity", description: "Notes on masculinity as performance, costume and inheritance.", category: "Masculinity", date: "Date to be confirmed" },
+  { slug: "desire", title: "Desire", description: "Notes on looking, longing and the photographed body.", category: "Desire", date: "Date to be confirmed" },
+  { slug: "exile", title: "Exile", description: "Notes on departure, return and the geography of leaving.", category: "Exile", date: "Date to be confirmed" },
+  { slug: "photography", title: "Photography", description: "Notes on the still image as evidence and confession.", category: "Photography", date: "Date to be confirmed" },
+  { slug: "moving-images", title: "Moving Images", description: "Notes on the still image becoming time.", category: "Moving Images", date: "Date to be confirmed" },
+  { slug: "autobiography", title: "Autobiography", description: "Notes on the autobiographical I.", category: "Autobiography", date: "Date to be confirmed" },
+  { slug: "travel", title: "Travel", description: "Notes on travel as a way of seeing and being seen.", category: "Travel", date: "Date to be confirmed" },
+  { slug: "queer-codes", title: "Queer Codes", description: "Notes on queer signals, glances and unwritten languages.", category: "Queer Codes", date: "Date to be confirmed" },
+  { slug: "archive-notes", title: "Archive Notes", description: "Working notes from the archive itself.", category: "Archive Notes", date: "Date to be confirmed" },
+];
+
+export const PUBLICATION_HISTORY = [
+  { heading: "Published books", items: ["To be confirmed by artist"] },
+  { heading: "Catalogues", items: ["To be confirmed by artist"] },
+  { heading: "Magazine features", items: ["To be confirmed by artist"] },
+  { heading: "Newspaper features", items: ["To be confirmed by artist"] },
+  { heading: "Anthologies", items: ["To be confirmed by artist"] },
+  { heading: "Academic references", items: ["To be confirmed by artist"] },
+  { heading: "Library holdings", items: ["To be confirmed by artist"] },
+  { heading: "Book fairs", items: ["To be confirmed by artist"] },
+  { heading: "Exhibition publications", items: ["To be confirmed by artist"] },
+];
+
+export const BOOKS_RELATED_LINKS = [
+  { slug: "still", label: "Still", to: "/still" },
+  { slug: "moving", label: "Moving", to: "/moving" },
+  { slug: "projects", label: "Projects", to: "/projects" },
+  { slug: "prints", label: "Limited Edition Prints", to: "/prints" },
+  { slug: "archive", label: "Archive", to: "/archive" },
+  { slug: "cv", label: "CV", to: "/cv" },
+  { slug: "contact", label: "Contact", to: "/contact" },
+];
+
+export const BOOK_INQUIRY_TYPE_OPTIONS = [
+  { value: "purchase", label: "Purchase" },
+  { value: "signed_copy", label: "Signed copy" },
+  { value: "collector", label: "Collector inquiry" },
+  { value: "research", label: "Research" },
+  { value: "press", label: "Press" },
+  { value: "institutional", label: "Institutional" },
+  { value: "general", label: "Other" },
+];

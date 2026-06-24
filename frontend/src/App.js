@@ -7,6 +7,7 @@ import Home from "@/pages/Home";
 import Still from "@/pages/Still";
 import Moving from "@/pages/Moving";
 import Prints from "@/pages/Prints";
+import Books from "@/pages/Books";
 import ProjectDetail from "@/pages/ProjectDetail";
 import NotFound from "@/pages/NotFound";
 import Placeholder from "@/pages/Placeholder";
@@ -45,7 +46,7 @@ function App() {
             <Route path="/projects" element={<Placeholder title="Projects" intro="Project archive — page in preparation." />} />
             <Route path="/projects/:slug" element={<ProjectDetail />} />
             <Route path="/prints" element={<Prints />} />
-            <Route path="/books" element={<Placeholder title="Books" intro="Books and catalogues — page in preparation." />} />
+            <Route path="/books" element={<Books />} />
             <Route path="/archive" element={<Placeholder title="Archive" intro="Working archive — page in preparation." />} />
             <Route path="/cv" element={<Placeholder title="CV" intro="Artist CV — to be confirmed by artist." />} />
             <Route path="/journal" element={<Placeholder title="Journal" intro="Journal — page in preparation." />} />
