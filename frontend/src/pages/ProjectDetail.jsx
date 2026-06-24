@@ -34,6 +34,7 @@ export default function ProjectDetail() {
     () =>
       project
         ? {
+            slug,
             title: project.title,
             subtitle: project.subtitle,
             year_range: project.year_range,
@@ -49,9 +50,20 @@ export default function ProjectDetail() {
             exhibition_history: project.exhibition_history,
             publication_history: project.publication_history,
             press_quotes: project.press_quotes,
+            medium: project.medium,
+            format: project.format,
+            status: project.status,
+            number_of_works: project.number_of_works,
+            related_moving_works: project.related_moving_works,
+            related_books: project.related_books,
+            related_prints: project.related_prints,
+            related_texts: project.related_texts,
+            archive_status: project.archive_status,
+            availability_status: project.availability_status,
+            last_updated: project.last_updated,
           }
         : null,
-    [project]
+    [project, slug]
   );
 
   const movingWork = useMemo(

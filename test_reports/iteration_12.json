@@ -1,0 +1,30 @@
+{
+  "summary": "Iteration 12 end-to-end testing of the upgraded ProjectDetailTemplate (13 editorial sections, lightbox with keyboard nav, project inquiry form with prefilled slug and 11 inquiry types). Backend pytest 21/21 green (2.86s) — no regressions. Manual POST /api/inquiries with {project_interest:'cuba-love-story', inquiry_type:'collector', country:'UK', consent:true} returns 201 and persists project_interest. Frontend on /projects/cuba-love-story: all 14 new section testids present, project-moving-stub correctly absent (hasMoving=true), both still+moving badges, 8 sequence thumbnails, 8 archive notes, 6 related links with correct hrefs, exactly 16 metadata rows, project-inquiry-project field auto-filled with 'Cuba, Love Story' and readonly. Lightbox: opens on thumb click, Next/Prev buttons work, ArrowRight keyboard works, Escape closes (count→0), backdrop click closes, project-lightbox-request closes lightbox AND navigates URL to #project-inquiry hash. Inquiry form: submitting without consent yields zero POSTs and no success element; submitting with consent yields exactly 1 POST to /api/inquiries, project-inquiry-success element renders, fields cleared (project remains 'Cuba, Love Story' because readonly). /projects/river-of-three-crossings: all 14 sections present, both still+moving badges, stub absent, project-moving-detail rendered (matches merged STILL+MOVING_WORKS flags). Regression smoke pass: /, /still, /moving, /prints, /books, /archive, /cv, /journal, /journal/a-chaos-of-appearances, /contact all loaded with ZERO console errors. Mobile 390x844 on cuba-love-story: zero horizontal overflow, sequence grid reflows to 2 cols (163px×2), related projects reflow to 2 cols (169.5px×2), metadata stacks via grid-cols-1 md:grid-cols-2.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_backend.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "ProjectDetailTemplate.jsx is ~975 lines, exceeding the 700-line guideline. Recommend splitting ImageSequence and ProjectInquiryForm sub-components into separate files under /components/project/ for maintainability — no functional impact, but improves DRY/testability.",
+    "ProjectInquiryForm sets `submitted=true` on success but the 'submitted' state is never reset. If the user submits a second inquiry without remounting, the inquiry-success message remains visible indefinitely while the form is empty — minor UX/idempotency concern, not a blocker.",
+    "Sub-component <li> in archive-notes grid uses gap-px on grid to draw borders via bg-ki-border — works visually but `min-h-[180px] flex flex-col justify-between` collides with `flex` placed on `<li>` which is already inside a CSS grid cell. Render is fine (Chromium tested) but tailwind warns about nesting flex inside grid item with set height; not actionable.",
+    "Hero metadata strip duplicates four fields (year/location/medium/status) that also appear in Project Metadata block — intentional editorial decision but could be confirmed with main agent.",
+    "The 'Format' option for medium is intentionally separated in metadata; no schema drift. All field() fallbacks return 'To be confirmed by artist' consistently — verified on river-of-three-crossings (no medium/format) showing the fallback text correctly.",
+    "All 14 new testids + previous 5 invariants (project-detail, project-title, project-status-badges, project-badge-still, project-badge-moving) remain backward-compatible. No data-testid removed."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100% (21/21 pytest, 2.86s)", "frontend": "100% (all 14 sections present, lightbox keyboard+backdrop+request flow passes, inquiry form consent-gate enforced, 10/10 regression routes zero console errors, mobile no overflow)"},
+  "test_credentials": "n/a — no auth in this app",
+  "seed_data_creation": "Inquiries with TEST_ prefix created via pytest run + 1 manual curl POST for cuba-love-story slug verification.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 12 fully validated the 13-section editorial monograph template. Backend stable at 21/21. The template's readonly project field returns empty string for `readonly` attribute via Playwright .get_attribute('readonly') — that means the boolean HTML attribute IS present (HTML boolean attribute semantics). The form 'submitted' flag persists across submissions — flag for main agent if double-submission UX surfaces in iteration 13. For backdrop-close test use page.evaluate to click the outer dialog (the inner image+caption div uses stopPropagation per design). Lightbox-request closes the lightbox AND navigates URL hash to #project-inquiry — confirmed working.",
+  "rca of the issue": "No issues found. All review_request acceptance criteria pass."
+}
