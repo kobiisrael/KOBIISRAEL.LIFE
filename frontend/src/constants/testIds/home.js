@@ -1,4 +1,4 @@
-// Test IDs for the KOBI ISRAEL homepage and shared layout.
+// Test IDs for the KOBI ISRAEL site.
 // Naming: kebab-case `<feature>-<element>`.
 
 export const HOME = {
@@ -50,4 +50,36 @@ export const HOME = {
 	newsletterSuccess: 'newsletter-success',
 	// Footer
 	footer: 'site-footer',
+};
+
+export const STILL = {
+	page: 'still-page',
+	// Hero
+	heroTitle: 'still-hero-title',
+	heroSubtitle: 'still-hero-subtitle',
+	heroIntro: 'still-hero-intro',
+	heroCtaProjects: 'still-hero-cta-projects',
+	heroCtaCollector: 'still-hero-cta-collector',
+	// Curatorial intro
+	curatorialHeading: 'still-curatorial-heading',
+	// Project index
+	indexHeading: 'still-index-heading',
+	filtersBar: 'still-filters-bar',
+	filterBtn: (slug) => `still-filter-${slug}`,
+	grid: 'still-projects-grid',
+	emptyState: 'still-empty-state',
+	card: (slug) => `still-card-${slug}`,
+	cardCta: (slug) => `still-card-cta-${slug}`,
+	// Featured
+	featuredHeading: 'still-featured-heading',
+	featuredViewCta: 'still-featured-view-cta',
+	featuredPrintCta: 'still-featured-print-cta',
+	featuredBookCta: 'still-featured-book-cta',
+	// Collector
+	collectorHeading: 'still-collector-heading',
+	collectorRequestCta: 'still-collector-request-cta',
+	// Archive notes
+	notesHeading: 'still-notes-heading',
+	noteCard: (slug) => `still-note-${slug}`,
+	noteCta: (slug) => `still-note-cta-${slug}`,
 };

@@ -4,6 +4,8 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Toaster } from "@/components/ui/sonner";
 import Layout from "@/components/layout/Layout";
 import Home from "@/pages/Home";
+import Still from "@/pages/Still";
+import ProjectDetail from "@/pages/ProjectDetail";
 import Placeholder from "@/pages/Placeholder";
 
 function App() {
@@ -27,10 +29,10 @@ function App() {
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
-            <Route path="/still" element={<Placeholder title="Still" intro="Still image works — page in preparation." />} />
+            <Route path="/still" element={<Still />} />
             <Route path="/moving" element={<Placeholder title="Moving" intro="Moving-image works — page in preparation." />} />
             <Route path="/projects" element={<Placeholder title="Projects" intro="Project archive — page in preparation." />} />
-            <Route path="/projects/:slug" element={<Placeholder title="Project" intro="Project page — in preparation." />} />
+            <Route path="/projects/:slug" element={<ProjectDetail />} />
             <Route path="/prints" element={<Placeholder title="Prints" intro="Signed limited edition prints — page in preparation." />} />
             <Route path="/books" element={<Placeholder title="Books" intro="Books and catalogues — page in preparation." />} />
             <Route path="/archive" element={<Placeholder title="Archive" intro="Working archive — page in preparation." />} />

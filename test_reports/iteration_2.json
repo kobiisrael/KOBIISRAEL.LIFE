@@ -1,0 +1,34 @@
+{
+  "summary": "Frontend Playwright testing of /still page and /projects/:slug detail page. 93/94 assertions passed. Only one failure: document.title for the Still page is overridden by the parent App.js useEffect. All testids, filters (military narrows to 2, prints to 3, all to 12), featured block, collector pathway, archive notes (10 cards), project detail template, mobile responsiveness, and homepage regression (7 cards, 10 nav links) all verified working.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "Still.jsx / App.js",
+        "issue": "document.title remains 'Kobi Israel | Photography, Moving Image, Artist Archive and Limited Edition Prints' on /still (and on /projects/:slug). Still.jsx's useEffect sets title to 'Still Photography | Kobi Israel' but the parent App.js useEffect (with empty deps) runs AFTER child effects on initial mount, overwriting the child's title. Same issue affects ProjectDetail (expected 'Cuba, Love Story | Kobi Israel'). Confirmed by waiting 3s after navigation — title still wrong.",
+        "selector": "document.title",
+        "priority": "HIGH"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": ["/app/test_reports/iteration_2.json"],
+  "action_items": [
+    "Fix title precedence: remove the title-setting useEffect from /app/frontend/src/App.js (or move it to a Home-only effect) so that page-level components (Still, ProjectDetail) own their own document.title. Alternatively, have App.js only set the title when location.pathname === '/'.",
+    "Re-run title assertion after fix: document.title on /still should be 'Still Photography | Kobi Israel' and on /projects/cuba-love-story should be 'Cuba, Love Story | Kobi Israel'."
+  ],
+  "critical_code_review_comments": [
+    "App.js useEffect with [] deps mutates global document.title and races against child-page title effects (React fires child effects before parent effects on mount). This is the root cause of the title bug and will affect every sub-page going forward, not just /still.",
+    "ProjectDetail.jsx does not handle the 'project not found' case — if slug is invalid, project is undefined and the page renders all 'To be confirmed by artist' placeholders without any 404/redirect. Consider returning a 404 component when project is undefined.",
+    "ProjectDetailTemplate hardcodes Link to '/#contact' for both 'Request Print Availability' and 'Collector Inquiry' — works on home only because /contact is a placeholder. Acceptable for MVP but worth noting."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a (not tested - regression-only request, backend untouched this iteration)", "frontend": "98.9% (93/94 assertions)"},
+  "test_credentials": "n/a",
+  "seed_data_creation": "none",
+  "retest_needed": true,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "All Still page testids, filter logic (military=2, prints=3, all=12), featured/collector/archive sections, project detail template (H1, gallery, moving image connection, book connection, print availability, exhibition/publication history, back-to-still link), mobile responsiveness (filters overflow-x:auto, single-column grid at 390px), and homepage regression (7 selected works, 10 nav links) all verified PASSING. Only outstanding failure is document.title being clobbered by App.js parent useEffect. Backend regression NOT re-run this iteration per main-agent note that backend was already validated in iteration_1.",
+  "rca of the issue": "Root cause: In React, effects fire bottom-up — child component effects run BEFORE parent effects on the same mount cycle. App.js has a useEffect with empty deps that sets document.title to the homepage title. On a direct load of /still, Still.jsx's useEffect runs first (sets 'Still Photography | Kobi Israel'), then App.js's useEffect runs second and overrides it back to the homepage title. Reproduction: visit https://still-moving-1.preview.emergentagent.com/still directly, wait 3s, inspect document.title. Mitigation: remove the unconditional title-setting useEffect from App.js, or scope it to only run when pathname === '/'. Page-level components should own their own titles."
+}
