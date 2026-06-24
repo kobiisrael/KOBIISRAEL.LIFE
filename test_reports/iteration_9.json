@@ -1,0 +1,32 @@
+{
+  "summary": "Iteration 9 — Backend + frontend e2e of the new /contact page and extended Inquiry model (book_inquiry + organisation + deadline). Backend: 21/21 pytest pass (added 3 new tests covering book_inquiry+org+deadline echo, persistence via GET /api/inquiries, and 422 rejection of random_bad_type). Frontend Playwright: 72/72 assertions pass across two browser sessions (57 desktop + 15 regression/mobile/navbar). One initial frontend assertion was a false-negative in the test itself (checking outerHTML for '@' which matched Tailwind class names like 'text-ki-gold/90'); re-verified using textContent — placeholders read 'To be confirmed by artist' with no real email or URL. /contact title='Contact | Kobi Israel', hero title 'Contact', subtitle+intro present; hero CTAs work (inquiry anchor=#contact-form-section, print prefills type=collector); 9 pathway cards visible with correct InquiryType prefill per click (collector, gallery, curator, press, film→film_programmer, book→book_inquiry, archive→research, licensing, general); conditional budget field shows only for {collector,gallery} and deadline only for {press,publisher,film_programmer} — verified across all 8 toggle combinations; section CTAs (collector/curator/press/film→film_programmer/book→book_inquiry) all set the form select correctly; consent gating works (0 POSTs without consent, 1 POST with consent, success element rendered, form fields cleared); 4 contact-details placeholders all read 'To be confirmed' / 'not public'; privacy link preventDefault works (URL unchanged after click); 8 related links all have correct hrefs (/still, /moving, /projects, /prints, /books, /archive, /cv, /journal); all required form inputs have associated <label htmlFor>. Navbar: /contact link shows aria-current='page' and active gold color (rgb(193,155,84)). Regression: /, /still, /moving, /projects/cuba-love-story, /prints, /books, /cv, /archive, /journal all load with 0 console errors. Mobile (390x844): hero readable, no horizontal overflow (delta=0), form field collapses to ~342px wide on 390px viewport.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_backend.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "server.py InquiryType Literal correctly extended with 'book_inquiry' (17 values total); InquiryCreate and Inquiry both carry the new Optional 'organisation' (max 200) and 'deadline' (max 100) fields, and the Mongo _id is correctly excluded by the find projection in /api/inquiries GET — verified via persistence test which read back organisation+deadline on the newly created record.",
+    "Contact.jsx ContactForm uses React conditional rendering (COLLECTOR_TYPES / DEADLINE_TYPES sets) — the unmount-on-hide behaviour is correct; verified by Playwright via locator.count()==0 when the type does not match. The submit handler also conditionally nulls budget_range/deadline before POST so stale state from a previously-visible field is not sent — good defensive design.",
+    "ContactForm uses forwardRef + useImperativeHandle to expose setInquiryType — clean separation; all 14 distinct prefill triggers (9 pathways + 5 section CTAs + 1 hero print CTA) successfully set the select value. handlePathway also scrolls to #contact-form-section after setting the type.",
+    "Consent gate is enforced client-side before submitInquiry is called (verified: 0 network POSTs to /api/inquiries when consent unchecked). Browser-required checkbox attribute is also present as a secondary layer.",
+    "Navbar /contact entry is now wired and shows aria-current='page' with gold color when active — accessible and visually distinct. All 9 regression routes load with zero console errors.",
+    "Non-blocking observation: CONTACT_INQUIRY_TYPE_OPTIONS exposes 12 of the 17 backend InquiryType values (omits gallery_curator, institutional, purchase, signed_copy, curatorial). This is intentional — the omitted values are used by other pages (Prints, Archive, etc.) — but worth documenting so future changes keep the two lists consciously divergent.",
+    "Privacy link uses href='#' with onClick e.preventDefault() — acceptable placeholder; final implementation should replace with a real Link or remove the anchor semantics to avoid a no-op tabstop. Currently still keyboard-focusable which is fine for now."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_backend.py (added 3 new tests: test_create_inquiry_book_inquiry_with_org_and_deadline, test_inquiries_list_persists_org_and_deadline, test_create_inquiry_rejects_unknown_type)"
+  ],
+  "success_rate": {"backend": "100% (21/21 pytest)", "frontend": "100% (72/72 Playwright assertions: 57 contact-page + 15 regression/mobile/navbar)"},
+  "test_credentials": "n/a — no auth in this app",
+  "seed_data_creation": "Created 3 inquiry rows via backend tests: (1) book_inquiry with organisation='Test Publishing House' and deadline='by 15 September', (2) press inquiry with organisation='TEST_Press_Org' and deadline='TEST_Deadline_2026_02_01' (used to verify GET /api/inquiries persistence), (3) random_bad_type rejected (no row created — 422). Created 1 additional inquiry via Contact UI (general type, TEST_Contact_User with consent) during Playwright run. All TEST_-prefixed; collections are append-only.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Contact page is fully verified end-to-end. The Inquiry model now supports organisation + deadline (max 200 / 100) and book_inquiry inquiry_type. CONTACT_INQUIRY_TYPE_OPTIONS exposes a subset (12) of the backend's 17 InquiryType Literal values — keep the two in sync deliberately. Conditional fields render-unmount based on type; if the form ever switches to permanently-mounted fields with hidden styles, retest that previously-set values aren't accidentally posted. Navbar active state on /contact uses aria-current='page' + text-ki-gold class — assert via either signal."
+}

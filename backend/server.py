@@ -56,6 +56,7 @@ InquiryType = Literal[
     "academic",
     "curatorial",
     "licensing",
+    "book_inquiry",
 ]
 
 
@@ -72,6 +73,9 @@ class InquiryCreate(BaseModel):
     preferred_size: Optional[str] = Field(default=None, max_length=100)
     budget_range: Optional[str] = Field(default=None, max_length=100)
     consent: Optional[bool] = None
+    # Optional fields used by the Contact page
+    organisation: Optional[str] = Field(default=None, max_length=200)
+    deadline: Optional[str] = Field(default=None, max_length=100)
 
 
 class Inquiry(BaseModel):
@@ -88,6 +92,8 @@ class Inquiry(BaseModel):
     preferred_size: Optional[str] = None
     budget_range: Optional[str] = None
     consent: Optional[bool] = None
+    organisation: Optional[str] = None
+    deadline: Optional[str] = None
     created_at: str = Field(default_factory=_iso_now)
 
 

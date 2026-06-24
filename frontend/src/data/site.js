@@ -1544,3 +1544,163 @@ export const JOURNAL_RELATED_LINKS = [
   { slug: "contact", label: "Contact", to: "/contact" },
 ];
 
+
+// ============================================================
+// CONTACT / INQUIRIES / PROFESSIONAL PATHWAYS
+// ============================================================
+
+export const CONTACT_HERO = {
+  image:
+    "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&q=85&w=1920",
+  alt:
+    "Studio / archive image placeholder for the contact page. Final image to be selected by artist.",
+};
+
+export const CONTACT_INTRO_IMAGE = {
+  image:
+    "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?auto=format&fit=crop&q=85&w=1200",
+  alt:
+    "Quiet archive / contact sheet placeholder visual for the contact introduction.",
+};
+
+// Pathway cards rendered in the "How to Inquire" section.
+// `type` maps to the InquiryType value used by /api/inquiries.
+export const CONTACT_PATHWAYS = [
+  {
+    slug: "collector",
+    title: "Collector Inquiries",
+    note: "Signed limited edition prints, available works, prices on request, condition, edition details and provenance.",
+    type: "collector",
+  },
+  {
+    slug: "gallery",
+    title: "Gallery Inquiries",
+    note: "Representation discussions, exhibitions, print sales, viewing rooms and professional collaborations.",
+    type: "gallery",
+  },
+  {
+    slug: "curator",
+    title: "Curator / Museum Inquiries",
+    note: "Exhibitions, acquisitions, archive research, museum programming, artist talks and institutional projects.",
+    type: "curator",
+  },
+  {
+    slug: "press",
+    title: "Press / Publication Inquiries",
+    note: "Interviews, image requests, articles, features, books, catalogues and media use.",
+    type: "press",
+  },
+  {
+    slug: "film",
+    title: "Film / Screening Inquiries",
+    note: "Moving-image works, screenings, festival interest, installations, Q&A and technical information.",
+    type: "film_programmer",
+  },
+  {
+    slug: "book",
+    title: "Book Inquiries",
+    note: "Books, catalogues, signed copies, availability, PDF materials and publication requests.",
+    type: "book_inquiry",
+  },
+  {
+    slug: "archive",
+    title: "Archive / Research Inquiries",
+    note: "Researchers, students, historians, writers, curators and archive-related questions.",
+    type: "research",
+  },
+  {
+    slug: "licensing",
+    title: "Licensing Inquiries",
+    note: "Image licensing, reproduction permissions, editorial use, publishing, film stills and archive material.",
+    type: "licensing",
+  },
+  {
+    slug: "general",
+    title: "General Contact",
+    note: "For all other professional messages.",
+    type: "general",
+  },
+];
+
+export const CONTACT_INQUIRY_TYPE_OPTIONS = [
+  { value: "collector", label: "Collector" },
+  { value: "gallery", label: "Gallery" },
+  { value: "curator", label: "Curator" },
+  { value: "museum", label: "Museum" },
+  { value: "press", label: "Press" },
+  { value: "publisher", label: "Publisher" },
+  { value: "film_programmer", label: "Film programmer" },
+  { value: "book_inquiry", label: "Book inquiry" },
+  { value: "research", label: "Archive research" },
+  { value: "licensing", label: "Licensing" },
+  { value: "academic", label: "Academic" },
+  { value: "general", label: "General" },
+];
+
+export const CONTACT_CURATOR_FIELDS = [
+  "Exhibition proposals",
+  "Selected works requests",
+  "Archive research",
+  "Artist talks",
+  "Moving-image screenings",
+  "Installation formats",
+  "Museum acquisition inquiries",
+  "Loan requests",
+  "Press materials",
+  "Technical specifications",
+];
+
+export const CONTACT_PRESS_FIELDS = [
+  "Interviews",
+  "Image requests",
+  "Book features",
+  "Catalogue texts",
+  "Artist biography",
+  "Press kit",
+  "Image licensing",
+  "Publication permissions",
+  "High-resolution image requests",
+];
+
+export const CONTACT_FILM_FIELDS = [
+  "Screening copies",
+  "Trailers",
+  "Excerpts",
+  "Subtitles",
+  "Technical specifications",
+  "Installation formats",
+  "Festival interest",
+  "Educational screenings",
+  "Artist Q&A",
+  "Film stills",
+];
+
+export const CONTACT_BOOK_FIELDS = [
+  "Book availability",
+  "Signed copies",
+  "PDF catalogues",
+  "Artist texts",
+  "Archive notes",
+  "Research PDFs",
+  "Publication records",
+  "Out-of-print works",
+];
+
+export const CONTACT_DETAILS = [
+  { slug: "email", label: "Email", value: "To be confirmed by artist" },
+  { slug: "studio", label: "Studio / archive location", value: "London, UK — exact address not public unless supplied" },
+  { slug: "social", label: "Social links", value: "To be confirmed by artist" },
+  { slug: "newsletter", label: "Newsletter", value: "To be confirmed by artist" },
+];
+
+export const CONTACT_RELATED_LINKS = [
+  { slug: "still", label: "Still", to: "/still" },
+  { slug: "moving", label: "Moving", to: "/moving" },
+  { slug: "projects", label: "Projects", to: "/projects" },
+  { slug: "prints", label: "Prints", to: "/prints" },
+  { slug: "books", label: "Books", to: "/books" },
+  { slug: "archive", label: "Archive", to: "/archive" },
+  { slug: "cv", label: "CV", to: "/cv" },
+  { slug: "journal", label: "Journal", to: "/journal" },
+];
+

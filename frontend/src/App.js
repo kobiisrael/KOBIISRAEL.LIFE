@@ -12,6 +12,7 @@ import CVPage from "@/pages/CV";
 import Archive from "@/pages/Archive";
 import Journal from "@/pages/Journal";
 import JournalEntry from "@/pages/JournalEntry";
+import Contact from "@/pages/Contact";
 import ProjectDetail from "@/pages/ProjectDetail";
 import NotFound from "@/pages/NotFound";
 import Placeholder from "@/pages/Placeholder";
@@ -55,7 +56,7 @@ function App() {
             <Route path="/cv" element={<CVPage />} />
             <Route path="/journal" element={<Journal />} />
             <Route path="/journal/:slug" element={<JournalEntry />} />
-            <Route path="/contact" element={<Placeholder title="Contact" intro="Use the form on the homepage to send an inquiry." />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

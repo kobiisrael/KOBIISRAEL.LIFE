@@ -311,3 +311,71 @@ def test_create_inquiry_curatorial(client):
     assert data["project_interest"] == "Cuba, Love Story"
     assert data["country"] == "Germany"
     assert data["consent"] is True
+
+
+
+# ---------- Contact page: book_inquiry + organisation + deadline (iteration 9) ----------
+def test_create_inquiry_book_inquiry_with_org_and_deadline(client):
+    """Contact page: book_inquiry type with organisation + deadline + all new fields populated."""
+    payload = {
+        "name": "TEST_Contact_BookInquiry",
+        "email": f"test_book_{uuid.uuid4().hex[:8]}@example.com",
+        "inquiry_type": "book_inquiry",
+        "subject": "Book inquiry from Contact page",
+        "message": "Requesting signed copy and catalogue PDF.",
+        "project_interest": "Cuba, Love Story",
+        "country": "Spain",
+        "phone": "+34 600000000",
+        "organisation": "Test Publishing House",
+        "deadline": "by 15 September",
+        "consent": True,
+    }
+    r = client.post(f"{API}/inquiries", json=payload)
+    assert r.status_code == 201, r.text
+    data = r.json()
+    assert data["inquiry_type"] == "book_inquiry"
+    assert data["organisation"] == "Test Publishing House"
+    assert data["deadline"] == "by 15 September"
+    assert data["project_interest"] == "Cuba, Love Story"
+    assert data["country"] == "Spain"
+    assert data["consent"] is True
+    assert "id" in data and isinstance(data["id"], str)
+
+
+def test_inquiries_list_persists_org_and_deadline(client):
+    """POST with organisation+deadline, then GET /api/inquiries — latest record contains them."""
+    unique_email = f"test_persist_{uuid.uuid4().hex[:8]}@example.com"
+    payload = {
+        "name": "TEST_Contact_Persistence",
+        "email": unique_email,
+        "inquiry_type": "press",
+        "message": "Press inquiry persistence test.",
+        "country": "France",
+        "organisation": "TEST_Press_Org",
+        "deadline": "TEST_Deadline_2026_02_01",
+        "consent": True,
+    }
+    r = client.post(f"{API}/inquiries", json=payload)
+    assert r.status_code == 201, r.text
+
+    g = client.get(f"{API}/inquiries", params={"limit": 50})
+    assert g.status_code == 200
+    rows = g.json()
+    assert isinstance(rows, list) and len(rows) > 0
+    match = next((row for row in rows if row.get("email") == unique_email), None)
+    assert match is not None, "Newly created inquiry not found in GET /api/inquiries"
+    assert match["organisation"] == "TEST_Press_Org"
+    assert match["deadline"] == "TEST_Deadline_2026_02_01"
+    assert match["inquiry_type"] == "press"
+
+
+def test_create_inquiry_rejects_unknown_type(client):
+    """random_bad_type must produce 422."""
+    payload = {
+        "name": "TEST_Bad_Type",
+        "email": f"test_bad_{uuid.uuid4().hex[:8]}@example.com",
+        "inquiry_type": "random_bad_type",
+        "message": "Should be rejected.",
+    }
+    r = client.post(f"{API}/inquiries", json=payload)
+    assert r.status_code == 422, r.text
