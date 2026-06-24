@@ -234,3 +234,80 @@ def test_newsletter_subscribe_and_idempotent(client):
     emails = [x["email"] for x in lr.json()]
     assert email in emails
     assert emails.count(email) == 1
+
+
+# ---------- Newsletter — interest field (Journal page) ----------
+def test_newsletter_with_interest(client):
+    """Journal newsletter now accepts optional 'interest' field."""
+    email = f"news_int_{uuid.uuid4().hex[:8]}@test.com"
+    r1 = client.post(f"{API}/newsletter", json={
+        "email": email,
+        "source": "journal",
+        "interest": "artist-notes",
+    })
+    assert r1.status_code == 201, r1.text
+    data1 = r1.json()
+    assert data1["email"] == email
+    assert data1["source"] == "journal"
+    assert data1["interest"] == "artist-notes"
+    id1 = data1["id"]
+
+    # Idempotent: same email returns existing subscription
+    r2 = client.post(f"{API}/newsletter", json={
+        "email": email,
+        "source": "journal",
+        "interest": "artist-notes",
+    })
+    assert r2.status_code in (200, 201)
+    assert r2.json()["id"] == id1
+    assert r2.json()["interest"] == "artist-notes"
+
+
+def test_newsletter_without_interest_backcompat(client):
+    """Newsletter without interest still works (backward compat)."""
+    email = f"news_noi_{uuid.uuid4().hex[:8]}@test.com"
+    r = client.post(f"{API}/newsletter", json={
+        "email": email,
+        "source": "homepage",
+    })
+    assert r.status_code == 201, r.text
+    data = r.json()
+    assert data["email"] == email
+    assert data["source"] == "homepage"
+    assert data.get("interest") is None
+
+
+def test_newsletter_list_includes_interest(client):
+    """GET /api/newsletter returns the interest field where present."""
+    email = f"news_li_{uuid.uuid4().hex[:8]}@test.com"
+    client.post(f"{API}/newsletter", json={
+        "email": email, "source": "journal", "interest": "process-notes",
+    })
+    lr = client.get(f"{API}/newsletter")
+    assert lr.status_code == 200
+    rows = lr.json()
+    match = [x for x in rows if x["email"] == email]
+    assert len(match) == 1
+    assert match[0]["interest"] == "process-notes"
+
+
+# ---------- Inquiry — curatorial type (Archive page) ----------
+def test_create_inquiry_curatorial(client):
+    """Archive inquiry uses inquiry_type=curatorial with project_interest + consent."""
+    payload = {
+        "name": "TEST_Archive_Curatorial",
+        "email": f"test_arc_{uuid.uuid4().hex[:8]}@example.com",
+        "inquiry_type": "curatorial",
+        "subject": "Archive curatorial inquiry",
+        "message": "Curatorial inquiry from the Archive page.",
+        "project_interest": "Cuba, Love Story",
+        "country": "Germany",
+        "consent": True,
+    }
+    r = client.post(f"{API}/inquiries", json=payload)
+    assert r.status_code == 201, r.text
+    data = r.json()
+    assert data["inquiry_type"] == "curatorial"
+    assert data["project_interest"] == "Cuba, Love Story"
+    assert data["country"] == "Germany"
+    assert data["consent"] is True

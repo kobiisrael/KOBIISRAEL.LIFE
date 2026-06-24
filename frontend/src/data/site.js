@@ -1399,3 +1399,148 @@ export const ARCHIVE_INQUIRY_TYPE_OPTIONS = [
   { value: "academic", label: "Academic" },
   { value: "general", label: "General" },
 ];
+
+// ============================================================
+// JOURNAL / ARCHIVE NOTES / WRITING
+// ============================================================
+
+export const JOURNAL_HERO = {
+  image:
+    "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=85&w=1920",
+  alt: "Journal hero — quiet archive image placeholder. Final hero image to be selected by artist.",
+};
+
+export const JOURNAL_EDITORIAL_IMAGE = {
+  image:
+    "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&q=85&w=1200",
+  alt: "Editorial introduction visual — open book / archive notebook placeholder.",
+};
+
+export const JOURNAL_FEATURED_NOTES = [
+  { slug: "a-chaos-of-appearances", title: "A Chaos of Appearances", category: "Artist Notes", date: "Date to be confirmed", excerpt: "Notes on the unstable theatre of remembered appearance and the assemblage of soldiers, strangers, cities and lovers.", related_project: "a-chaos-of-appearances" },
+  { slug: "still-images-as-memory-objects", title: "Still Images as Memory Objects", category: "Photography", date: "Date to be confirmed", excerpt: "Short reflections on the photograph as a fragment of memory carried forward in time.", related_project: "fragments-of-life" },
+  { slug: "when-the-still-image-begins-to-move", title: "When the Still Image Begins to Move", category: "Moving Image", date: "Date to be confirmed", excerpt: "Where the photograph ends and the moving image begins — notes on rhythm, voice and time.", related_project: "still-and-moving-diaries" },
+  { slug: "cuba-love-story-notes-from-the-archive", title: "Cuba, Love Story: Notes from the Archive", category: "Project Notes", date: "Date to be confirmed", excerpt: "Working notes from the Cuba archive — masculinity, militarism, desire and the long shadow of looking.", related_project: "cuba-love-story" },
+  { slug: "masculinity-as-performance", title: "Masculinity as Performance", category: "Masculinity", date: "Date to be confirmed", excerpt: "Notes on masculinity as costume, gesture and inheritance — uniforms, postures, brief tenderness.", related_project: "military-masculinity-archive" },
+  { slug: "the-stranger-and-the-witness", title: "The Stranger and the Witness", category: "Queer Codes", date: "Date to be confirmed", excerpt: "On photographing strangers — the brief contract between watcher and watched.", related_project: "intimate-strangers" },
+  { slug: "rooms-bodies-and-borders", title: "Rooms, Bodies and Borders", category: "Exile", date: "Date to be confirmed", excerpt: "Hotel rooms, contested borders and the body that carries them across.", related_project: "landscapes-and-exile" },
+  { slug: "memory-does-not-return-whole", title: "Memory Does Not Return Whole", category: "Memory", date: "Date to be confirmed", excerpt: "On the fragmented return of remembered images, out of order, in their own light.", related_project: "investigating-things-past" },
+];
+
+export const JOURNAL_CATEGORIES = [
+  { slug: "memory", title: "Memory", note: "The photograph as memory object." },
+  { slug: "photography", title: "Photography", note: "Notes on the still image." },
+  { slug: "moving-image", title: "Moving Image", note: "Notes on time, voice and motion." },
+  { slug: "masculinity", title: "Masculinity", note: "Performance, costume, inheritance." },
+  { slug: "desire", title: "Desire", note: "Looking, longing, withholding." },
+  { slug: "exile", title: "Exile", note: "Departure, return, the geography of leaving." },
+  { slug: "travel", title: "Travel", note: "Travel as a way of seeing and being seen." },
+  { slug: "queer-codes", title: "Queer Codes", note: "Glances, signals, unwritten languages." },
+  { slug: "military", title: "Military", note: "Uniforms, training, the trained male body." },
+  { slug: "bodies", title: "Bodies", note: "The photographed body in time." },
+  { slug: "cities", title: "Cities", note: "Streets, strangers, the urban hour." },
+  { slug: "childhood", title: "Childhood", note: "Inherited rooms and remembered light." },
+  { slug: "books", title: "Books", note: "Notes around the artist books and catalogues." },
+  { slug: "prints", title: "Prints", note: "Notes on edition, signature and care." },
+  { slug: "sound-and-music", title: "Sound and Music", note: "Voice, score and the moving-image archive." },
+  { slug: "artist-notes", title: "Artist Notes", note: "Working notes from the studio." },
+  { slug: "project-notes", title: "Project Notes", note: "Notes attached to specific projects." },
+];
+
+export const JOURNAL_FILTERS = [
+  { slug: "all", label: "All" },
+  { slug: "artist-notes", label: "Artist Notes" },
+  { slug: "project-notes", label: "Project Notes" },
+  { slug: "essays", label: "Essays" },
+  { slug: "visual-diary", label: "Visual Diary" },
+  { slug: "travel", label: "Travel" },
+  { slug: "memory", label: "Memory" },
+  { slug: "photography", label: "Photography" },
+  { slug: "moving-image", label: "Moving Image" },
+  { slug: "books", label: "Books" },
+  { slug: "prints", label: "Prints" },
+  { slug: "sound", label: "Sound" },
+  { slug: "personal-mythology", label: "Personal Mythology" },
+];
+
+// Master journal index — combines featured notes and additional entries.
+// Each entry has tags that map to JOURNAL_FILTERS slugs.
+export const JOURNAL_NOTES = [
+  { slug: "a-chaos-of-appearances", title: "A Chaos of Appearances", subtitle: "On the assemblage of remembered images", date: "Date to be confirmed", category: "Artist Notes", related_project: "a-chaos-of-appearances", medium: "moving image", excerpt: "Notes on the unstable theatre of remembered appearance.", tags: ["artist-notes", "moving-image", "personal-mythology"] },
+  { slug: "still-images-as-memory-objects", title: "Still Images as Memory Objects", subtitle: "Photography and memory", date: "Date to be confirmed", category: "Photography", related_project: "fragments-of-life", medium: "photography", excerpt: "The photograph as a fragment of memory carried forward.", tags: ["essays", "photography", "memory"] },
+  { slug: "when-the-still-image-begins-to-move", title: "When the Still Image Begins to Move", subtitle: "From photograph to film", date: "Date to be confirmed", category: "Moving Image", related_project: "still-and-moving-diaries", medium: "moving image", excerpt: "On rhythm, voice and the threshold between image and time.", tags: ["essays", "moving-image", "photography"] },
+  { slug: "cuba-love-story-notes-from-the-archive", title: "Cuba, Love Story: Notes from the Archive", subtitle: "Project notes", date: "Date to be confirmed", category: "Project Notes", related_project: "cuba-love-story", medium: "photography", excerpt: "Working notes from the Cuba archive.", tags: ["project-notes", "photography", "travel"] },
+  { slug: "masculinity-as-performance", title: "Masculinity as Performance", subtitle: "Costume, gesture, inheritance", date: "Date to be confirmed", category: "Masculinity", related_project: "military-masculinity-archive", medium: "photography", excerpt: "Notes on masculinity as a learned theatre.", tags: ["essays", "photography", "personal-mythology"] },
+  { slug: "the-stranger-and-the-witness", title: "The Stranger and the Witness", subtitle: "Photographing strangers", date: "Date to be confirmed", category: "Queer Codes", related_project: "intimate-strangers", medium: "photography", excerpt: "The brief contract between watcher and watched.", tags: ["essays", "photography", "personal-mythology"] },
+  { slug: "rooms-bodies-and-borders", title: "Rooms, Bodies and Borders", subtitle: "On exile and interior space", date: "Date to be confirmed", category: "Exile", related_project: "landscapes-and-exile", medium: "photography", excerpt: "Hotel rooms, contested borders and the body that carries them.", tags: ["essays", "travel", "memory"] },
+  { slug: "memory-does-not-return-whole", title: "Memory Does Not Return Whole", subtitle: "Fragmented recollection", date: "Date to be confirmed", category: "Memory", related_project: "investigating-things-past", medium: "archive", excerpt: "On the fragmented return of remembered images.", tags: ["essays", "memory", "personal-mythology"] },
+  { slug: "letter-from-paris", title: "Letter from Paris", subtitle: "A travel fragment", date: "Date to be confirmed", category: "Travel", related_project: "parisian-postcards", medium: "photography", excerpt: "A short letter from a city of strangers.", tags: ["visual-diary", "travel", "photography"] },
+  { slug: "the-soundtrack-of-images", title: "The Soundtrack of Images", subtitle: "On voice and score", date: "Date to be confirmed", category: "Sound and Music", related_project: "music-sound-works", medium: "sound", excerpt: "Notes on the sound that accompanies the moving-image archive.", tags: ["artist-notes", "sound", "moving-image"] },
+  { slug: "on-the-artist-book", title: "On the Artist Book", subtitle: "Books as portable archives", date: "Date to be confirmed", category: "Books", related_project: "cuba-love-story", medium: "book", excerpt: "On the book as the most intimate form of exhibition.", tags: ["essays", "books"] },
+  { slug: "edition-signature-care", title: "Edition, Signature, Care", subtitle: "Notes on prints", date: "Date to be confirmed", category: "Prints", related_project: "intimate-strangers", medium: "print", excerpt: "Short notes on edition number, signature and the care of fine art prints.", tags: ["artist-notes", "prints"] },
+  { slug: "night-cities", title: "Night Cities", subtitle: "Visual diary, Soho", date: "Date to be confirmed", category: "Cities", related_project: "soho-urban-encounters", medium: "photography", excerpt: "Visual diary fragments from the night city.", tags: ["visual-diary", "photography"] },
+  { slug: "borders-and-returns", title: "Borders and Returns", subtitle: "A short essay on exile", date: "Date to be confirmed", category: "Exile", related_project: "landscapes-and-exile", medium: "photography", excerpt: "On the geography of leaving and the act of return.", tags: ["essays", "travel", "personal-mythology"] },
+  { slug: "the-witness", title: "The Witness", subtitle: "On the autobiographical I", date: "Date to be confirmed", category: "Artist Notes", related_project: "investigating-things-past", medium: "archive", excerpt: "On the self as witness to its own archive.", tags: ["artist-notes", "memory", "personal-mythology"] },
+];
+
+export const JOURNAL_PROJECT_NOTES = [
+  { slug: "cuba-love-story", title: "Cuba, Love Story", note: "Working notes on masculinity, militarism and desire from the Cuba archive.", count: "Number of notes to be confirmed" },
+  { slug: "river-of-three-crossings", title: "River of Three Crossings", note: "Notes on landscape, biography and remembered self.", count: "Number of notes to be confirmed" },
+  { slug: "fragments-of-life", title: "Fragments of Life", note: "Diaristic notes on daily life and intimacy.", count: "Number of notes to be confirmed" },
+  { slug: "intimate-strangers", title: "Intimate Strangers", note: "Notes on photographing the briefly met.", count: "Number of notes to be confirmed" },
+  { slug: "views", title: "Views", note: "Notes on windows and the interior weather.", count: "Number of notes to be confirmed" },
+  { slug: "parisian-postcards", title: "Parisian Postcards", note: "Letters in image form from Paris.", count: "Number of notes to be confirmed" },
+  { slug: "investigating-things-past", title: "Investigating Things Past", note: "Autobiographical archive notes.", count: "Number of notes to be confirmed" },
+  { slug: "a-chaos-of-appearances", title: "A Chaos of Appearances", note: "Notes on the moving-image assemblage.", count: "Number of notes to be confirmed" },
+  { slug: "still-and-moving-diaries", title: "Still & Moving Diaries", note: "Notes from the diaristic project.", count: "Number of notes to be confirmed" },
+  { slug: "music-sound-works", title: "Music / Sound Works", note: "Notes on voice and score.", count: "Number of notes to be confirmed" },
+  { slug: "current-archive-projects", title: "Current Archive Projects", note: "Notes on works in progress.", count: "Number of notes to be confirmed" },
+];
+
+export const JOURNAL_MOTIFS = [
+  { slug: "masks", title: "Masks", note: "Notes on the worn face and the hidden self." },
+  { slug: "faces", title: "Faces", note: "On the encountered face and the photographed portrait." },
+  { slug: "soldiers", title: "Soldiers", note: "On uniformed bodies and trained gesture." },
+  { slug: "strangers", title: "Strangers", note: "On the brief presence of others." },
+  { slug: "rooms", title: "Rooms", note: "On hotel rooms, studios and inherited interiors." },
+  { slug: "borders", title: "Borders", note: "On political and bodily borders." },
+  { slug: "water", title: "Water", note: "On rivers, seas and the act of crossing." },
+  { slug: "cities", title: "Cities", note: "On urban time and the choreography of strangers." },
+  { slug: "bodies", title: "Bodies", note: "On the photographed body." },
+  { slug: "lovers", title: "Lovers", note: "On tenderness, briefness and reaching." },
+  { slug: "silence", title: "Silence", note: "On withheld sound and held breath." },
+  { slug: "childhood", title: "Childhood", note: "On inherited rooms and remembered light." },
+  { slug: "exile", title: "Exile", note: "On leaving and the residue of place." },
+  { slug: "memory", title: "Memory", note: "On the return of images out of order." },
+  { slug: "the-witness", title: "The Witness", note: "On the self as observer of its own archive." },
+];
+
+export const JOURNAL_VOICE_FILM_CARDS = [
+  { slug: "voice-over-fragments", title: "Voice-over Fragments", note: "Short voice-over texts written for the moving-image archive.", related: "Related work to be confirmed" },
+  { slug: "film-notes", title: "Film Notes", note: "Working notes for film and video projects.", related: "Related work to be confirmed" },
+  { slug: "sound-notes", title: "Sound Notes", note: "Notes on sound, score and silence.", related: "Related work to be confirmed" },
+  { slug: "travelogue-texts", title: "Travelogue Texts", note: "Short travel notes written alongside the visual diaries.", related: "Related work to be confirmed" },
+  { slug: "still-to-moving-sequences", title: "Still-to-Moving Sequences", note: "Notes on the threshold between still and moving image.", related: "Related work to be confirmed" },
+  { slug: "unfinished-scripts", title: "Unfinished Scripts", note: "Fragments and openings of unfinished scripts.", related: "Related work to be confirmed" },
+];
+
+export const JOURNAL_NEWSLETTER_INTERESTS = [
+  { value: "artist-notes", label: "Artist notes" },
+  { value: "books", label: "Books" },
+  { value: "prints", label: "Prints" },
+  { value: "moving-image", label: "Moving image" },
+  { value: "exhibitions", label: "Exhibitions" },
+  { value: "all-updates", label: "All updates" },
+];
+
+export const JOURNAL_RELATED_LINKS = [
+  { slug: "still", label: "Still", to: "/still" },
+  { slug: "moving", label: "Moving", to: "/moving" },
+  { slug: "projects", label: "Projects", to: "/projects" },
+  { slug: "prints", label: "Prints", to: "/prints" },
+  { slug: "books", label: "Books", to: "/books" },
+  { slug: "archive", label: "Archive", to: "/archive" },
+  { slug: "cv", label: "CV", to: "/cv" },
+  { slug: "contact", label: "Contact", to: "/contact" },
+];
+

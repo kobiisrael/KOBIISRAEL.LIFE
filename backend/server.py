@@ -94,6 +94,7 @@ class Inquiry(BaseModel):
 class NewsletterCreate(BaseModel):
     email: EmailStr
     source: Optional[str] = Field(default="homepage", max_length=80)
+    interest: Optional[str] = Field(default=None, max_length=80)
 
 
 class NewsletterSubscription(BaseModel):
@@ -101,6 +102,7 @@ class NewsletterSubscription(BaseModel):
     id: str = Field(default_factory=lambda: str(uuid.uuid4()))
     email: EmailStr
     source: str = "homepage"
+    interest: Optional[str] = None
     created_at: str = Field(default_factory=_iso_now)
 
 

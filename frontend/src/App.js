@@ -10,6 +10,8 @@ import Prints from "@/pages/Prints";
 import Books from "@/pages/Books";
 import CVPage from "@/pages/CV";
 import Archive from "@/pages/Archive";
+import Journal from "@/pages/Journal";
+import JournalEntry from "@/pages/JournalEntry";
 import ProjectDetail from "@/pages/ProjectDetail";
 import NotFound from "@/pages/NotFound";
 import Placeholder from "@/pages/Placeholder";
@@ -51,7 +53,8 @@ function App() {
             <Route path="/books" element={<Books />} />
             <Route path="/archive" element={<Archive />} />
             <Route path="/cv" element={<CVPage />} />
-            <Route path="/journal" element={<Placeholder title="Journal" intro="Journal — page in preparation." />} />
+            <Route path="/journal" element={<Journal />} />
+            <Route path="/journal/:slug" element={<JournalEntry />} />
             <Route path="/contact" element={<Placeholder title="Contact" intro="Use the form on the homepage to send an inquiry." />} />
             <Route path="*" element={<NotFound />} />
           </Route>

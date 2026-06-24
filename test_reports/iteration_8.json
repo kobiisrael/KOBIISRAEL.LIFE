@@ -1,0 +1,34 @@
+{
+  "summary": "Backend + frontend e2e of /journal (new), /journal/:slug (new), and /archive (first run). Backend: 18/18 pytest pass — added 4 new tests for newsletter interest field (with/without/list-includes) and curatorial inquiry_type for Archive. GET /api/ welcome, POST /api/inquiries (curatorial w/ project_interest+country+consent), POST /api/newsletter (with interest, idempotent on email, backcompat without interest), GET /api/newsletter (interest echoed), GET /api/projects + /api/projects/cuba-love-story all green. Frontend Playwright: 58/58 total assertions pass across three browser sessions. JOURNAL (22/22): title='Journal and Archive Notes | Kobi Israel', hero='Journal', hero-cta-notes href='#journal-index', hero-cta-projects href='/projects', 8 featured cards & 8 featured CTAs (first→/journal/a-chaos-of-appearances), 17 categories, search 'zzznotmatching'→empty-state visible, journal-filter-photography filters index (7 cards), 11 project notes, 15 motifs, 6 voice cards, all 8 related links (still/moving/projects/prints/books/archive/cv/contact) with correct hrefs, newsletter submission with email+interest renders journal-newsletter-success. JOURNAL ENTRY (15/15): /journal/a-chaos-of-appearances renders journal-entry-page with title/subtitle/meta/body/pullquote/related-still/moving/book/print/note/back/inquiry; Back button navigates to /journal; /journal/non-existent-slug renders both journal-entry-not-found AND inner project-not-found (acceptable per spec). ARCHIVE (10/10): /archive loads, hero='Archive', 20 filter buttons (clicking re-filters grid), search 'cuba' reduces to 1 card, 'zzznotmatching' shows archive-empty-state, 16 index-cta links route to /projects/<slug> (first=cuba-love-story), 12 library cards — clicking archive-library-cta-biography prefills inquiry_type='research' AND archive-inquiry-area='Artist Biography' (card title), submit without consent blocks success (0 POSTs, no success el), submit with consent posts once to /api/inquiries and renders archive-inquiry-success. REGRESSION (9/9): /, /still, /moving, /projects/cuba-love-story, /prints, /books, /cv, /archive, /journal all load with 0 console errors. MOBILE (2/2): 390x844 viewport — journal hero visible, no horizontal overflow.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_backend.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "server.py NewsletterCreate.interest correctly Optional[str] max_length=80; NewsletterSubscription stores it and existing subscribers are returned as-is (idempotent on email). The Mongo find_one excludes _id correctly. NOTE: when an existing subscription is returned, the new request's interest/source values are silently ignored — that is the intended idempotent semantic; documenting for clarity.",
+    "InquiryType Literal already includes 'curatorial' and 'licensing' — Archive's curatorial form payload validates cleanly against backend.",
+    "JournalEntry.jsx correctly wraps the existing NotFound component in <div data-testid='journal-entry-not-found'> so both testids resolve for unknown slugs — matches the spec footnote.",
+    "Archive library 'Request' button handler sets inquiry_type='research' and area=card.title and scrolls to the inquiry form — verified end-to-end via prefill assertions on archive-inquiry-type and archive-inquiry-area.",
+    "Archive inquiry submit short-circuits before POST when consent is unchecked (0 network requests observed); with consent it POSTs exactly once and renders archive-inquiry-success.",
+    "Journal newsletter form posts to /api/newsletter with interest field via lib/api.js#subscribeNewsletter and renders journal-newsletter-success on 2xx response.",
+    "All 9 primary routes load with zero console errors at desktop 1920px; /journal at mobile 390px has no horizontal overflow and hero is fully readable.",
+    "Minor (non-blocking): Journal page renders 17 category cards each with View Category links — links resolve client-side to /journal#... fragment routes which exist as anchor targets within the index; no broken anchors observed. Suggest verifying category slugs match the JOURNAL_NOTES.category values to keep the filter relationship stable in future."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_backend.py (added 4 new tests: test_newsletter_with_interest, test_newsletter_without_interest_backcompat, test_newsletter_list_includes_interest, test_create_inquiry_curatorial)"
+  ],
+  "success_rate": {"backend": "100% (18/18 pytest)", "frontend": "100% (58/58 Playwright assertions: 22 journal + 15 entry + 10 archive + 9 regression + 2 mobile)"},
+  "test_credentials": "n/a — no auth in this app",
+  "seed_data_creation": "Created TEST_-prefixed inquiry rows for inquiry_type='curatorial' (Archive page) and submitted one Archive form inquiry (TEST_NoConsent renamed to consenting submission). Created 3 newsletter subscriptions with the new 'interest' field: news_int_*@test.com (interest=artist-notes, source=journal), news_noi_*@test.com (no interest, source=homepage), news_li_*@test.com (interest=process-notes, source=journal). Also one Archive form newsletter via UI flow and one Journal newsletter via UI. All persist; collections are append-only.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "/journal and /journal/:slug pages are fully built and integrated. Backend NewsletterCreate now accepts optional 'interest' (max_length=80); subscribe_newsletter is idempotent on email — repeat submissions return the original subscription unchanged (interest from the first submit is preserved). Archive page (/archive) shipped earlier and is fully validated now: 20 filter buttons, 16 project index cards (filterable by search + filter), 12 library cards with Request prefill (sets type='research' and area=title), inquiry form requires consent client-side. JOURNAL_FILTERS slugs include 'all', 'photography' and others (photography filter narrows to 7 cards). JournalEntry wraps NotFound in data-testid='journal-entry-not-found' so both tids match. All 14 InquiryType literals plus 'curatorial' and 'licensing' continue to be accepted.",
+  "rca of the issue": "No issues found."
+}
