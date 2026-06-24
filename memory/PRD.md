@@ -69,6 +69,21 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 - ✅ Per-page SEO: title `Still Photography | Kobi Israel`, keyword-rich description; project pages set title to `{Project Title} | Kobi Israel`
 - ✅ Fixed title race condition between App.js and page-level useEffects (App.js now only sets the homepage title)
 
+### Moving / Film / Video page (`/moving`) — 2026-06-24
+- ✅ Cinematic hero (title "Moving", subtitle, intro, View Moving Works + Film/Curator Inquiries CTAs); no autoplay
+- ✅ Curatorial intro "When the Still Image Begins to Move"
+- ✅ Moving works index: 12 cards (Cuba Love Story, A Chaos of Appearances, Still & Moving Diaries, Fragments of Life, River of Three Crossings, Intimate Strangers, Investigating Things Past, Personal Archive Films, Music/Sound Works, Experimental Film Fragments, Travelogue Works, Future Film Projects); each card has video-still placeholder, status badge, year, duration, format, synopsis, View Work CTA
+- ✅ 10 filter tabs (All, Short Films, Video Art, Visual Diaries, Music/Sound, Travelogue, Autobiography, Queer/Desire, Archive Fragments, Works in Progress)
+- ✅ Featured moving work block: Cuba, Love Story — full metadata grid (Duration, Format, Language/subtitles, Screening status) + 3 CTAs (Watch Excerpt, View Related Photography, Film/Curator Inquiry)
+- ✅ Moving Image Statement section
+- ✅ Curator pathway section ("Screenings, Installations and Curator Inquiries") with 10-field metadata grid and Request Screening CTA
+- ✅ Still ↔ Moving bridge: 3 cards (Photography into Film, Memory into Sequence, Archive into Voice)
+- ✅ Sound, Voice and Music section with placeholder fields + static audio waveform placeholder; "Explore Sound Works" CTA
+- ✅ Archive Fragments section: 10 cards (Cities, Bodies, Rooms, Travel, Memory, Exile, Family, Desire, Silence, Night) with status badges
+- ✅ Reusable `VideoWorkDetail` component covering: title, subtitle, year, duration, format, language, subtitles, director, camera, editor, sound, synopsis, statement, stills gallery, excerpt/poster placeholder, screening/festival/installation history, press quotes, related photography/book/sound, curator + licensing inquiry CTAs — no autoplay, captions/transcript placeholders noted
+- ✅ Per-page SEO: title `Moving Image | Kobi Israel`, keyword-rich description
+- ✅ Tested: 113/113 frontend assertions ✅
+
 ## Backlog (prioritised)
 
 ### P0 — content readiness (artist must supply)
