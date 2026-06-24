@@ -1,0 +1,34 @@
+{
+  "summary": "Iteration 16 — Migration Review dashboard verification. Backend pytest 21/21 green (2.78s). Frontend /migration-review fully verified: HTTP 200, title='Migration Review | Kobi Israel', meta[name=robots]='noindex, nofollow'. All 4 key testids present (migration-review-page, migration-review-title, migration-email='kobi.israel.photography@gmail.com', migration-mapping-table). All 11 migration-section-* present (confirmed-contact, source-pages, homepage-fragments, project-records, prints-facts, book-records, cv-records, mapping-table, redirect-map, missing-content, quality-check). Counts exact: 6 source, 9 project, 6 book, 17 redirect, 18 missing. CV biography rendered; counts: education=5✓, solo-exhibitions=5✓, group-exhibitions=23 (EXPECTED 24 — content gap in /app/frontend/src/data/migration.js), catalogues=4✓, monographs=2✓, anthologies=4✓, awards=7✓, film=1✓. Mapping table has 19 tbody rows + header [Source, Item, Type, Target, Action, Status]. Borges epigraph 'a chaos of appearances' confirmed under homepage-fragments. Verbatim Cuba description confirmed under migration-project-cuba-love-story. All 6 source-page cards have external <a target=_blank rel='noopener noreferrer' href='https://kobiisrael.wixsite.com/...'>. Project cards link internally to /projects/<slug> (first = /projects/cuba-love-story). Footer 'Launch Checklist' navigates to /launch-checklist ✓, 'Return Home' to / ✓. robots.txt file on disk contains BOTH 'Disallow: /launch-checklist' and 'Disallow: /migration-review'. 14 regression routes (/, /still, /moving, /projects/cuba-love-story, /prints, /prints/sample-artwork, /books, /archive, /cv, /journal, /journal/a-chaos-of-appearances, /contact, /launch-checklist, /legal/privacy) all HTTP 200 with footer, ZERO console errors. Mobile 390x844 on /migration-review: scrollWidth=clientWidth=390, no horizontal overflow (mapping table scrolls inside its overflow-x-auto container as intended).",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_backend.py",
+    "/app/test_reports/pytest/iter16_results.xml"
+  ],
+  "action_items": [
+    "CONTENT GAP — group_exhibitions in /app/frontend/src/data/migration.js currently has 23 entries; the iteration 16 review request and the migration plan both say 24. Please verify against the Wix source crawl (https://kobiisrael.wixsite.com/kobiisrael/cv) and either (a) add the 24th group-exhibition entry, or (b) update the documented expected count from 24 to 23. This does not affect any selector or block rendering; it is a data-completeness item only."
+  ],
+  "critical_code_review_comments": [
+    "MigrationReview.jsx (510 lines) is well-structured but approaching the 700-line ceiling; consider splitting Section blocks (source-pages, project-records, cv-records, mapping-table) into small subcomponents in /pages/migration/ if more sections are added in future iterations.",
+    "CV blocks use the array key as derived testid via .toLowerCase().replace(/\\s+/g,'-') — this works but ties testids to the human-readable label string. Safer to define explicit testids in a constant map so a label rename doesn't silently break tests.",
+    "Source-page external links and project internal links are correctly implemented (rel='noopener noreferrer' + target='_blank' on <a>; react-router <Link> for /projects/<slug>). No new issues.",
+    "robots.txt on-disk file is correct (both Disallow entries present). As noted in iter15, the preview origin's robots.txt is augmented by Cloudflare — that is infra, not a code bug.",
+    "useEffect cleanup correctly restores document.title (consistent with Legal.jsx / LaunchChecklist.jsx pattern)."
+  ],
+  "updated_files": [],
+  "success_rate": {
+    "backend": "100% (21/21 pytest passing in 2.78s)",
+    "frontend": "100% on selector / structure / navigation / regression assertions; 1 data-completeness gap (group_exhibitions = 23 vs documented 24) — flagged to main agent, not a UI bug"
+  },
+  "test_credentials": "n/a — no auth in this app",
+  "seed_data_creation": "None new this iteration; pytest run creates TEST_ prefixed inquiries/newsletter rows as before.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 16: /migration-review fully verified. The only finding is a 1-entry shortfall in CV_RECORDS.group_exhibitions (23 actual vs 24 documented). All other counts (6/9/6/17/18/11) and CV sub-counts (5/5/-/4/2/4/7/1) are exact. Page is intentionally long with 11 sections — use scroll_into_view_if_needed before clicking footer continue links. Mobile mapping table has overflow-x-auto so the table scrolls horizontally inside its container while the page itself does not. robots.txt file on disk is correct; the preview-domain HTTP response may be augmented by Cloudflare.",
+  "rca of the issue": "Group exhibitions array in /app/frontend/src/data/migration.js (lines 304-328) contains exactly 23 objects. The review request expected 24. The CV section header on the page shows '· N items' where N is derived live from the array length, so the page will display '23' (not '24') and the cvTotal sum will be 51 (not 52). Reproduction: open /migration-review, scroll to migration-cv-group-exhibitions, count <li>. Mitigation: main agent should re-check the Wix CV crawl for a missed entry and append it to group_exhibitions, OR update the documented expected count to 23 if 23 is in fact correct."
+}
