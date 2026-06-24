@@ -229,6 +229,16 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 - ✅ Backend: no schema changes; POST /api/inquiries already accepts the artwork payload
 - ✅ Tested across iterations 13 & 14: backend 21/21 pytest + frontend full suite (18 sections + lightbox 4-way close + 6 CTAs scroll + consent gate + 11-route regression + mobile 390px + bug-fix retest) — 100% pass
 
+### Final site-wide polish + launch-readiness — 2026-06-24
+- ✅ Global 4-column footer: Studio / Explore (10 NAV_ITEMS) / Professional Inquiries (5 pathways linking to /contact) / Follow & Contact (4 TBC placeholders) + legal bottom bar with 5 links + spec-compliant copyright text
+- ✅ 5 legal placeholder pages at `/legal/{privacy,terms,copyright,cookies,accessibility}` via shared `Legal.jsx` (each page: H1, 3–4 placeholder sections, related-legal cross-links, return-home/contact CTAs, all marked "Final wording to be reviewed before launch")
+- ✅ Admin `/launch-checklist` page with 5 sections (Domain & Technical, Content, SEO, Design, Commercial) and 43 reviewable items; `noindex, nofollow` meta + robots.txt Disallow
+- ✅ Rewritten cinematic 404 NotFound page per spec: H1 "Page Not Found", 3 CTAs (Return Home / Explore Archive / Contact), backward-compat `project-not-found` testid alias preserved for iteration_12 invariant
+- ✅ Homepage title + meta description set in code (`Home.jsx`) AND in `public/index.html` so first-paint SEO is correct before React hydrates
+- ✅ `public/robots.txt` with site-root, /launch-checklist disallow, and Sitemap reference
+- ✅ `public/sitemap.xml` listing all 14 public URLs with appropriate changefreq + priority
+- ✅ Tested: backend 21/21 pytest + frontend FULL site-wide regression (4 footer cols × every page, 24 footer testids, 5 legal pages × {title/H1/sections/placeholder phrase}, launch-checklist 5/43, 404 + project-not-found backward-compat, footer navigation flows, 12-route regression with zero console errors, mobile 390px no overflow on /, /launch-checklist, /legal/privacy) — 100% pass
+
 ## Backlog (prioritised)
 
 ### P0 — content readiness (artist must supply)
