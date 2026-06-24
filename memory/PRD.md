@@ -295,3 +295,16 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 - FastAPI + Motor + MongoDB
 - React 19, React Router 7, Tailwind 3.4, shadcn/ui, sonner, axios, lucide-react
 - Hosted preview: https://still-moving-1.preview.emergentagent.com
+
+### Final SEO + Google ranking strategy — 2026-06-24
+- ✅ Central SEO helpers added at `lib/seo.js`: `applyPageSeo`, `setCanonical`, `setJsonLd`, `setRobots`, plus schema builders (`websiteSchema`, `personSchema`, `breadcrumbSchema`, `creativeWorkSchema`, `visualArtworkSchema`, `articleSchema`, `contactPageSchema`) and image-alt helpers (`defaultAlt`, `projectAlt`, `artworkAlt`, `bookCoverAlt`, `videoStillAlt`)
+- ✅ Page-level SEO map + redirect map + cluster + launch checklist consolidated in `data/seo.js` (17-row SEO_MAP, 10-row REDIRECT_MAP, 8-route NOINDEX_ROUTES, 6 SEO_CLUSTERS, 9-item content calendar, 15-item launch checklist, image SEO rules)
+- ✅ Canonical host fixed to apex `https://kobiisrael.life` (no www) baked into every public page's `<link rel=canonical>` + `og:url`, plus `og:site_name`, `twitter:card` defaults
+- ✅ Per-page JSON-LD attached via `setJsonLd(id, data)` — Home has WebSite+Person+Breadcrumb (3 blocks), CollectionPage on Still/Moving/Prints/Books/Archive, Blog on Journal, Person+ProfilePage on CV, ContactPage on Contact, CreativeWork on /projects/:slug, VisualArtwork on /prints/:slug, Article on /journal/:slug — all with BreadcrumbList
+- ✅ Legal placeholder pages (`/legal/privacy|terms|copyright|cookies|accessibility`) now ship `robots=noindex,nofollow` until artist-approved
+- ✅ Sitemap expanded from 14 → 35 URLs covering all 12 project slugs + 8 featured journal entries + legal placeholders
+- ✅ robots.txt adds `Disallow: /seo-review` alongside the existing `/launch-checklist` + `/migration-review` rules
+- ✅ Admin SEO Review dashboard at `/seo-review` (noindex,nofollow) with searchable SEO map, per-page metadata detail, content clusters, redirect table, noindex routes list, image SEO rules, content calendar, and launch checklist
+- ✅ Canonical SEO strategy document at `/app/seo_strategy.md` — covers all 30 sections of the spec (positioning, intent map, URL structure, titles/meta rules, headings, internal linking, image SEO, structured data plan, entity SEO, content clusters, Wix→kobiisrael.life redirects, Search Console placeholders, quality review, dashboard, launch checklist)
+- ✅ `public/index.html` updated with first-paint canonical + OG/Twitter tags for the homepage
+- ✅ Tested: backend 21/21 pytest + frontend testing_agent iteration_19 → 100% pass (all 13 features verified: canonical+title+robots+JSON-LD across 10 main pages, 3 detail templates with correct schema types, 5 legal pages noindex, 3 admin pages noindex, sitemap + robots.txt content, mobile 390px no overflow, zero console errors, inquiry + newsletter forms still 201)
