@@ -181,9 +181,32 @@ def test_create_inquiry_books_types(client):
         assert data["consent"] is True
 
 
+def test_create_inquiry_cv_new_types(client):
+    """CV page introduced 6 new InquiryType literals."""
+    for itype in ["gallery", "curator", "museum", "publisher", "film_programmer", "academic"]:
+        payload = {
+            "name": f"TEST_cv_{itype}",
+            "email": f"test_cv_{itype}_{uuid.uuid4().hex[:6]}@example.com",
+            "inquiry_type": itype,
+            "subject": "CV inquiry",
+            "message": f"CV inquiry of type {itype}.",
+            "country": "United Kingdom",
+            "consent": True,
+        }
+        r = client.post(f"{API}/inquiries", json=payload)
+        assert r.status_code == 201, f"{itype} failed: {r.text}"
+        data = r.json()
+        assert data["inquiry_type"] == itype
+        assert data["consent"] is True
+
+
 def test_create_inquiry_all_valid_types(client):
-    """All 8 InquiryType literals are accepted (regression + books additions)."""
-    for itype in ["general", "collector", "gallery_curator", "press", "institutional", "purchase", "signed_copy", "research"]:
+    """All 14 InquiryType literals are accepted (regression + books + CV additions)."""
+    for itype in [
+        "general", "collector", "gallery_curator", "press", "institutional",
+        "purchase", "signed_copy", "research",
+        "gallery", "curator", "museum", "publisher", "film_programmer", "academic",
+    ]:
         payload = {
             "name": f"TEST_{itype}",
             "email": f"test_{itype}_{uuid.uuid4().hex[:6]}@example.com",

@@ -225,3 +225,58 @@ export const BOOKS = {
 	relatedHeading: 'books-related-heading',
 	relatedLink: (slug) => `books-related-${slug}`,
 };
+
+export const CV = {
+	page: 'cv-page',
+	// Hero
+	heroTitle: 'cv-hero-title',
+	heroSubtitle: 'cv-hero-subtitle',
+	heroIntro: 'cv-hero-intro',
+	heroCtaRead: 'cv-hero-cta-read',
+	heroCtaDownload: 'cv-hero-cta-download',
+	// Biography
+	bioHeading: 'cv-bio-heading',
+	// Positioning
+	positioningHeading: 'cv-positioning-heading',
+	positioningCard: (slug) => `cv-positioning-${slug}`,
+	// Exhibitions
+	exhibitionsHeading: 'cv-exhibitions-heading',
+	exhibitionsSolo: 'cv-exhibitions-solo',
+	exhibitionsGroup: 'cv-exhibitions-group',
+	// Collections
+	collectionsHeading: 'cv-collections-heading',
+	collectionsBlock: (slug) => `cv-collections-${slug}`,
+	// Awards
+	awardsHeading: 'cv-awards-heading',
+	// Publications
+	pubsHeading: 'cv-pubs-heading',
+	pubsBlock: (slug) => `cv-pubs-${slug}`,
+	// Books
+	booksHeading: 'cv-books-heading',
+	bookEntry: (slug) => `cv-book-${slug}`,
+	bookCta: (slug) => `cv-book-cta-${slug}`,
+	// Timeline
+	timelineHeading: 'cv-timeline-heading',
+	timelineEntry: (slug) => `cv-timeline-${slug}`,
+	timelineCta: (slug) => `cv-timeline-cta-${slug}`,
+	// Materials
+	materialsHeading: 'cv-materials-heading',
+	materialCard: (slug) => `cv-material-${slug}`,
+	materialCta: (slug) => `cv-material-cta-${slug}`,
+	// Inquiries
+	inquiriesHeading: 'cv-inquiries-heading',
+	pathwayCard: (slug) => `cv-pathway-${slug}`,
+	pathwayCta: (slug) => `cv-pathway-cta-${slug}`,
+	// Contact form
+	contactHeading: 'cv-contact-heading',
+	contactForm: 'cv-contact-form',
+	contactName: 'cv-contact-name',
+	contactEmail: 'cv-contact-email',
+	contactOrg: 'cv-contact-org',
+	contactCountry: 'cv-contact-country',
+	contactType: 'cv-contact-type',
+	contactMessage: 'cv-contact-message',
+	contactConsent: 'cv-contact-consent',
+	contactSubmit: 'cv-contact-submit',
+	contactSuccess: 'cv-contact-success',
+};

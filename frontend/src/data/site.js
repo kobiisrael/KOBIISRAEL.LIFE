@@ -1035,3 +1035,217 @@ export const BOOK_INQUIRY_TYPE_OPTIONS = [
   { value: "institutional", label: "Institutional" },
   { value: "general", label: "Other" },
 ];
+
+// ============================================================
+// CV / BIOGRAPHY / EXHIBITIONS / COLLECTIONS
+// ============================================================
+
+export const CV_HERO = {
+  image:
+    "https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&q=85&w=1600",
+  alt:
+    "Studio / archive image placeholder for the CV page. Final portrait or archive image to be selected by artist.",
+};
+
+export const CV_BIOGRAPHY =
+  "Kobi Israel / Yaqov Israel Grossi is a photographer, filmmaker and visual artist whose work explores masculinity, desire, memory, exile, identity and the autobiographical archive through still and moving images.";
+
+export const CV_POSITIONING = [
+  {
+    slug: "photography",
+    title: "Photography",
+    note: "Still-image projects exploring masculinity, desire, body, place, autobiography and memory.",
+  },
+  {
+    slug: "moving-image",
+    title: "Moving Image",
+    note: "Film fragments, video works and visual diaries extending the photographic archive into time, voice and motion.",
+  },
+  {
+    slug: "archive",
+    title: "Archive",
+    note: "Books, prints, texts, exhibitions and project records forming a connected body of work.",
+  },
+];
+
+// Solo + Group exhibition lists — placeholders only
+const CV_PLACEHOLDER_EXHIBITION = {
+  year: "Year to be confirmed by artist",
+  title: "Exhibition title to be confirmed by artist",
+  venue: "Venue to be confirmed",
+  city: "City to be confirmed",
+  country: "Country to be confirmed",
+  curator: "Curator to be confirmed",
+  project: "Project to be confirmed",
+};
+
+export const CV_EXHIBITIONS_SOLO = Array.from({ length: 4 }).map((_, i) => ({
+  slug: `solo-${i + 1}`,
+  ...CV_PLACEHOLDER_EXHIBITION,
+}));
+
+export const CV_EXHIBITIONS_GROUP = Array.from({ length: 4 }).map((_, i) => ({
+  slug: `group-${i + 1}`,
+  ...CV_PLACEHOLDER_EXHIBITION,
+}));
+
+const CV_PLACEHOLDER_COLLECTION = {
+  name: "Collection name to be confirmed by artist",
+  city: "City to be confirmed",
+  country: "Country to be confirmed",
+  work: "Work / series to be confirmed",
+  acquired: "Acquisition date to be confirmed",
+  notes: "Notes to be confirmed",
+};
+
+export const CV_COLLECTIONS = [
+  {
+    slug: "public",
+    heading: "Public Collections",
+    entries: Array.from({ length: 3 }).map((_, i) => ({ slug: `public-${i + 1}`, ...CV_PLACEHOLDER_COLLECTION })),
+  },
+  {
+    slug: "private",
+    heading: "Private Collections",
+    entries: Array.from({ length: 3 }).map((_, i) => ({ slug: `private-${i + 1}`, ...CV_PLACEHOLDER_COLLECTION })),
+  },
+  {
+    slug: "institutional",
+    heading: "Institutional Holdings",
+    entries: Array.from({ length: 3 }).map((_, i) => ({ slug: `institutional-${i + 1}`, ...CV_PLACEHOLDER_COLLECTION })),
+  },
+  {
+    slug: "archive-library",
+    heading: "Archive / Library Holdings",
+    entries: Array.from({ length: 3 }).map((_, i) => ({ slug: `archive-library-${i + 1}`, ...CV_PLACEHOLDER_COLLECTION })),
+  },
+];
+
+export const CV_AWARDS = Array.from({ length: 4 }).map((_, i) => ({
+  slug: `award-${i + 1}`,
+  year: "Year to be confirmed",
+  name: "Award name to be confirmed by artist",
+  body: "Awarding body to be confirmed",
+  category: "Category to be confirmed",
+  project: "Related project to be confirmed",
+  notes: "Notes to be confirmed",
+}));
+
+export const CV_PUBLICATIONS_PRESS = [
+  { slug: "books", heading: "Books" },
+  { slug: "catalogues", heading: "Catalogues" },
+  { slug: "press", heading: "Press" },
+  { slug: "interviews", heading: "Interviews" },
+  { slug: "essays", heading: "Essays" },
+  { slug: "anthologies", heading: "Anthologies" },
+  { slug: "academic-references", heading: "Academic References" },
+].map((s) => ({
+  ...s,
+  entries: Array.from({ length: 3 }).map((_, i) => ({
+    slug: `${s.slug}-${i + 1}`,
+    year: "Year to be confirmed",
+    title: "Title to be confirmed by artist",
+    publication: "Publication to be confirmed",
+    publisher: "Publisher to be confirmed",
+    author: "Author / interviewer to be confirmed",
+    type: s.heading,
+    related: "Related project to be confirmed",
+  })),
+}));
+
+export const CV_BOOKS_SHORT = [
+  {
+    slug: "cuba-love-story",
+    title: "Cuba, Love Story",
+    year: "Year to be confirmed",
+    publisher: "Publisher to be confirmed",
+    isbn: "ISBN to be confirmed",
+    format: "Hardcover — details to be confirmed",
+    availability: "Availability to be confirmed",
+  },
+  {
+    slug: "fragments-of-life",
+    title: "Fragments of Life",
+    year: "Year to be confirmed",
+    publisher: "Publisher to be confirmed",
+    isbn: "ISBN to be confirmed",
+    format: "Format to be confirmed",
+    availability: "Availability to be confirmed",
+  },
+  {
+    slug: "river-of-three-crossings",
+    title: "River of Three Crossings",
+    year: "Year to be confirmed",
+    publisher: "Publisher to be confirmed",
+    isbn: "ISBN to be confirmed",
+    format: "Format to be confirmed",
+    availability: "Availability to be confirmed",
+  },
+  {
+    slug: "intimate-strangers",
+    title: "Intimate Strangers",
+    year: "Year to be confirmed",
+    publisher: "Publisher to be confirmed",
+    isbn: "ISBN to be confirmed",
+    format: "Format to be confirmed",
+    availability: "Availability to be confirmed",
+  },
+];
+
+export const CV_TIMELINE = [
+  { slug: "cuba-love-story", title: "Cuba, Love Story", year_range: "Years to be confirmed", medium: "Photography and moving image", location: "Cuba", note: "Long-form investigation of masculinity, militarism and desire." },
+  { slug: "river-of-three-crossings", title: "River of Three Crossings", year_range: "Years to be confirmed", medium: "Photography", location: "Location to be confirmed", note: "Crossings between landscape, biography and remembered self." },
+  { slug: "fragments-of-life", title: "Fragments of Life", year_range: "Years to be confirmed", medium: "Photography and archive", location: "Location to be confirmed", note: "Diaristic series of daily life, intimacy and ordinary light." },
+  { slug: "intimate-strangers", title: "Intimate Strangers", year_range: "Years to be confirmed", medium: "Portrait photography", location: "Location to be confirmed", note: "Brief encounters: men met, watched, photographed." },
+  { slug: "views", title: "Views", year_range: "Years to be confirmed", medium: "Photography", location: "Location to be confirmed", note: "Windows, thresholds and the interior weather of looking out." },
+  { slug: "parisian-postcards", title: "Parisian Postcards", year_range: "Years to be confirmed", medium: "Photography", location: "Paris", note: "Letters in image form from a city of strangers." },
+  { slug: "investigating-things-past", title: "Investigating Things Past", year_range: "Years to be confirmed", medium: "Photography and archive", location: "Location to be confirmed", note: "Autobiographical archive of childhood, exile and recollection." },
+  { slug: "a-chaos-of-appearances", title: "A Chaos of Appearances", year_range: "Years to be confirmed", medium: "Video art / experimental", location: "Multiple", note: "Unstable theatre of remembered appearance set in motion." },
+  { slug: "moving-image-works", title: "Moving Image Works", year_range: "Ongoing", medium: "Film, video, visual diaries", location: "Multiple", note: "Films, video diaries and moving-image excerpts." },
+  { slug: "music-sound-works", title: "Music / Sound Works", year_range: "Years to be confirmed", medium: "Sound, voice, music", location: "Studio", note: "Sound and music explorations alongside the moving-image archive." },
+  { slug: "current-archive-projects", title: "Current Archive Projects", year_range: "Ongoing", medium: "Mixed", location: "Studio archive", note: "Working archive in development." },
+];
+
+export const CV_DOWNLOADS = [
+  { slug: "cv-pdf", title: "Full CV PDF", description: "Complete artist CV — file to be supplied by artist.", file_type: "PDF · to be supplied" },
+  { slug: "bio-pdf", title: "Artist Biography PDF", description: "Long biography for press and curator use — file to be supplied.", file_type: "PDF · to be supplied" },
+  { slug: "press-kit", title: "Press Kit", description: "Press kit including biography, statement and images — to be supplied.", file_type: "ZIP / PDF · to be supplied" },
+  { slug: "selected-works", title: "Selected Works PDF", description: "Curated portfolio of selected works.", file_type: "PDF · to be supplied" },
+  { slug: "prints-pdf", title: "Limited Edition Prints PDF", description: "Print availability sheet — file to be supplied.", file_type: "PDF · to be supplied" },
+  { slug: "books-pdf", title: "Books and Publications PDF", description: "Books and publications summary.", file_type: "PDF · to be supplied" },
+  { slug: "moving-pdf", title: "Film / Moving Image PDF", description: "Moving image works catalogue.", file_type: "PDF · to be supplied" },
+  { slug: "highres-request", title: "High-Resolution Image Request", description: "Request high-resolution images for editorial or institutional use.", file_type: "Inquiry form" },
+];
+
+export const CV_INQUIRY_PATHWAYS = [
+  {
+    slug: "curator",
+    title: "Curator / Museum Inquiry",
+    note: "For exhibitions, archive research, screenings, acquisitions and institutional projects.",
+    type: "curator",
+  },
+  {
+    slug: "press",
+    title: "Press / Publication Inquiry",
+    note: "For interviews, image requests, articles, book features and media use.",
+    type: "press",
+  },
+  {
+    slug: "collector",
+    title: "Collector / Gallery Inquiry",
+    note: "For print availability, gallery collaboration, sales and representation discussions.",
+    type: "collector",
+  },
+];
+
+export const CV_CONTACT_TYPE_OPTIONS = [
+  { value: "collector", label: "Collector" },
+  { value: "gallery", label: "Gallery" },
+  { value: "curator", label: "Curator" },
+  { value: "museum", label: "Museum" },
+  { value: "press", label: "Press" },
+  { value: "publisher", label: "Publisher" },
+  { value: "film_programmer", label: "Film programmer" },
+  { value: "academic", label: "Academic / Researcher" },
+  { value: "general", label: "General" },
+];

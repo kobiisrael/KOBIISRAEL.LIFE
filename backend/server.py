@@ -48,6 +48,12 @@ InquiryType = Literal[
     "purchase",
     "signed_copy",
     "research",
+    "gallery",
+    "curator",
+    "museum",
+    "publisher",
+    "film_programmer",
+    "academic",
 ]
 
 
