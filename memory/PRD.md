@@ -110,6 +110,22 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 - ✅ Per-page SEO: title `Limited Edition Prints | Kobi Israel`, keyword-rich meta description
 - ✅ Tested: backend 12/12 pytest + frontend 81/81 Playwright assertions (form prefill from card, institutional flip, consent guard, regression across all earlier pages) — 100% pass
 
+### Books, Catalogues and Publications page (`/books`) — 2026-06-24
+- ✅ Cinematic hero (title "Books", subtitle, intro, View Publications + Book Inquiries CTAs)
+- ✅ Editorial intro "Books as Portable Archives"
+- ✅ Publications index: 10 publication cards (Cuba Love Story, Fragments of Life, River of Three Crossings, Intimate Strangers, A Chaos of Appearances, Artist Catalogues, Exhibition Catalogues, PDF Archive, Upcoming Publications, Selected Essays and Texts) — full metadata grid; View link conditionally routes to /projects/{slug} when a related project exists, otherwise a muted "Details to be confirmed" label
+- ✅ Featured book block (Cuba, Love Story): cover placeholder + spreads strip + 8-field metadata grid + 3 CTAs (View Related Project, Request Book Availability, Collector Inquiry)
+- ✅ Purchase and Availability section: 10 blocks + Request Book Availability CTA
+- ✅ PDF Archive (7 cards): Artist Statement PDF, Selected Essays, Exhibition Catalogues, Project Notes, Press PDFs, Book Samples, Archive Texts; each Request Access CTA prefills the form with type="research" + the PDF title
+- ✅ Texts, Essays and Notes (10 cards): Memory, Masculinity, Desire, Exile, Photography, Moving Images, Autobiography, Travel, Queer Codes, Archive Notes — each Read Text CTA links to /journal
+- ✅ Publication History (9 groups): all marked "To be confirmed by artist"
+- ✅ Book Inquiry form: name, email, country, book of interest, interest type (7 options: Purchase, Signed copy, Collector inquiry, Research, Press, Institutional, Other), message, consent. Submit blocked without consent. Posts to `/api/inquiries`
+- ✅ Related Archive: 7 cross-archive links (Still, Moving, Projects, Limited Edition Prints, Archive, CV, Contact)
+- ✅ Reusable `PublicationDetail.jsx` template covering every field in spec (title, subtitle, year, publisher, designer, editor, author, photographer, contributors, format, dimensions, page count, binding, ISBN, language, edition, signed copy, price, stock status, cover, spread gallery, description, artist note, related photography/moving/prints, press quotes, exhibition history, purchase link, PDF link, inquiry button) — exported for future use; not yet routed
+- ✅ Backend extended: `InquiryType` literal adds `purchase`, `signed_copy`, `research` (all 8 valid values now)
+- ✅ Per-page SEO: title `Books and Publications | Kobi Israel`, keyword-rich meta description
+- ✅ Tested: backend 13/13 pytest + frontend 85/85 Playwright (full content, form prefill from card / featured / purchase / PDF, consent guard, regressions across all pages, mobile 390px) — 100% pass
+
 ## Backlog (prioritised)
 
 ### P0 — content readiness (artist must supply)
