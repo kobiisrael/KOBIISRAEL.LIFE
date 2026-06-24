@@ -1,0 +1,31 @@
+{
+  "summary": "Iteration 18 RETEST of iter17's three project-detail / hero fixes — ALL THREE PASS end-to-end. Backend pytest 21/21 PASS in 2.83s. Bug 1 (MEDIUM threading) ✓ — /projects/parisian-postcards hero meta row renders 'Medium · Three-channel video installation, 18 min' (Year 2010, Location Paris also present); /projects/investigating-things-past renders 'Medium · Still & moving images installation' (Year contains '2023', Location contains 'Archive'/'1982'/'1987'). Project Metadata block on /projects/cuba-love-story now reads 'Medium · Photography (and related film)' instead of TBC. Bug 2 (intro precedence flipped) ✓ — /projects/cuba-love-story Project Summary now contains the Wix-verbatim phrase 'The confusing and bewildering paradox of the masculine and militarist blended with the homoerotic in Cuba' and the old enrichment 'A long-term photographic and moving-image investigation' is ABSENT; /projects/parisian-postcards contains both 'An autobiographical investigation' and 'still and moving image fractured' with old enrichment 'Letters in image form from a city of strangers' ABSENT; /projects/investigating-things-past contains 'Seven 110mm negatives' + 'forgotten envelope' with old enrichment ABSENT. Bug 3 (hero subtitle singular) ✓ — / [data-testid='hero-subtitle'] reads EXACTLY 'Photography, moving image and autobiographical archives of masculinity, desire, exile and memory.' (singular 'moving image' confirmed, no 'moving images' plural). Regression: 9 routes /, /still, /moving, /prints, /books, /archive, /cv, /journal, /contact all load with ZERO console errors. Selected Works grid renders 7 unique project cards (7 distinct works-card-cta-* testids on homepage). No new bugs introduced.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_backend.py",
+    "/app/test_reports/pytest/iter18_results.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "/app/frontend/src/lib/projects.js getProject() still explicitly enumerates fields rather than spreading base — consider `return { ...base, slug, ...overrides }` so future STILL_PROJECTS schema additions (e.g. number_of_works, related_books, related_prints, archive_status, availability_status, last_updated) automatically flow into ProjectDetailTemplate. Currently those template fields still resolve to TBC because they don't exist on STILL_PROJECTS yet — fine for now, but the contract is fragile.",
+    "ENRICHMENT precedence in /app/frontend/src/lib/projects.js is now inverted (base.description wins). For slugs that have ONLY enrichment intro_statement (e.g. river-of-three-crossings, fragments-of-life, intimate-strangers, views, military-masculinity-archive, soho-urban-encounters, portraits-and-bodies, landscapes-and-exile, personal-archive, a-chaos-of-appearances, etc.) base.description from STILL_PROJECTS now silently overrides the enrichment paragraph — confirm this is intentional for ALL 12 STILL_PROJECTS, not just the three retested. Spot-checked: river-of-three-crossings will now show 'A travelogue around the mythic, nomadic nature of landscape...' (Wix) instead of 'Three crossings between landscape, biography and the porous edges of a remembered self.' (enrichment). Likely desired, but worth a per-slug review.",
+    "Hero.jsx still hardcodes the subtitle copy rather than reading HERO_COPY_OPTIONS.option_2.positioning from /app/frontend/src/data/site.js — single source of truth would be cleaner so future option swaps don't require a JSX edit.",
+    "/app/frontend/src/data/site.js is 1750 lines — consider splitting into /data/site/{home,still,moving,prints,books,cv,archive,contact}.js under the 700-line guideline."
+  ],
+  "updated_files": [],
+  "success_rate": {
+    "backend": "100% (21/21 pytest passing in 2.83s)",
+    "frontend": "100% on all 8 retest assertions (Bug1 PP medium/year/location, Bug1 ITP medium/year/location, Bug2 Cuba Wix verbatim + old absent, Bug2 PP new + old absent, Bug3 hero subtitle singular, Cuba Metadata Medium row). 9 regression routes zero console errors. 7-card homepage grid intact."
+  },
+  "test_credentials": "n/a — no auth in this app",
+  "seed_data_creation": "None new; pytest run creates TEST_ prefixed inquiries/newsletter rows as before.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iter 17 NONE-priority issues (project-detail content threading + hero plural) are RESOLVED in iter 18. getProject() in /app/frontend/src/lib/projects.js now threads medium/format/status/description onto the template object and flips intro_statement precedence to favor base.description (STILL_PROJECTS Wix verbatim) over enrichment.intro_statement. Hero.jsx subtitle is now 'moving image' (singular). All three fixes verified end-to-end. Backend 21/21 stable. If next iteration touches Hero copy, consider refactoring Hero.jsx to read HERO_COPY_OPTIONS from /app/frontend/src/data/site.js rather than hardcoding (this is a code-quality note, not a bug).",
+  "rca of the issue": "Not applicable — iter 18 is a successful retest. All three iter17 root causes mitigated: (1) getProject() now threads `medium: still?.medium || moving?.format || null`, `format: moving?.format || null`, `status: base.status || null`, `description: base.description || base.synopsis || null` onto the returned template object so ProjectDetail.jsx reads real values instead of undefined; (2) intro_statement priority inverted from `enrichment.intro_statement || base.description || base.synopsis` to `base.description || base.synopsis || enrichment.intro_statement` so Wix-verbatim text wins; (3) Hero.jsx subtitle string literal changed 'moving images' → 'moving image' to align with HERO_COPY_OPTIONS.option_2."
+}

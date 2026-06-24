@@ -133,8 +133,15 @@ export function getProject(slug) {
     title: base.title,
     subtitle: enrichment.subtitle || (still?.medium ?? moving?.format ?? null),
     year_range: base.year_range,
-    location: still?.location || "Location to be confirmed",
-    intro_statement: enrichment.intro_statement || base.description || base.synopsis,
+    location: still?.location || moving?.location || "Location to be confirmed",
+    // Artist's own existing language (from STILL_PROJECTS/MOVING_WORKS, sourced from
+    // the verbatim Wix text) wins over the enrichment placeholder.
+    intro_statement: base.description || base.synopsis || enrichment.intro_statement,
+    // Thread structured metadata fields onto the template
+    medium: still?.medium || moving?.format || null,
+    format: moving?.format || null,
+    status: base.status || null,
+    description: base.description || base.synopsis || null,
     hero_image: enrichment.hero_image || null,
     hero_alt: enrichment.hero_alt || null,
     hasStill: !!still,
@@ -142,7 +149,7 @@ export function getProject(slug) {
     still,
     moving,
     // Reusable placeholders
-    gallery_images: enrichment.gallery_images || null, // null → template renders 6 placeholder blocks
+    gallery_images: enrichment.gallery_images || null,
     selected_works: enrichment.selected_works || null,
     book: enrichment.book || null,
     exhibition_history: enrichment.exhibition_history || null,

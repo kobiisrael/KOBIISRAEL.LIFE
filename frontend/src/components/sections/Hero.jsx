@@ -32,7 +32,7 @@ export default function Hero() {
             className="mt-6 font-serif italic text-xl sm:text-2xl text-ki-beige/90 animate-fade-up"
             style={{ animationDelay: "0.3s" }}
           >
-            Photography, moving images and autobiographical archives of masculinity, desire, exile and memory.
+            Photography, moving image and autobiographical archives of masculinity, desire, exile and memory.
           </p>
           <div
             className="mt-10 flex flex-col sm:flex-row gap-4 sm:gap-5 animate-fade-up"
