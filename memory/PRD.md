@@ -126,6 +126,22 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 - ✅ Per-page SEO: title `Books and Publications | Kobi Israel`, keyword-rich meta description
 - ✅ Tested: backend 13/13 pytest + frontend 85/85 Playwright (full content, form prefill from card / featured / purchase / PDF, consent guard, regressions across all pages, mobile 390px) — 100% pass
 
+### CV / Biography / Exhibitions / Collections page (`/cv`) — 2026-06-24
+- ✅ Cinematic hero (title "CV", Read Biography + Download CV CTAs — Download fires placeholder toast, no real file)
+- ✅ Biography + Artist Positioning (3 cards: Photography, Moving Image, Archive)
+- ✅ Selected Exhibitions — Solo + Group (4 placeholder entries each)
+- ✅ Collections — 4 subsections (Public, Private, Institutional, Archive/Library) × 3 entries
+- ✅ Awards and Recognition — 4 entries
+- ✅ Publications and Press — 7 subsections (Books, Catalogues, Press, Interviews, Essays, Anthologies, Academic References) × 3 entries
+- ✅ Books and Artist Publications — 4-book list linking to /books
+- ✅ Selected Project Timeline — 11 entries with vertical timeline; links to /projects/{slug}
+- ✅ Professional Materials — 8 download placeholders (toast-only; High-Res Request routes to contact form with type="press")
+- ✅ Professional Inquiries — 3 pathway cards (Curator/Museum, Press/Publication, Collector/Gallery) — each pre-sets contact form inquiry_type
+- ✅ Contact form — name, email, organisation, country, 9-option inquiry type (collector / gallery / curator / museum / press / publisher / film_programmer / academic / general), message, required consent
+- ✅ Backend extended: `InquiryType` literal now has 14 values (added gallery, curator, museum, publisher, film_programmer, academic); zero regression
+- ✅ Per-page SEO: title `CV and Biography | Kobi Israel`
+- ✅ Tested: backend 14/14 pytest + frontend 95/96 Playwright — all blocking assertions pass
+
 ## Backlog (prioritised)
 
 ### P0 — content readiness (artist must supply)
