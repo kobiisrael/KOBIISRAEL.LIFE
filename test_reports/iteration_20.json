@@ -1,0 +1,25 @@
+{
+  "summary": "Frontend-only verification of the new /conversion-review admin dashboard stage. All requested checks pass: dashboard renders with correct data-testid, title and noindex,nofollow meta; all 18 sections + 5 required tables render with the exact expected row counts (journey=8, CTA=29, friction=10, analytics=15, routing=10); 7 audience pathway cards and 8 audience cards render; journey search filter works (\"collector\" -> 1 row, only matching row visible); /robots.txt is served and contains 'Disallow: /conversion-review' alongside the other admin routes. Smoke regression on the 10 main public pages and the 3 other admin pages all 200 OK with no JS console errors, no horizontal overflow at 390px, canonical URLs preserved, JSON-LD blocks intact, admin pages still noindex,nofollow. POST /api/inquiries with consent:true returned 201 — no regression on the core conversion flow.",
+  "backend_issues": {
+    "critical": [],
+    "minor": []
+  },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Pre-existing (not a regression in this stage): POST /api/inquiries accepts consent=false and returns 201. If consent must be enforced server-side, add Pydantic validator. Currently consent is only enforced by the frontend form. Not introduced by this stage — flagging for awareness only."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "100% (POST /api/inquiries 201)", "frontend": "100%"},
+  "test_credentials": "n/a",
+  "seed_data_creation": "Two TEST_ inquiries posted to /api/inquiries (TEST Conv / TEST NoConsent) — safe to leave or clean up.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Conversion-review stage is fully verified. The page lives at /conversion-review, uses Layout (shares nav/footer with /seo-review, /launch-checklist, /migration-review) by design. Row counts to assert against: journey=8, CTA=29, friction=10, analytics=15, routing=10, sections=18, pathways=7, audiences=8. Robots.txt now lists 4 admin routes disallowed. No public-page content was changed in this stage so SEO regression results from iter_19 still hold.",
+  "rca of the issue": "n/a — no issues found"
+}

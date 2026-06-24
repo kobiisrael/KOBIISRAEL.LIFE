@@ -19,6 +19,7 @@ import Legal from "@/pages/Legal";
 import LaunchChecklist from "@/pages/LaunchChecklist";
 import MigrationReview from "@/pages/MigrationReview";
 import SEOReview from "@/pages/SEOReview";
+import ConversionReview from "@/pages/ConversionReview";
 import NotFound from "@/pages/NotFound";
 import Placeholder from "@/pages/Placeholder";
 
@@ -67,6 +68,7 @@ function App() {
             <Route path="/launch-checklist" element={<LaunchChecklist />} />
             <Route path="/migration-review" element={<MigrationReview />} />
             <Route path="/seo-review" element={<SEOReview />} />
+            <Route path="/conversion-review" element={<ConversionReview />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
