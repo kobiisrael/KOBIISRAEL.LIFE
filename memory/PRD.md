@@ -174,6 +174,20 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 - ✅ Per-page SEO: title `Journal and Archive Notes | Kobi Israel`, keyword-rich meta description, full H1/H2 semantic hierarchy
 - ✅ Tested: backend 18/18 pytest + frontend 58/58 Playwright (22 journal + 15 entry + 10 archive + 9 regression + 2 mobile) — 100% pass; zero console errors across all 9 primary routes
 
+### Contact / Inquiries / Professional Pathways page (`/contact`) — 2026-06-24
+- ✅ Cinematic hero (title "Contact", subtitle, intro, Send Inquiry + Request Print Availability CTAs — Print CTA prefills inquiry_type='collector')
+- ✅ Editorial intro "Professional Inquiries" with side image placeholder
+- ✅ Pathway cards — 9 pathways (Collector, Gallery, Curator/Museum, Press/Publication, Film/Screening, Book, Archive/Research, Licensing, General); each Start Inquiry button sets the form select and scrolls
+- ✅ Main contact form: name, email, phone (optional), organisation (optional), country, 12-option inquiry type (collector, gallery, curator, museum, press, publisher, film_programmer, book_inquiry, research, licensing, academic, general), project_interest (optional), conditional budget_range (only for collector/gallery), conditional deadline (only for press/publisher/film_programmer), message, required consent. Submit blocked without consent.
+- ✅ Section pathways with field-list grids: Collector emphasis section, Curator/Museum (10 fields), Press/Publishing (9 fields), Film/Screening (10 fields), Books/Archive (8 fields); each section CTA prefills the correct InquiryType
+- ✅ Contact Details — 4 placeholder cards (Email, Studio/archive location, Social links, Newsletter) all "To be confirmed by artist"; no private address, phone or social shown
+- ✅ Before You Write — professional guidance section
+- ✅ Privacy section with placeholder text + "Privacy Policy · to be supplied" link (preventDefault stub)
+- ✅ Explore Before Contacting — 8 related archive links
+- ✅ Backend extended: `InquiryType` literal adds `book_inquiry` (17 values total); `InquiryCreate`/`Inquiry` add optional `organisation` (max 200) and `deadline` (max 100) fields
+- ✅ Per-page SEO: title `Contact | Kobi Israel`, keyword-rich meta description, full H1/H2 semantic hierarchy
+- ✅ Tested: backend 21/21 pytest + frontend 72/72 Playwright (57 contact-page + 15 regression/mobile/navbar) — 100% pass; navbar /contact active state verified; zero console errors across all 10 routes
+
 ## Backlog (prioritised)
 
 ### P0 — content readiness (artist must supply)
@@ -187,7 +201,8 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 - Real contact email and social handles
 
 ### P1 — inner pages
-- `/contact` — dedicated multi-form contact (currently routes to homepage form)
+- All ten core navigation pages now built (Home, Still, Moving, Projects/:slug, Prints, Books, Archive, CV, Journal, Contact)
+- Next: Individual Book Detail Pages (`/books/:slug`) using the existing `PublicationDetail` template
 
 ### P1 — backend hardening
 - Admin auth for `GET /api/inquiries` and `GET /api/newsletter`
