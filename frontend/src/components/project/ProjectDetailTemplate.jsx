@@ -26,10 +26,13 @@ export default function ProjectDetailTemplate({ project = {} }) {
   const listField = (arr) => (Array.isArray(arr) && arr.length > 0 ? arr : [TBC]);
 
   return (
-    <article className="pt-40 pb-32">
+    <article className="pt-40 pb-32" data-testid="project-detail">
       <header className="container-ki max-w-4xl">
         <div className="overline">Project</div>
-        <h1 className="mt-6 font-serif text-5xl sm:text-6xl lg:text-7xl tracking-tight text-ki-fg">
+        <h1
+          data-testid="project-title"
+          className="mt-6 font-serif text-5xl sm:text-6xl lg:text-7xl tracking-tight text-ki-fg"
+        >
           {field(project.title)}
         </h1>
         {project.subtitle ? (
@@ -39,6 +42,26 @@ export default function ProjectDetailTemplate({ project = {} }) {
             Subtitle to be confirmed by artist
           </p>
         )}
+        {(project.hasStill || project.hasMoving) && (
+          <div className="mt-7 flex flex-wrap gap-3" data-testid="project-status-badges">
+            {project.hasStill && (
+              <span
+                data-testid="project-badge-still"
+                className="text-[10px] uppercase tracking-[0.28em] border border-ki-gold/60 text-ki-gold/90 px-3 py-1.5"
+              >
+                Still · Photography
+              </span>
+            )}
+            {project.hasMoving && (
+              <span
+                data-testid="project-badge-moving"
+                className="text-[10px] uppercase tracking-[0.28em] border border-[#8B1C1C]/60 text-[#d97a7a] px-3 py-1.5"
+              >
+                Moving · Film / Video
+              </span>
+            )}
+          </div>
+        )}
         <div className="mt-8 flex flex-wrap gap-x-10 gap-y-3 text-[11px] uppercase tracking-[0.24em] text-ki-muted">
           <span>Year · {field(project.year_range)}</span>
           <span>Location · {field(project.location)}</span>
@@ -47,6 +70,24 @@ export default function ProjectDetailTemplate({ project = {} }) {
           {field(project.intro_statement)}
         </p>
       </header>
+
+      {project.hero_image && (
+        <section className="container-ki mt-16">
+          <div className="relative aspect-[21/9] w-full overflow-hidden bg-ki-elevated border border-ki-border grain">
+            <img
+              src={project.hero_image}
+              alt={project.hero_alt || `${field(project.title)} — hero placeholder`}
+              loading="lazy"
+              decoding="async"
+              className="absolute inset-0 w-full h-full object-cover opacity-85"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-ki-bg/40 to-transparent" />
+            <div className="absolute top-5 left-5 text-[10px] uppercase tracking-[0.3em] text-ki-fg/75">
+              Hero · Placeholder
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Gallery */}
       <section className="container-ki mt-20">
@@ -95,25 +136,27 @@ export default function ProjectDetailTemplate({ project = {} }) {
         )}
       </section>
 
-      {/* Moving image connection */}
-      <section className="container-ki mt-24">
-        <div className="overline">Moving Image Connection</div>
-        <div className="mt-6 relative aspect-video w-full bg-ki-elevated border border-ki-border overflow-hidden">
-          <div className="absolute inset-0 flex items-center justify-center text-center px-6">
-            <div>
-              <div className="text-[10px] uppercase tracking-[0.3em] text-ki-muted/70">
-                Moving Image · Placeholder
-              </div>
-              <div className="mt-3 font-serif text-lg text-ki-fg/55">
-                {field(project.moving_image?.caption)}
-              </div>
-              <div className="mt-3 text-[10px] uppercase tracking-[0.28em] text-ki-muted/60">
-                Embed / poster to be supplied
+      {/* Moving image connection — small stub shown only when no rich VideoWorkDetail will follow */}
+      {!project.hasMoving && (
+        <section className="container-ki mt-24" data-testid="project-moving-stub">
+          <div className="overline">Moving Image Connection</div>
+          <div className="mt-6 relative aspect-video w-full bg-ki-elevated border border-ki-border overflow-hidden">
+            <div className="absolute inset-0 flex items-center justify-center text-center px-6">
+              <div>
+                <div className="text-[10px] uppercase tracking-[0.3em] text-ki-muted/70">
+                  Moving Image · Placeholder
+                </div>
+                <div className="mt-3 font-serif text-lg text-ki-fg/55">
+                  {field(project.moving_image?.caption)}
+                </div>
+                <div className="mt-3 text-[10px] uppercase tracking-[0.28em] text-ki-muted/60">
+                  Connection to be confirmed by artist
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Book connection */}
       <section className="container-ki mt-24">

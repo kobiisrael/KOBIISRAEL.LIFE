@@ -1,0 +1,25 @@
+{
+  "summary": "Frontend Playwright verification of /projects/:slug detail wiring + 404 + catch-all on KOBIISRAEL.COM. 100% pass: 19/19 project slugs render correctly via ProjectDetailTemplate with the right status badges and conditional VideoWorkDetail vs moving-image-connection stub. Both 404 paths (unknown slug + arbitrary catch-all) render data-testid=project-not-found with title 'Not found | Kobi Israel'. Internal navigation from /still and /moving CTAs lands on correct detail pages. Regression confirms /still (12 cards, military filter -> 2), /moving (12 cards), and homepage still load. Mobile (390px) on /projects/cuba-love-story shows legible H1, hero image scales within viewport, and badges container does not overflow document width.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": ["/app/test_reports/iteration_4.json"],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "ProjectDetail.jsx correctly conditions VideoWorkDetail on project.hasMoving and ProjectDetailTemplate correctly conditions the moving-image-connection stub on !project.hasMoving — verified mutually exclusive across all 19 slugs (no slug rendered both detail+stub, no slug rendered neither).",
+    "404 routing is solid: NotFound component reused for both unknown /projects/:slug and unmatched catch-all path '*' in App.js; both correctly set document.title='Not found | Kobi Israel' and render data-testid=project-not-found.",
+    "Title race condition concern from iteration_2 is fully resolved on detail pages — ProjectDetail.jsx useEffect correctly sets title in '<Project> | Kobi Israel' format on direct load; GlobalMeta in App.js only sets title for path='/', so no override happens.",
+    "Cuba hero placeholder image renders with the 'Hero · Placeholder' label overlay as expected. Other slugs without enrichment hero_image correctly skip the hero section (graceful fallback)."
+  ],
+  "updated_files": [],
+  "success_rate": {"backend": "n/a (frontend-only review)", "frontend": "100% (19/19 project detail pages, 2/2 404 paths, 2/2 nav regressions, 1/1 mobile layout)"},
+  "test_credentials": "n/a",
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "All 19 project detail pages verified: 5 both-still+moving (cuba-love-story, intimate-strangers, fragments-of-life, river-of-three-crossings, investigating-things-past), 7 still-only (views, parisian-postcards, military-masculinity-archive, portraits-and-bodies, landscapes-and-exile, personal-archive, soho-urban-encounters), 7 moving-only (a-chaos-of-appearances, still-and-moving-diaries, personal-archive-films, music-sound-works, experimental-film-fragments, travelogue-works, future-film-projects). Test selectors used: data-testid={project-detail, project-title, project-badge-still, project-badge-moving, project-moving-detail, project-moving-stub, project-not-found}. The catch-all 404 route is wired inside Layout so the site header still wraps the NotFound page.",
+  "rca of the issue": "n/a — no functional bugs found. Every assertion across project content, 404 fallback, internal navigation, regression, and mobile layout passed on first run."
+}

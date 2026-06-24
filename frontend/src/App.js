@@ -7,6 +7,7 @@ import Home from "@/pages/Home";
 import Still from "@/pages/Still";
 import Moving from "@/pages/Moving";
 import ProjectDetail from "@/pages/ProjectDetail";
+import NotFound from "@/pages/NotFound";
 import Placeholder from "@/pages/Placeholder";
 
 function GlobalMeta() {
@@ -48,6 +49,7 @@ function App() {
             <Route path="/cv" element={<Placeholder title="CV" intro="Artist CV — to be confirmed by artist." />} />
             <Route path="/journal" element={<Placeholder title="Journal" intro="Journal — page in preparation." />} />
             <Route path="/contact" element={<Placeholder title="Contact" intro="Use the form on the homepage to send an inquiry." />} />
+            <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
       </BrowserRouter>
