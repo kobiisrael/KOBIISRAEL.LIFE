@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "@/App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { Toaster } from "@/components/ui/sonner";
 import Layout from "@/components/layout/Layout";
 import Home from "@/pages/Home";
@@ -8,24 +8,32 @@ import Still from "@/pages/Still";
 import ProjectDetail from "@/pages/ProjectDetail";
 import Placeholder from "@/pages/Placeholder";
 
-function App() {
+function GlobalMeta() {
+  const location = useLocation();
   useEffect(() => {
-    document.title =
-      "Kobi Israel | Photography, Moving Image, Artist Archive and Limited Edition Prints";
-    const description =
-      "Official website of Kobi Israel, photographer and filmmaker. Still and moving image projects exploring masculinity, desire, exile, memory and identity. Limited edition prints, books, archive and artist CV.";
-    let meta = document.querySelector('meta[name="description"]');
-    if (!meta) {
-      meta = document.createElement("meta");
-      meta.setAttribute("name", "description");
-      document.head.appendChild(meta);
+    // Only set the homepage meta; other pages own their own title via useEffect.
+    if (location.pathname === "/") {
+      document.title =
+        "Kobi Israel | Photography, Moving Image, Artist Archive and Limited Edition Prints";
+      const description =
+        "Official website of Kobi Israel, photographer and filmmaker. Still and moving image projects exploring masculinity, desire, exile, memory and identity. Limited edition prints, books, archive and artist CV.";
+      let meta = document.querySelector('meta[name="description"]');
+      if (!meta) {
+        meta = document.createElement("meta");
+        meta.setAttribute("name", "description");
+        document.head.appendChild(meta);
+      }
+      meta.setAttribute("content", description);
     }
-    meta.setAttribute("content", description);
-  }, []);
+  }, [location.pathname]);
+  return null;
+}
 
+function App() {
   return (
     <div className="App">
       <BrowserRouter>
+        <GlobalMeta />
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />

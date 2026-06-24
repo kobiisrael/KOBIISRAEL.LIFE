@@ -53,7 +53,21 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 - ✅ Newsletter signup ("The Archive Notes") → POST /api/newsletter (idempotent)
 - ✅ SEO: page title + meta description, semantic h1/h2/h3, alt text placeholders
 - ✅ Placeholder inner pages for all nav routes
-- ✅ Tested end-to-end (backend 7/7, frontend 52/53 — sole fail is a test-script artifact)
+- ✅ Tested end-to-end (backend 7/7, frontend 52/53)
+
+### Still / Photography page (`/still`) — 2026-06-24
+- ✅ Cinematic hero (title "Still", subtitle, intro, view-projects + collector CTAs)
+- ✅ Curatorial intro "Still Images as Memory Objects"
+- ✅ Project index: 12 cards (7 original + Military/Masculinity Archive, Soho/Urban Encounters, Portraits and Bodies, Landscapes and Exile, Personal Archive); each card has image placeholder, status badge, year, location, medium, description, Enter Project CTA
+- ✅ Filters bar with 11 tabs (All, Autobiography, Masculinity, Queer/Homoerotic Codes, Travel Diaries, Portraits, Landscape, Urban Memory, Military, Books, Available Prints); horizontal scroll on mobile; empty state included
+- ✅ Featured project block: Cuba, Love Story — three CTAs (View Project, Request Print Availability, View Related Book)
+- ✅ Collector pathway section with 12-field metadata grid
+- ✅ Archive Notes section with 10 cards (Memory, Desire, Masculinity, Exile, Travel, Military, Bodies, Cities, Landscape, The Self as Witness)
+- ✅ Reusable `ArtworkDetail` component covering all metadata fields (title, series, year, location, medium, dimensions, edition size/number, print type, signature, COA, availability, price, publication/exhibition/collection history, artwork note, image alt, inquiry button)
+- ✅ Reusable `ProjectDetailTemplate` component covering: title, subtitle, year range, location, intro statement, gallery, selected works (via ArtworkDetail), moving-image connection, book connection, print availability, exhibition/publication history, press quotes, collector inquiry + back-to-Still
+- ✅ Wired `/projects/:slug` to the template with data from STILL_PROJECTS
+- ✅ Per-page SEO: title `Still Photography | Kobi Israel`, keyword-rich description; project pages set title to `{Project Title} | Kobi Israel`
+- ✅ Fixed title race condition between App.js and page-level useEffects (App.js now only sets the homepage title)
 
 ## Backlog (prioritised)
 
