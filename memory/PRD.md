@@ -188,6 +188,26 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 - ✅ Per-page SEO: title `Contact | Kobi Israel`, keyword-rich meta description, full H1/H2 semantic hierarchy
 - ✅ Tested: backend 21/21 pytest + frontend 72/72 Playwright (57 contact-page + 15 regression/mobile/navbar) — 100% pass; navbar /contact active state verified; zero console errors across all 10 routes
 
+### Project Detail Page Template upgrade (`/projects/:slug`) — 2026-06-24
+- ✅ Full editorial monograph chapter: 13 spec sections in one reusable template (all existing testIDs preserved)
+- ✅ Hero with project title, subtitle, year_range, location, medium, status badges (Still / Moving), 3 CTAs (View Image Sequence, Request Print Availability, Related Moving Image — last only when hasMoving)
+- ✅ Project Summary section with side image placeholder
+- ✅ Curatorial Note section
+- ✅ Image Sequence with lightbox: 8 thumbnails, click-to-open, prev/next buttons, keyboard ArrowLeft/ArrowRight/Escape, body-scroll lock, backdrop-close, Request Details CTA that closes lightbox and hashes to #project-inquiry
+- ✅ Selected Works (unchanged — uses ArtworkDetail)
+- ✅ Moving Image Connection stub (only when hasMoving=false; rich VideoWorkDetail otherwise from ProjectDetail.jsx)
+- ✅ Books and Publications connection card (cover placeholder + 6-field metadata + View Book + Book Inquiry CTAs)
+- ✅ Limited Edition Prints metadata block (8 fields all placeholder) + Request Print Availability CTA
+- ✅ Archive Notes — 8 motif cards (Memory, Place, Body, Witness, Desire, Exile, Time, Encounter)
+- ✅ Exhibition + Publication History (preserved from previous template)
+- ✅ Press Quotes (preserved; stable content-derived keys retained)
+- ✅ Project Metadata block — 16 structured fields (title/subtitle/year/location/medium/format/number_of_works/related_*/archive_status/availability_status/last_updated etc.) all using TBC fallback
+- ✅ Related Projects section — 6 cards (Still, Moving, Books, Prints, Archive, Journal)
+- ✅ Project Inquiry form — name, email, organisation (opt), country, 11-option inquiry type, **project (auto-filled with project title, readonly)**, artwork (opt), message, required consent. Submit blocked without consent. Success element + form reset on success. Submitted flag clears when user resumes typing (UX polish from testing agent feedback).
+- ✅ Backend: no schema changes needed; POST /api/inquiries already accepts the payload
+- ✅ ProjectDetail.jsx wrapper updated to pass through slug + extended metadata fields
+- ✅ Tested: backend 21/21 pytest + frontend full suite (14 new sections × 2 representative projects + lightbox keyboard/backdrop/request flow + consent gate + 10-route regression + mobile 390px) — 100% pass; zero console errors
+
 ## Backlog (prioritised)
 
 ### P0 — content readiness (artist must supply)

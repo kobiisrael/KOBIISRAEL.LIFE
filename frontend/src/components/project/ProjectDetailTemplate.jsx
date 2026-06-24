@@ -226,8 +226,10 @@ function ProjectInquiryForm({ projectTitle, projectSlug }) {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const up = (k) => (e) =>
+  const up = (k) => (e) => {
+    if (submitted) setSubmitted(false);
     setF((s) => ({ ...s, [k]: e.target.type === "checkbox" ? e.target.checked : e.target.value }));
+  };
 
   const submit = async (e) => {
     e.preventDefault();
