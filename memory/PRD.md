@@ -84,6 +84,17 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 - ✅ Per-page SEO: title `Moving Image | Kobi Israel`, keyword-rich description
 - ✅ Tested: 113/113 frontend assertions ✅
 
+### Individual project detail pages (`/projects/:slug`) — 2026-06-24
+- ✅ All 19 unique project slugs from STILL_PROJECTS + MOVING_WORKS render a working detail page (5 still+moving, 7 still-only, 7 moving-only)
+- ✅ `lib/projects.js` — `getProject(slug)` merges the two registries with per-slug `ENRICHMENT` placeholder map (subtitles, intro statements, optional hero images)
+- ✅ Status badges: `project-badge-still` and/or `project-badge-moving` shown depending on which registries the slug appears in
+- ✅ Hero image strip rendered when enrichment provides `hero_image` (e.g. Cuba Love Story)
+- ✅ `ProjectDetailTemplate` (existing) renders: hero, gallery placeholders, selected works via `ArtworkDetail`, conditional moving-image-connection stub, book connection, print availability CTA, exhibition + publication history, press quotes, collector inquiry + back-to-Still CTAs
+- ✅ When `hasMoving === true` → full `VideoWorkDetail` block appended after the template (no autoplay) and the small moving-image stub inside the template is suppressed (mutually exclusive — verified across all 19 slugs)
+- ✅ `NotFound` component at `pages/NotFound.jsx` (`data-testid=project-not-found`) used for both unknown `/projects/:slug` and the catch-all `path="*"` route
+- ✅ Per-page SEO: `{Project Title} | Kobi Israel`, description seeded from intro statement
+- ✅ Tested: 19/19 project pages + 2/2 404 paths + 2/2 nav regressions + mobile layout — 100% pass
+
 ## Backlog (prioritised)
 
 ### P0 — content readiness (artist must supply)
