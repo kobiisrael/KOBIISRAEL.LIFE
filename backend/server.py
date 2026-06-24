@@ -54,6 +54,8 @@ InquiryType = Literal[
     "publisher",
     "film_programmer",
     "academic",
+    "curatorial",
+    "licensing",
 ]
 
 

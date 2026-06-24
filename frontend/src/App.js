@@ -9,6 +9,7 @@ import Moving from "@/pages/Moving";
 import Prints from "@/pages/Prints";
 import Books from "@/pages/Books";
 import CVPage from "@/pages/CV";
+import Archive from "@/pages/Archive";
 import ProjectDetail from "@/pages/ProjectDetail";
 import NotFound from "@/pages/NotFound";
 import Placeholder from "@/pages/Placeholder";
@@ -48,7 +49,7 @@ function App() {
             <Route path="/projects/:slug" element={<ProjectDetail />} />
             <Route path="/prints" element={<Prints />} />
             <Route path="/books" element={<Books />} />
-            <Route path="/archive" element={<Placeholder title="Archive" intro="Working archive — page in preparation." />} />
+            <Route path="/archive" element={<Archive />} />
             <Route path="/cv" element={<CVPage />} />
             <Route path="/journal" element={<Placeholder title="Journal" intro="Journal — page in preparation." />} />
             <Route path="/contact" element={<Placeholder title="Contact" intro="Use the form on the homepage to send an inquiry." />} />

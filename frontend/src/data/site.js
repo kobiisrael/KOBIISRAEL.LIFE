@@ -1249,3 +1249,153 @@ export const CV_CONTACT_TYPE_OPTIONS = [
   { value: "academic", label: "Academic / Researcher" },
   { value: "general", label: "General" },
 ];
+
+// ============================================================
+// ARCHIVE / PROJECT INDEX / RESEARCH LIBRARY
+// ============================================================
+
+export const ARCHIVE_HERO = {
+  image: "https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?auto=format&fit=crop&q=85&w=1920",
+  alt: "Archive hero placeholder — contact sheet / archive material. Final archive image to be selected by artist.",
+};
+
+export const ARCHIVE_CATEGORIES = [
+  { slug: "photography", title: "Photography Projects", note: "Still-image projects across the archive.", count: "To be confirmed", to: "/still" },
+  { slug: "moving-image", title: "Moving Image Works", note: "Films, video works and visual diaries.", count: "To be confirmed", to: "/moving" },
+  { slug: "prints", title: "Limited Edition Prints", note: "Signed editioned works by inquiry.", count: "To be confirmed", to: "/prints" },
+  { slug: "books", title: "Books and Publications", note: "Artist books, catalogues and PDFs.", count: "To be confirmed", to: "/books" },
+  { slug: "texts", title: "Texts and Essays", note: "Writing connected to the work.", count: "To be confirmed", to: "/journal" },
+  { slug: "exhibitions", title: "Exhibitions", note: "Solo and group exhibition record.", count: "To be confirmed", to: "/cv" },
+  { slug: "press", title: "Press and Publications", note: "Selected press, features and interviews.", count: "To be confirmed", to: "/cv" },
+  { slug: "notes", title: "Archive Notes", note: "Poetic, autobiographical and conceptual notes.", count: "To be confirmed", to: "/journal" },
+  { slug: "sound", title: "Sound and Music", note: "Voice, music and soundtrack works.", count: "To be confirmed", to: "/projects/music-sound-works" },
+  { slug: "current", title: "Current Projects", note: "Work in progress and forthcoming.", count: "To be confirmed", to: "/projects/current-archive-projects" },
+  { slug: "mythology", title: "Personal Mythology", note: "Recurring motifs across the work.", count: "To be confirmed", to: "/archive#archive-mythology" },
+  { slug: "research", title: "Research Materials", note: "Bibliography, image licensing, study notes.", count: "To be confirmed", to: "/archive#archive-library" },
+];
+
+export const ARCHIVE_FILTERS = [
+  { slug: "all", label: "All" },
+  { slug: "photography", label: "Photography" },
+  { slug: "moving", label: "Moving Image" },
+  { slug: "books", label: "Books" },
+  { slug: "prints", label: "Prints" },
+  { slug: "texts", label: "Texts" },
+  { slug: "exhibitions", label: "Exhibitions" },
+  { slug: "press", label: "Press" },
+  { slug: "sound", label: "Sound" },
+  { slug: "autobiography", label: "Autobiography" },
+  { slug: "masculinity", label: "Masculinity" },
+  { slug: "desire", label: "Desire" },
+  { slug: "exile", label: "Exile" },
+  { slug: "memory", label: "Memory" },
+  { slug: "travel", label: "Travel" },
+  { slug: "queer", label: "Queer Codes" },
+  { slug: "military", label: "Military" },
+  { slug: "landscape", label: "Landscape" },
+  { slug: "portraits", label: "Portraits" },
+  { slug: "current", label: "Current Work" },
+];
+
+// Build the master project index from the existing registries + a few aggregate entries.
+function _project(slug, title, subtitle, year, medium, location, status, description, kinds = []) {
+  return { slug, title, subtitle, year_range: year, medium, location, status, description, kinds };
+}
+
+export const ARCHIVE_PROJECT_INDEX = [
+  _project("cuba-love-story", "Cuba, Love Story", "Long-form series", "Years to be confirmed", "Photography and moving image", "Cuba", "Published", "Masculinity, militarism and desire.", ["photography", "moving", "books", "prints", "autobiography", "masculinity", "queer", "military", "travel"]),
+  _project("river-of-three-crossings", "River of Three Crossings", "Crossings series", "Years to be confirmed", "Photography", "Location to be confirmed", "Archive", "Landscape, biography and remembered self.", ["photography", "autobiography", "travel", "landscape"]),
+  _project("fragments-of-life", "Fragments of Life", "Diaristic series", "Years to be confirmed", "Photography and archive", "Location to be confirmed", "Archive", "Daily life, intimacy and ordinary light.", ["photography", "autobiography", "portraits"]),
+  _project("intimate-strangers", "Intimate Strangers", "Portrait series", "Years to be confirmed", "Portrait photography", "Location to be confirmed", "Available Prints", "Brief encounters: men met, watched, photographed.", ["photography", "queer", "portraits", "prints"]),
+  _project("views", "Views", "Window typology", "Years to be confirmed", "Photography", "Location to be confirmed", "Archive", "Windows, thresholds, interior weather.", ["photography", "landscape"]),
+  _project("parisian-postcards", "Parisian Postcards", "City letters", "Years to be confirmed", "Photography", "Paris", "To be confirmed", "Letters in image form from a city of strangers.", ["photography", "travel"]),
+  _project("investigating-things-past", "Investigating Things Past", "Autobiographical archive", "Years to be confirmed", "Photography and archive", "Location to be confirmed", "Archive", "Childhood, exile, recollection.", ["photography", "autobiography", "memory", "exile"]),
+  _project("a-chaos-of-appearances", "A Chaos of Appearances", "Video assemblage", "Years to be confirmed", "Video art", "Multiple", "Work in Progress", "Unstable theatre of remembered appearance.", ["moving", "autobiography", "current"]),
+  _project("still-and-moving-diaries", "Still & Moving Diaries", "Ongoing diaries", "Ongoing", "Photography and moving image", "Multiple", "Work in Progress", "Photographs becoming rhythm and time.", ["photography", "moving", "autobiography", "current"]),
+  _project("military-masculinity-archive", "Military / Masculinity Archive", "Working archive", "Years to be confirmed", "Photography and archive", "Location to be confirmed", "Archive", "Uniforms, gestures, trained male bodies.", ["photography", "masculinity", "military", "queer", "autobiography"]),
+  _project("soho-urban-encounters", "Soho / Urban Encounters", "Night cartography", "Years to be confirmed", "Photography", "London — Soho", "To be confirmed", "Queer cartographies of the night city.", ["photography", "queer", "portraits"]),
+  _project("portraits-and-bodies", "Portraits and Bodies", "Portrait series", "Years to be confirmed", "Portrait photography", "Location to be confirmed", "Available Prints", "Bodies — desired, observed, remembered.", ["photography", "portraits", "queer", "prints"]),
+  _project("landscapes-and-exile", "Landscapes and Exile", "Landscape series", "Years to be confirmed", "Photography", "Location to be confirmed", "Archive", "Landscapes carrying biography and exile.", ["photography", "landscape", "exile", "autobiography", "travel"]),
+  _project("personal-archive-films", "Personal Archive Films", "Family + working archive", "Ongoing", "Mixed film and video", "Studio archive", "Archive", "Family footage and working notes.", ["moving", "autobiography", "memory"]),
+  _project("music-sound-works", "Music / Sound Works", "Sound, voice, music", "Years to be confirmed", "Sound and moving image", "Studio", "Work in Progress", "Sound and music alongside moving image.", ["moving", "sound", "current"]),
+  _project("current-archive-projects", "Current Archive Projects", "Studio archive", "Ongoing", "Mixed", "Studio archive", "Work in Progress", "Working archive in development.", ["current", "autobiography", "memory"]),
+];
+
+export const ARCHIVE_PATHWAYS = [
+  { slug: "collectors", title: "For Collectors", note: "Limited edition prints, selected works, provenance and collector inquiry.", to: "/prints" },
+  { slug: "curators", title: "For Curators", note: "CV, exhibitions, moving image, professional materials and institutional inquiry.", to: "/cv" },
+  { slug: "researchers", title: "For Researchers", note: "Archive notes, texts, bibliography and project records.", to: "/journal" },
+  { slug: "viewers", title: "For Viewers", note: "Selected projects, still works, moving images, books and artist statement.", to: "/still" },
+  { slug: "publishers", title: "For Publishers", note: "Books, PDFs, image licensing notes, press kit and contact form.", to: "/books" },
+];
+
+export const ARCHIVE_NOTE_INDEX = [
+  "memory","desire","masculinity","exile","travel","military","bodies","cities","landscape","queer-codes","family","childhood","silence","fragments","self-as-witness",
+].map((slug) => ({
+  slug,
+  title: slug.split("-").map((s) => s[0].toUpperCase() + s.slice(1)).join(" "),
+  category: slug,
+  date: "Date to be confirmed",
+  excerpt: "Short note excerpt to be supplied by artist.",
+}));
+
+export const ARCHIVE_LIBRARY = [
+  { slug: "biography", title: "Artist Biography", description: "Long-form biography for press and curator use.", file_type: "PDF · to be supplied", access: "Access by inquiry" },
+  { slug: "cv", title: "Full CV", description: "Complete artist CV.", file_type: "PDF · to be supplied", access: "Access by inquiry" },
+  { slug: "selected-works", title: "Selected Works PDF", description: "Curated portfolio.", file_type: "PDF · to be supplied", access: "Access by inquiry" },
+  { slug: "press-kit", title: "Press Kit", description: "Press kit (biography, statement, images).", file_type: "ZIP / PDF · to be supplied", access: "Access by inquiry" },
+  { slug: "books-list", title: "Books and Publications List", description: "Books and publications summary.", file_type: "PDF · to be supplied", access: "Access by inquiry" },
+  { slug: "exhibition-history", title: "Exhibition History", description: "Selected solo + group exhibitions.", file_type: "PDF · to be supplied", access: "Access by inquiry" },
+  { slug: "licensing", title: "Image Licensing Notes", description: "Editorial and academic licensing.", file_type: "PDF · to be supplied", access: "Access by inquiry" },
+  { slug: "moving-notes", title: "Film and Moving Image Notes", description: "Technical and curatorial notes for moving-image works.", file_type: "PDF · to be supplied", access: "Access by inquiry" },
+  { slug: "print-info", title: "Limited Edition Print Information", description: "Editions, sizes, papers, signatures.", file_type: "PDF · to be supplied", access: "Access by inquiry" },
+  { slug: "bibliography", title: "Bibliography", description: "Selected references.", file_type: "PDF · to be supplied", access: "Access by inquiry" },
+  { slug: "interview-archive", title: "Interview Archive", description: "Selected interviews.", file_type: "PDF · to be supplied", access: "Access by inquiry" },
+  { slug: "press-archive", title: "Press Archive", description: "Selected press features.", file_type: "PDF · to be supplied", access: "Access by inquiry" },
+];
+
+export const ARCHIVE_TIMELINE_ENTRIES = ARCHIVE_PROJECT_INDEX.slice(0, 12).map((p, i) => ({
+  slug: `tl-${p.slug}`,
+  year_range: p.year_range,
+  title: p.title,
+  medium: p.medium,
+  location: p.location,
+  event_type: i % 4 === 0 ? "project" : i % 4 === 1 ? "exhibition" : i % 4 === 2 ? "publication" : "personal archive",
+  note: p.description,
+  related_slug: p.slug,
+}));
+
+export const ARCHIVE_MYTHOLOGY = [
+  ["masks", "Masks"], ["bodies", "Bodies"], ["soldiers", "Soldiers"], ["rooms", "Rooms"],
+  ["borders", "Borders"], ["lovers", "Lovers"], ["strangers", "Strangers"], ["cities", "Cities"],
+  ["water", "Water"], ["childhood", "Childhood"], ["desire", "Desire"], ["exile", "Exile"],
+  ["memory", "Memory"], ["performance", "Performance"], ["witness", "The Witness"],
+].map(([slug, title]) => ({
+  slug, title,
+  note: "A recurring motif across the photographic and moving-image archive.",
+  related: "Related projects to be confirmed by artist",
+}));
+
+export const ARCHIVE_RELATED_LINKS = [
+  { slug: "still", label: "Still", to: "/still" },
+  { slug: "moving", label: "Moving", to: "/moving" },
+  { slug: "projects", label: "Projects", to: "/projects" },
+  { slug: "prints", label: "Prints", to: "/prints" },
+  { slug: "books", label: "Books", to: "/books" },
+  { slug: "cv", label: "CV", to: "/cv" },
+  { slug: "journal", label: "Journal", to: "/journal" },
+  { slug: "contact", label: "Contact", to: "/contact" },
+];
+
+export const ARCHIVE_INQUIRY_TYPE_OPTIONS = [
+  { value: "curatorial", label: "Curatorial" },
+  { value: "research", label: "Research" },
+  { value: "press", label: "Press" },
+  { value: "publisher", label: "Publication" },
+  { value: "collector", label: "Collector" },
+  { value: "gallery", label: "Gallery" },
+  { value: "museum", label: "Museum" },
+  { value: "licensing", label: "Licensing" },
+  { value: "academic", label: "Academic" },
+  { value: "general", label: "General" },
+];
