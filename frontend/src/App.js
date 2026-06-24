@@ -1,54 +1,46 @@
 import { useEffect } from "react";
 import "@/App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import axios from "axios";
-import { HOME } from "@/constants/testIds";
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
-
-const Home = () => {
-  const helloWorldApi = async () => {
-    try {
-      const response = await axios.get(`${API}/`);
-      console.log(response.data.message);
-    } catch (e) {
-      console.error(e, `errored out requesting / api`);
-    }
-  };
-
-  useEffect(() => {
-    helloWorldApi();
-  }, []);
-
-  return (
-    <div>
-      <header className="App-header">
-        <a
-          data-testid={HOME.emergentLink}
-          className="App-link"
-          href="https://emergent.sh"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img src="https://avatars.githubusercontent.com/in/1201222?s=120&u=2686cf91179bbafbc7a71bfbc43004cf9ae1acea&v=4" />
-        </a>
-        <p className="mt-5">Building something incredible ~!</p>
-      </header>
-    </div>
-  );
-};
+import { Toaster } from "@/components/ui/sonner";
+import Layout from "@/components/layout/Layout";
+import Home from "@/pages/Home";
+import Placeholder from "@/pages/Placeholder";
 
 function App() {
+  useEffect(() => {
+    document.title =
+      "Kobi Israel | Photography, Moving Image, Artist Archive and Limited Edition Prints";
+    const description =
+      "Official website of Kobi Israel, photographer and filmmaker. Still and moving image projects exploring masculinity, desire, exile, memory and identity. Limited edition prints, books, archive and artist CV.";
+    let meta = document.querySelector('meta[name="description"]');
+    if (!meta) {
+      meta = document.createElement("meta");
+      meta.setAttribute("name", "description");
+      document.head.appendChild(meta);
+    }
+    meta.setAttribute("content", description);
+  }, []);
+
   return (
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />}>
-            <Route index element={<Home />} />
+          <Route element={<Layout />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/still" element={<Placeholder title="Still" intro="Still image works — page in preparation." />} />
+            <Route path="/moving" element={<Placeholder title="Moving" intro="Moving-image works — page in preparation." />} />
+            <Route path="/projects" element={<Placeholder title="Projects" intro="Project archive — page in preparation." />} />
+            <Route path="/projects/:slug" element={<Placeholder title="Project" intro="Project page — in preparation." />} />
+            <Route path="/prints" element={<Placeholder title="Prints" intro="Signed limited edition prints — page in preparation." />} />
+            <Route path="/books" element={<Placeholder title="Books" intro="Books and catalogues — page in preparation." />} />
+            <Route path="/archive" element={<Placeholder title="Archive" intro="Working archive — page in preparation." />} />
+            <Route path="/cv" element={<Placeholder title="CV" intro="Artist CV — to be confirmed by artist." />} />
+            <Route path="/journal" element={<Placeholder title="Journal" intro="Journal — page in preparation." />} />
+            <Route path="/contact" element={<Placeholder title="Contact" intro="Use the form on the homepage to send an inquiry." />} />
           </Route>
         </Routes>
       </BrowserRouter>
+      <Toaster richColors theme="dark" position="bottom-right" />
     </div>
   );
 }
