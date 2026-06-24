@@ -132,15 +132,47 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 - ✅ Selected Exhibitions — Solo + Group (4 placeholder entries each)
 - ✅ Collections — 4 subsections (Public, Private, Institutional, Archive/Library) × 3 entries
 - ✅ Awards and Recognition — 4 entries
-- ✅ Publications and Press — 7 subsections (Books, Catalogues, Press, Interviews, Essays, Anthologies, Academic References) × 3 entries
+- ✅ Publications and Press — 7 subsections × 3 entries
 - ✅ Books and Artist Publications — 4-book list linking to /books
 - ✅ Selected Project Timeline — 11 entries with vertical timeline; links to /projects/{slug}
 - ✅ Professional Materials — 8 download placeholders (toast-only; High-Res Request routes to contact form with type="press")
-- ✅ Professional Inquiries — 3 pathway cards (Curator/Museum, Press/Publication, Collector/Gallery) — each pre-sets contact form inquiry_type
-- ✅ Contact form — name, email, organisation, country, 9-option inquiry type (collector / gallery / curator / museum / press / publisher / film_programmer / academic / general), message, required consent
+- ✅ Professional Inquiries — 3 pathway cards (Curator/Museum, Press/Publication, Collector/Gallery)
+- ✅ Contact form — 9-option inquiry type with required consent
 - ✅ Backend extended: `InquiryType` literal now has 14 values (added gallery, curator, museum, publisher, film_programmer, academic); zero regression
 - ✅ Per-page SEO: title `CV and Biography | Kobi Israel`
 - ✅ Tested: backend 14/14 pytest + frontend 95/96 Playwright — all blocking assertions pass
+
+### Archive / Project Index / Research Library page (`/archive`) — 2026-06-24
+- ✅ Cinematic hero (title "Archive", subtitle, intro, Explore Projects + Search the Archive CTAs)
+- ✅ Editorial intro "A Map of the Work"
+- ✅ Archive Categories — 12 category cards (Photography, Moving Image, Prints, Books, Texts, Exhibitions, Press, Notes, Sound, Current, Personal Mythology, Research)
+- ✅ Project Index — 16 cards with search by title/place/theme/medium/year and 20-filter taxonomy; empty-state on no match; each card links to /projects/{slug}
+- ✅ Suggested Pathways — 5 pathway cards (Collectors, Curators, Researchers, Viewers, Publishers) each pre-sets inquiry_type
+- ✅ Archive Notes — 10 poetic note cards
+- ✅ Research Library — 12 file/document cards; each Request CTA prefills the form (type='research', area=card title) and scrolls
+- ✅ Archive Timeline — multi-entry vertical timeline with year_range/medium/location/event_type
+- ✅ Personal Mythology — 10 motif cards
+- ✅ Related Archive — 8 cross-archive links
+- ✅ Archive Inquiry form — name, email, organisation, country, 10-option inquiry type (curatorial, research, press, publisher, collector, gallery, museum, licensing, academic, general), area of interest, message, required consent. Submit blocked without consent.
+- ✅ Backend `InquiryType` literal now also includes 'curatorial' and 'licensing'
+- ✅ Per-page SEO: title `Archive | Kobi Israel`, keyword-rich meta description
+- ✅ Tested: backend 14/14 pytest + frontend 10/10 Playwright (filter, search, library prefill, consent guard, full form submit + success) — 100% pass
+
+### Journal / Archive Notes / Writing page (`/journal`) — 2026-06-24
+- ✅ Cinematic hero (title "Journal", subtitle, intro, Read Archive Notes + Explore Projects CTAs)
+- ✅ Editorial intro "Writing as an Extension of the Image" with side image placeholder
+- ✅ Featured Notes — 8 featured writing entries (A Chaos of Appearances, Still Images as Memory Objects, When the Still Image Begins to Move, Cuba Notes from the Archive, Masculinity as Performance, The Stranger and the Witness, Rooms Bodies and Borders, Memory Does Not Return Whole); each Read Note routes to /journal/{slug}
+- ✅ Categories — 17 writing categories (Memory, Photography, Moving Image, Masculinity, Desire, Exile, Travel, Queer Codes, Military, Bodies, Cities, Childhood, Books, Prints, Sound and Music, Artist Notes, Project Notes)
+- ✅ All Notes index — 15 entries with searchable + filterable index (13 filter tabs); empty-state on no match
+- ✅ Notes by Project — 11 project-linked note cards each routing to /projects/{slug}
+- ✅ Recurring Motifs — 15 motif cards (Masks, Faces, Soldiers, Strangers, Rooms, Borders, Water, Cities, Bodies, Lovers, Silence, Childhood, Exile, Memory, The Witness)
+- ✅ Voice, Film and Time — 6 cards (Voice-over Fragments, Film Notes, Sound Notes, Travelogue Texts, Still-to-Moving Sequences, Unfinished Scripts)
+- ✅ Receive Archive Notes — newsletter form with email + 6 interest options (artist-notes, books, prints, moving-image, exhibitions, all-updates); posts to /api/newsletter with new optional `interest` field
+- ✅ Explore More — 8 related archive links (Still, Moving, Projects, Prints, Books, Archive, CV, Contact)
+- ✅ Individual writing entry page at `/journal/:slug` — reusable template with hero image placeholder, title, subtitle, meta block (date/category/medium/project), body text with pull quote, image insert placeholder, 5 related links (still/moving/book/print/archive note), Back to Journal + Send an Inquiry CTAs. Unknown slugs fall through to NotFound.
+- ✅ Backend extended: `NewsletterCreate` and `NewsletterSubscription` now carry an optional `interest` field; existing newsletter endpoint remains idempotent on email
+- ✅ Per-page SEO: title `Journal and Archive Notes | Kobi Israel`, keyword-rich meta description, full H1/H2 semantic hierarchy
+- ✅ Tested: backend 18/18 pytest + frontend 58/58 Playwright (22 journal + 15 entry + 10 archive + 9 regression + 2 mobile) — 100% pass; zero console errors across all 9 primary routes
 
 ## Backlog (prioritised)
 
@@ -155,14 +187,6 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 - Real contact email and social handles
 
 ### P1 — inner pages
-- `/still` — Still Images gallery + project filters
-- `/moving` — Moving Image works with video embeds + captions/transcripts
-- `/projects/{slug}` — dedicated project pages (image essay layout)
-- `/prints` — collector page with full edition table + inquiry per work
-- `/books` — full books / catalogues / PDFs page with buy links
-- `/archive` — working archive structure
-- `/cv` — full CV with print-friendly version
-- `/journal` — editorial journal / blog (likely needs CMS)
 - `/contact` — dedicated multi-form contact (currently routes to homepage form)
 
 ### P1 — backend hardening
