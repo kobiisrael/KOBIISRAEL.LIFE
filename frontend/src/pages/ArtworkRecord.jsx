@@ -312,7 +312,8 @@ export default function ArtworkRecord() {
 
   if (!artwork) return null;
 
-  const availabilityStatus = field(artwork.archive_status || artwork.availability) || "Availability to be confirmed";
+  const availabilityStatus =
+    artwork.archive_status || artwork.availability || "Availability to be confirmed";
 
   return (
     <article data-testid="artwork-record" className="pt-40 pb-32">

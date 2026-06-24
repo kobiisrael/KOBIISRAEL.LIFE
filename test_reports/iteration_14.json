@@ -1,0 +1,29 @@
+{
+  "summary": "Iteration 14 retest of iteration_13's single MEDIUM bug. VERIFIED FIXED. ArtworkRecord.jsx line 315-316 now reads `const availabilityStatus = artwork.archive_status || artwork.availability || 'Availability to be confirmed';` (field() wrapper removed). UI checks on /prints/sample-artwork-record: [data-testid='artwork-availability'] inner text == 'Availability to be confirmed' (exact match), [data-testid='artwork-archive-status'] inner text == 'Availability to be confirmed' (exact match). Slug-independence on /prints/another-test-slug: both same two testids also read exactly 'Availability to be confirmed'. Smoke regression: backend pytest 21/21 green in 2.65s (no regressions); / and /prints both load with ZERO console errors. No other code changes detected in iteration 14.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_backend.py",
+    "/app/test_reports/pytest/iter14_results.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Iteration 13's MEDIUM bug is fully resolved with the minimal one-line change at ArtworkRecord.jsx:315-316. Fallback literal now wins when both artwork.archive_status and artwork.availability are null.",
+    "ArtworkRecord.jsx remains 873 lines — still exceeds the 700-line guideline. Recommend extracting ArtworkLightbox and ArtworkInquiryForm into /components/artwork/ sub-files for maintainability (non-blocking, unchanged from prior iteration)."
+  ],
+  "updated_files": [],
+  "success_rate": {
+    "backend": "100% (21/21 pytest passing in 2.65s)",
+    "frontend": "100% (4/4 testid text assertions exact match; 0 console errors on /, /prints, and both /prints/:slug routes tested)"
+  },
+  "test_credentials": "n/a — no auth in this app",
+  "seed_data_creation": "None new this iteration; pytest run creates TEST_ prefixed inquiries as before.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 14: bug from iteration_13 fully fixed and verified. ArtworkRecord page empty-state availability text now reads 'Availability to be confirmed' for both [data-testid='artwork-availability'] and [data-testid='artwork-archive-status'], for any slug. Backend 21/21 green. No outstanding issues from this fix. Remaining non-blocking note: ArtworkRecord.jsx file size (873 lines) exceeds 700-line guideline — candidate for future refactor (extract ArtworkLightbox + ArtworkInquiryForm).",
+  "rca of the issue": "Iteration 13 bug RCA: `field(x) || 'fallback'` is unreachable because field() never returns falsy — it returns the TBC string when input is empty. Fix applied: bypass field() entirely so the literal 'Availability to be confirmed' on the right-hand side of the `||` chain wins when both source fields are null/empty. Verified on two distinct slugs with exact string equality."
+}
