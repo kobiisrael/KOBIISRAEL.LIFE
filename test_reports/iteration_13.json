@@ -1,0 +1,42 @@
+{
+  "summary": "Iteration 13 end-to-end testing of the new standalone ArtworkRecord page at /prints/:slug. Backend pytest 21/21 green (2.58s) — no regressions. Manual curl POST /api/inquiries with the artwork-form payload {inquiry_type:'collector', project_interest:'sample-artwork-record', phone, country, preferred_size, budget_range, consent:true} returns 201 and persists every optional field (verified id/created_at/echoed values). Frontend on /prints/sample-artwork-record: HTTP 200, document.title='Sample Artwork Record | Kobi Israel' (no series prefix as required), meta description set (170 chars). All 18 required section testids present: artwork-record, artwork-title (text='Sample Artwork Record'), artwork-series ('Series / project to be confirmed by artist'), artwork-side-panel, artwork-availability, artwork-details-heading, artwork-details-grid (EXACTLY 20 rows), artwork-note-heading, artwork-project-heading, artwork-print-availability-heading, artwork-provenance-heading, artwork-related-works-heading, artwork-related-media-heading, artwork-inquiry-heading, artwork-inquiry-form, artwork-licensing-heading, artwork-archive-status-heading, artwork-archive-status. 4 alternate-view thumbs + 4 related-work cards + 6 related-media cards (moving/book/archive-note/exhibition/text/sound) all present. Lightbox: opens via artwork-image-open, body overflow locked to 'hidden', Escape closes (count→0), close button closes, backdrop click on outer dialog closes (inner image uses stopPropagation as designed). 6 CTAs (artwork-cta-details, -cta-print, -side-cta-inquire, -side-cta-licensing, -print-cta, -licensing-cta) all scroll #artwork-inquiry into viewport. Inquiry form: artwork-inquiry-artwork auto-filled with 'Sample Artwork Record' and readonly attribute present; artwork-inquiry-series auto-filled with 'To be confirmed by artist' and readonly. Submit WITHOUT consent → 0 POSTs to /api/inquiries, no artwork-inquiry-success element. Submit WITH consent → exactly 1 POST and artwork-inquiry-success renders. After successful submit, name/message cleared; artwork/series remain readonly with original values. Regression: /, /still, /moving, /projects/cuba-love-story, /prints, /books, /archive, /cv, /journal, /journal/a-chaos-of-appearances, /contact all HTTP 200 with ZERO console errors. /prints listing still loads (route ordering correct: /prints exact match before /prints/:slug — no artwork-record on /prints). Mobile 390x844 on /prints/sample-artwork-record: 0px horizontal overflow, details grid uses single 276px column, image stacks above side panel.",
+  "backend_issues": {"critical": [], "minor": []},
+  "frontend_issues": {
+    "ui_bugs": [
+      {
+        "component": "ArtworkRecord — availability text",
+        "issue": "Spec states artwork-availability and artwork-archive-status should show 'Availability to be confirmed' when no archive_status/availability is set. Actual rendered text is 'To be confirmed by artist'. Root cause in /app/frontend/src/pages/ArtworkRecord.jsx line 315: `const availabilityStatus = field(artwork.archive_status || artwork.availability) || \"Availability to be confirmed\";` — when both fields are null, field() returns 'To be confirmed by artist' (truthy), so the right-hand fallback 'Availability to be confirmed' is unreachable. Fix: replace with `const availabilityStatus = artwork.archive_status || artwork.availability || \"Availability to be confirmed\";` (do NOT pass through field()).",
+        "selector": "[data-testid='artwork-availability'], [data-testid='artwork-archive-status']",
+        "priority": "MEDIUM"
+      }
+    ],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_backend.py",
+    "/app/test_reports/pytest/pytest_results.xml"
+  ],
+  "action_items": [
+    "Fix the unreachable fallback in ArtworkRecord.jsx so that the empty-state availability/archive-status text reads 'Availability to be confirmed' (per spec) instead of 'To be confirmed by artist'. One-line change at line 315."
+  ],
+  "critical_code_review_comments": [
+    "ArtworkRecord.jsx is 871 lines — exceeds the 700-line guideline. Recommend extracting ArtworkLightbox and ArtworkInquiryForm into /components/artwork/ sub-files for maintainability (no functional impact).",
+    "ArtworkInquiryForm sets `submitted=true` on success; the up() handler does reset submitted to false on first edit after submission, so subsequent submissions work correctly (improvement vs ProjectInquiryForm noted in iteration 12).",
+    "ARTWORK_REGISTRY is intentionally empty per content-accuracy rules — confirmed working. Any slug renders with placeholder data via the field() helper; title derived from slug as 'sample-artwork-record' → 'Sample Artwork Record'.",
+    "Route ordering correct in App.js: <Route path='/prints' ...> is registered before <Route path='/prints/:slug' .../>. React-Router v6 matches exact-on-path automatically so order is not strictly required, but both routes resolve correctly (verified empirically: /prints loads Prints page, /prints/:slug loads ArtworkRecord).",
+    "Lightbox correctly locks body scroll via `document.body.style.overflow='hidden'` and restores it on unmount. Backdrop click handler set on outer dialog with stopPropagation on inner image container — verified working.",
+    "ArtworkInquiryForm submits via lib/api submitInquiry with `subject: \"Artwork inquiry — ${artwork.title}\"` and `project_interest: artwork.series || artwork.title` (i.e. slug-derived title when series is null). For slug 'sample-artwork-record' this sends project_interest='Sample Artwork Record' — diverges from the review_request example payload (which used 'sample-artwork-record'). Both are accepted by backend; flag for content-accuracy review only."
+  ],
+  "updated_files": [],
+  "success_rate": {
+    "backend": "100% (21/21 pytest in 2.58s; manual curl 201 with all 5 optional fields persisted)",
+    "frontend": "95% (18/18 sections, 4+4+6 collections, lightbox 4-way close, 6/6 CTAs scroll, inquiry consent-gate correct, 11/11 regression routes zero console errors, mobile no overflow). One MEDIUM bug: empty-state availability text does not match spec's 'Availability to be confirmed' (shows TBC instead)."
+  },
+  "test_credentials": "n/a — no auth in this app",
+  "seed_data_creation": "Inquiries with TEST_ prefix created via pytest run + 1 manual curl POST for sample-artwork-record slug verification.",
+  "retest_needed": true,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "Iteration 13: ArtworkRecord page at /prints/:slug fully verified. Only deviation is the availability-text fallback issue (line 315 of ArtworkRecord.jsx) — `field()` wraps a possibly-null value and returns 'To be confirmed by artist', so the literal 'Availability to be confirmed' fallback after `||` is never reached. Simple fix described above. Lightbox backdrop click works via outer dialog click (inner image div uses stopPropagation per design). ARTWORK_REGISTRY remains empty by design per content-accuracy rules; getArtworkRecord(slug) derives display title from slug for any slug. Frontend regression smoke: all 11 routes including /prints listing and /projects/cuba-love-story load with zero console errors after the new route was added.",
+  "rca of the issue": "Empty-state availability label bug: The expression `field(artwork.archive_status || artwork.availability) || \"Availability to be confirmed\"` always returns the result of field() because field() never returns a falsy value — it returns the TBC string when input is empty. The spec expects 'Availability to be confirmed' but the page shows 'To be confirmed by artist'. Reproduction: visit /prints/sample-artwork-record and inspect artwork-availability / artwork-archive-status text. Mitigation: replace line 315 with `const availabilityStatus = artwork.archive_status || artwork.availability || \"Availability to be confirmed\";` (bypass field() so the trailing literal can win). No backend or routing changes required."
+}
