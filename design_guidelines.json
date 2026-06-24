@@ -1,0 +1,168 @@
+{
+  "theme": "Dark Cinematic Editorial",
+  "archetype": "Archetype 5 (Luxury)",
+  "design_philosophy": "Sophisticated, cinematic, intimate, and emotionally precise. A world-class artist archive avoiding generic clichés. Heavy reliance on negative space, deep contrasts, and premium editorial typography to elevate the photography and moving-image work.",
+  "colors": {
+    "background": "#0a0a09",
+    "foreground": "#fdfcf9",
+    "muted": {
+      "DEFAULT": "#1a1a19",
+      "foreground": "#a3a19a"
+    },
+    "archival_beige": {
+      "DEFAULT": "#d9d3c7",
+      "foreground": "#2b2a28"
+    },
+    "accent_red": {
+      "DEFAULT": "#8B1C1C",
+      "foreground": "#ffffff"
+    },
+    "accent_gold": {
+      "DEFAULT": "#C19B54",
+      "foreground": "#000000"
+    },
+    "border": "#2a2a29",
+    "card": "#121211"
+  },
+  "typography": {
+    "fonts": {
+      "heading": "Playfair Display, serif",
+      "body": "Manrope, sans-serif"
+    },
+    "scale": {
+      "h1": "text-5xl sm:text-6xl lg:text-7xl font-serif tracking-tight leading-none",
+      "h2": "text-3xl sm:text-4xl lg:text-5xl font-serif tracking-tight leading-tight",
+      "h3": "text-2xl sm:text-3xl font-serif tracking-tight",
+      "h4": "text-lg sm:text-xl font-sans font-medium",
+      "body": "text-base lg:text-lg font-sans leading-relaxed text-[#fdfcf9]/80",
+      "overline": "text-xs font-sans uppercase tracking-[0.2em] text-[#C19B54]",
+      "caption": "text-sm font-sans text-[#a3a19a]"
+    }
+  },
+  "spacing_and_layout": {
+    "container_padding": "px-6 md:px-12 lg:px-24",
+    "section_spacing": "py-24 md:py-32 lg:py-48",
+    "gap_system": "gap-8 md:gap-16",
+    "grid_bento": "grid-cols-1 md:grid-cols-12 gap-8",
+    "border_radius": "rounded-none"
+  },
+  "components": {
+    "buttons": {
+      "primary": "border border-[#C19B54] text-[#C19B54] hover:bg-[#C19B54] hover:text-black transition-colors duration-300 px-8 py-4 uppercase tracking-[0.1em] text-sm",
+      "secondary": "border border-[#8B1C1C] text-[#8B1C1C] hover:bg-[#8B1C1C] hover:text-white transition-colors duration-300 px-8 py-4 uppercase tracking-[0.1em] text-sm",
+      "ghost": "text-[#fdfcf9] hover:text-[#C19B54] transition-colors duration-300 uppercase tracking-[0.1em] text-sm underline-offset-8 hover:underline"
+    },
+    "inputs": {
+      "editorial_form": "w-full bg-transparent border-b border-[#2a2a29] pb-4 pt-2 text-[#fdfcf9] placeholder:text-[#a3a19a] focus:outline-none focus:border-[#C19B54] transition-colors rounded-none text-lg"
+    },
+    "cards": {
+      "project": "group relative flex flex-col gap-4 overflow-hidden bg-transparent",
+      "image_wrapper": "relative aspect-[4/5] w-full overflow-hidden bg-[#1a1a19]",
+      "image_hover": "object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-105 opacity-80 group-hover:opacity-100 mix-blend-luminosity group-hover:mix-blend-normal"
+    },
+    "navigation": {
+      "desktop": "hidden lg:flex items-center gap-8 text-sm uppercase tracking-[0.15em] font-sans text-[#fdfcf9]/70 hover:text-[#fdfcf9] transition-colors",
+      "mobile_drawer": "fixed inset-0 z-50 bg-[#0a0a09]/95 backdrop-blur-xl flex flex-col justify-center px-8 gap-8",
+      "header_behavior": "fixed top-0 w-full z-40 bg-gradient-to-b from-[#0a0a09]/80 to-transparent backdrop-blur-sm border-b border-white/5 py-6"
+    }
+  },
+  "motion": {
+    "fade_up": {
+      "initial": { "opacity": 0, "y": 30 },
+      "animate": { "opacity": 1, "y": 0 },
+      "transition": { "duration": 0.8, "ease": [0.16, 1, 0.3, 1] }
+    },
+    "stagger_children": {
+      "staggerChildren": 0.15
+    },
+    "image_reveal": {
+      "initial": { "scale": 1.1, "opacity": 0 },
+      "animate": { "scale": 1, "opacity": 1 },
+      "transition": { "duration": 1.2, "ease": "easeOut" }
+    }
+  },
+  "media": {
+    "hero": {
+      "url": "https://images.unsplash.com/photo-1540172777610-b15b605dd68d?auto=format&fit=crop&q=85&w=1920",
+      "alt": "Cinematic black and white close-up moody portrait"
+    },
+    "featured_project": {
+      "url": "https://images.unsplash.com/photo-1568322445389-495f4a7d20d4?auto=format&fit=crop&q=85&w=1080",
+      "alt": "Vintage Cuba Architecture Moody"
+    },
+    "prints": {
+      "url": "https://images.unsplash.com/photo-1535954741680-a2e24eb05418?auto=format&fit=crop&q=85&w=800",
+      "alt": "Fine Art Photography Print Book"
+    },
+    "credibility_strip": {
+      "url": "https://images.pexels.com/photos/9221307/pexels-photo-9221307.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "alt": "Art gallery museum interior"
+    },
+    "split_still": {
+      "url": "https://images.unsplash.com/photo-1610303871783-491dc6d0a165?auto=format&fit=crop&q=85&w=800",
+      "alt": "Grayscale photo of trees covered with fog"
+    },
+    "split_moving": {
+      "url": "https://images.unsplash.com/photo-1638638977172-9f7169a77930?auto=format&fit=crop&q=85&w=800",
+      "alt": "Cinematic woman face in the dark"
+    }
+  },
+  "blueprints": {
+    "1_hero": {
+      "layout": "min-h-screen relative flex flex-col justify-end pb-32 pt-48 container_padding",
+      "visuals": "Full bleed absolute image with bg-[#0a0a09]/50 gradient overlay. Content sits above.",
+      "content": "Title 'KOBI ISRAEL' (h1). Subtitle 'Still & Moving Diaries' (h3 italic). Positioning line (body). 2 Buttons: View Selected Works (ghost) / Collector Inquiries (primary gold)."
+    },
+    "2_conceptual_entry": {
+      "layout": "py-32 flex justify-center items-center text-center container_padding",
+      "content": "Narrow max-w-3xl. Title 'A Chaos of Appearances'. Poetic text block in body size, high line-height, text-[#fdfcf9]/90."
+    },
+    "3_selected_works_grid": {
+      "layout": "py-24 container_padding",
+      "grid": "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8",
+      "cards": "7 cards (Cuba Love Story, River of Three Crossings, Fragments of Life, Intimate Strangers, Views, Parisian Postcards, Investigating Things Past). Plain blocks bg-[#1a1a19] for images as placeholders if no explicit image provided. Under image: Title (h4), Year/Medium (caption), Description (body text-sm line-clamp-2), 'Enter Project' ghost button."
+    },
+    "4_split_still_moving": {
+      "layout": "grid grid-cols-1 lg:grid-cols-2 min-h-[80vh]",
+      "content": "Left: Still, Right: Moving. Each side is relative group, large image background with heavy hover scale effect. Overlay text centered: Media Type (h2), description, 'Explore' ghost button."
+    },
+    "5_featured_project": {
+      "layout": "py-32 container_padding grid grid-cols-1 lg:grid-cols-12 gap-16 items-center",
+      "content": "Col-span-7: Large Image (Cuba Love Story). Col-span-5: Context. H2 'Cuba, Love Story', 3 CTAs (View Series, Read Journal, Collector Print)."
+    },
+    "6_prints_collector": {
+      "layout": "py-32 container_padding bg-[#121211] border-t border-b border-[#2a2a29]",
+      "content": "Dark gold accents predominant. 'Limited Edition Prints'. Split layout. Image of print/book (media.prints). Text explaining archival quality, sizing, editions. Button (primary gold)."
+    },
+    "7_books_section": {
+      "layout": "py-24 container_padding",
+      "content": "Grid of available monographs/catalogues. Similar card style to projects but distinct proportion (aspect-square or aspect-[3/4])."
+    },
+    "8_credibility_strip": {
+      "layout": "py-16 border-b border-[#2a2a29] overflow-hidden flex items-center bg-[#0a0a09]",
+      "content": "Museum-style credibility. Slow-moving marquee or flex-wrap text of Exhibitions, Collections, Awards. Typography: overline tracking-[0.2em] text-[#a3a19a]."
+    },
+    "9_artist_statement": {
+      "layout": "py-32 container_padding flex justify-center",
+      "content": "Max-w-4xl. Large stylized quote (h3), followed by concise bio focusing on investigating masculinity, desire, exile. Emphasize emotional precision."
+    },
+    "10_current_projects": {
+      "layout": "py-24 container_padding bg-[#1a1a19]/30",
+      "content": "Bento grid or tight horizontal scroll. Cards: New Work, Moving Image, Music/Sound, Writing, Archive Notes. Minimalist, text-forward cards."
+    },
+    "11_contact_inquiries": {
+      "layout": "py-32 container_padding grid grid-cols-1 lg:grid-cols-2 gap-24",
+      "content": "Left: Inquiry form (Name, Email, Interest Type dropdown - General/Collector/Press, Message). Editorial style inputs. Right: Newsletter signup 'The Archive Notes'. Solid background block with deep red accent borders or text."
+    }
+  },
+  "instructions_to_main_agent": [
+    "Strictly adhere to the dark cinematic theme. Do NOT use default Tailwind blue/gray/indigo.",
+    "Implement Playfair Display for all serif headings via Google Fonts import.",
+    "Implement Manrope for sans-serif body text.",
+    "Ensure generous negative space; use py-24 to py-48 between major sections.",
+    "Hover animations must feel deliberate, slow, and expensive (duration-500 to duration-700).",
+    "Forms must use the 'editorial_form' input class style: no borders except bottom, transparent background.",
+    "Inject the provided image URLs in their respective sections to ensure an instant premium feel. Ensure placeholders (like project cards) use #1a1a19 if no image is available.",
+    "All interactive elements MUST have role-based data-testid attributes."
+  ]
+}
