@@ -15,6 +15,8 @@ import JournalEntry from "@/pages/JournalEntry";
 import Contact from "@/pages/Contact";
 import ProjectDetail from "@/pages/ProjectDetail";
 import ArtworkRecord from "@/pages/ArtworkRecord";
+import Legal from "@/pages/Legal";
+import LaunchChecklist from "@/pages/LaunchChecklist";
 import NotFound from "@/pages/NotFound";
 import Placeholder from "@/pages/Placeholder";
 
@@ -59,6 +61,8 @@ function App() {
             <Route path="/journal" element={<Journal />} />
             <Route path="/journal/:slug" element={<JournalEntry />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/legal/:slug" element={<Legal />} />
+            <Route path="/launch-checklist" element={<LaunchChecklist />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>

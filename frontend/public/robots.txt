@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /launch-checklist
+
+Sitemap: https://kobiisrael.life/sitemap.xml
