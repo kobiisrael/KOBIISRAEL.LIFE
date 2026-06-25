@@ -315,3 +315,11 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 - ✅ Canonical conversion strategy document at `/app/conversion_strategy.md` covering all 24 sections of the brief
 - ✅ `NOINDEX_ROUTES` + SEO_MAP in `data/seo.js` extended to include `/conversion-review`; `public/robots.txt` adds `Disallow: /conversion-review`
 - ✅ Tested: testing_agent iteration_20 → 100% pass (8/8 features: dashboard renders with correct testid + title + noindex meta; 18 sections + 5 data tables with exact row counts; journey search filter works; 7 pathway + 8 audience cards present; robots.txt disallow correct; smoke regression across 10 main pages + 3 admin pages still clean; inquiry POST /api/inquiries → 201)
+
+### Cuba, Love Story photographs — full-site asset swap — 2026-06-25
+- ✅ Artist supplied 5 photographs from Cuba, Love Story (served via `customer-assets.emergentagent.com/job_still-moving-1/artifacts/*.jpg`); registered in `data/cubaImages.js` (CUBA_IMAGES array + CUBA helper) with editorial alt-text matching the SEO image rules
+- ✅ Replaced 20 Unsplash hero/background URLs across `data/site.js` (HERO, STILL_HERO + curatorial, MOVING_HERO + curatorial, PRINTS_HERO + viewing, BOOKS_HERO + editorial, CV_HERO, ARCHIVE_HERO, JOURNAL_HERO + editorial, CONTACT_HERO + intro, FEATURED_PROJECT, FEATURED_STILL, FEATURED_MOVING, SPLIT_MEDIA still + moving) with the 5 Cuba photographs — chosen per-page for tonal fit
+- ✅ Wired the 5 photographs as the Cuba, Love Story project gallery in `lib/projects.js` (`hero_image` + `gallery_images` ordered 01 → 05); ImageSequence now renders 5 thumbnails with caption metadata; lightbox keyboard nav still works
+- ✅ Removed stale "Final hero image to be selected by artist" captions from `StillHero.jsx`, `BooksHero.jsx`, `MovingHero.jsx`, `PrintsHero.jsx` and `Contact.jsx`; removed the "Hero · Placeholder" overline from `ProjectDetailTemplate.jsx`
+- ✅ Resolved the 2 broken Unsplash 404s flagged by the Semrush audit (photos 1499781350541 + 1577083553180) — both replaced by artist photographs
+- ✅ Tested: testing_agent iteration_21 → 100% pass (16/16 features: 9 hero/page asset mappings verified by URL hash, 5 Cuba project thumbnails in correct order, lightbox works, 0 unsplash URLs remain, 0 stale captions, SEO + conversion regression preserved, inquiry form still 201, mobile 390px no overflow)
