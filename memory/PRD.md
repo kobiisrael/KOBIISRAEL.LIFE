@@ -335,3 +335,7 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 - ✅ Wired into `STILL_PROJECTS` (image + alt) → Cuba's Still card + homepage SelectedWorks card now show the photograph
 - ✅ Wired into `lib/projects.js` ENRICHMENT for `fragments-of-life` (`hero_image`, `hero_alt`, `gallery_images`) → project detail `/projects/fragments-of-life` now shows it as both the hero and first thumbnail in the image sequence
 - ✅ Verified live: all 3 surfaces serve `t49ma2n8_1700.jpg`; the other 10 Still projects (still awaiting artist imagery) continue to render the editorial placeholder treatment
+
+### Views — "Views02" cover + hero image — 2026-06-25
+- ✅ Wired `sgvjsipp_Views02.jpg` (two soldiers at dusk) into the Views project: STILL_PROJECTS record (cover + alt) and `lib/projects.js` ENRICHMENT (`hero_image`, `hero_alt`, `gallery_images`)
+- ✅ Verified live: image now serves on `/projects/views` (hero + first thumbnail), `/still` Views card, and homepage "A connected body of work" Views card; remaining 9 unillustrated Still projects still show placeholder

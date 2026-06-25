@@ -150,6 +150,10 @@ export const STILL_PROJECTS = [
     description: "The thin line between homo-erotic and homo-social in army life.",
     tags: ["landscape", "urban", "masculinity", "military", "queer"],
     status: "Archive",
+    image:
+      "https://customer-assets.emergentagent.com/job_still-moving-1/artifacts/sgvjsipp_Views02.jpg",
+    image_alt:
+      "Views — image by Kobi Israel: two young soldiers at dusk in the Israeli landscape. Details to be confirmed.",
   },
   {
     slug: "parisian-postcards",

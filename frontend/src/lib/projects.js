@@ -58,7 +58,19 @@ const ENRICHMENT = {
   views: {
     subtitle: "Photography",
     intro_statement:
-      "A quiet typology of windows, thresholds and the interior weather of looking out.",
+      "The thin line between the homo-erotic and the homo-social in army life — Israel, 1999–2003.",
+    hero_image:
+      "https://customer-assets.emergentagent.com/job_still-moving-1/artifacts/sgvjsipp_Views02.jpg",
+    hero_alt:
+      "Views — image by Kobi Israel: two young soldiers at dusk in the Israeli landscape. Details to be confirmed.",
+    gallery_images: [
+      {
+        url: "https://customer-assets.emergentagent.com/job_still-moving-1/artifacts/sgvjsipp_Views02.jpg",
+        alt:
+          "Views — image by Kobi Israel: two young soldiers at dusk in the Israeli landscape. Details to be confirmed.",
+        caption: "Views · Views02 — title, year and dimensions to be confirmed by artist.",
+      },
+    ],
   },
   "parisian-postcards": {
     subtitle: "Photography",
