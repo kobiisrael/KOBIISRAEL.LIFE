@@ -114,6 +114,10 @@ export const STILL_PROJECTS = [
       "A travelogue around the mythic, nomadic nature of landscape — landscape as a stage on which to cast desire, identity and personal history.",
     tags: ["autobiography", "travel", "landscape"],
     status: "Archive",
+    image:
+      "https://customer-assets.emergentagent.com/job_still-moving-1/artifacts/bjuw8vt4_River-of-three-crossings_Serial_Landscapes7.3.jpg",
+    image_alt:
+      "River of Three Crossings — image by Kobi Israel: abandoned park landscape with classical statue, fairy-tale castle and rusted infrastructure reflected in standing water. Details to be confirmed.",
   },
   {
     slug: "fragments-of-life",

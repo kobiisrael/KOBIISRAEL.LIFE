@@ -343,3 +343,7 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 ### Intimate Strangers — Soho/KABARET cover + hero image — 2026-06-25
 - ✅ Wired `Intimate Strangers_Kobi-Israel.01.jpg` into the Intimate Strangers project: STILL_PROJECTS (cover + alt) and `lib/projects.js` ENRICHMENT (`hero_image`, `hero_alt`, `gallery_images`)
 - ✅ Verified live on all 4 surfaces: `/projects/intimate-strangers` hero + thumbnail, `/still` Intimate Strangers card, homepage Intimate Strangers card; remaining 8 unillustrated Still projects still placeholder
+
+### River of Three Crossings — Serial Landscapes 7.3 cover + hero — 2026-06-25
+- ✅ Wired `River-of-three-crossings_Serial_Landscapes7.3.jpg` (abandoned park with statue, castle and reflections) into STILL_PROJECTS (cover + alt) and `lib/projects.js` ENRICHMENT (`hero_image`, `hero_alt`, `gallery_images`)
+- ✅ Verified live on all 4 surfaces: `/projects/river-of-three-crossings` hero + thumbnail, `/still` card, homepage card; remaining 7 unillustrated Still projects still placeholder

@@ -31,7 +31,20 @@ const ENRICHMENT = {
   "river-of-three-crossings": {
     subtitle: "Photography",
     intro_statement:
-      "Three crossings between landscape, biography and the porous edges of a remembered self.",
+      "A travelogue around the mythic, nomadic nature of landscape — landscape as a stage on which to cast desire, identity and personal history. 2001–2017.",
+    hero_image:
+      "https://customer-assets.emergentagent.com/job_still-moving-1/artifacts/bjuw8vt4_River-of-three-crossings_Serial_Landscapes7.3.jpg",
+    hero_alt:
+      "River of Three Crossings — image by Kobi Israel: abandoned park landscape with classical statue, fairy-tale castle and rusted infrastructure reflected in standing water. Details to be confirmed.",
+    gallery_images: [
+      {
+        url: "https://customer-assets.emergentagent.com/job_still-moving-1/artifacts/bjuw8vt4_River-of-three-crossings_Serial_Landscapes7.3.jpg",
+        alt:
+          "River of Three Crossings — image by Kobi Israel: abandoned park landscape with classical statue, fairy-tale castle and rusted infrastructure reflected in standing water. Details to be confirmed.",
+        caption:
+          "River of Three Crossings · Serial Landscapes 7.3 — title, year and dimensions to be confirmed by artist.",
+      },
+    ],
   },
   "fragments-of-life": {
     subtitle: "Photography — staged images",
