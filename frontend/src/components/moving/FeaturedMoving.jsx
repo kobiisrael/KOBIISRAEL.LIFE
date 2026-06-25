@@ -1,40 +1,41 @@
 import { Link } from "react-router-dom";
-import { Play } from "lucide-react";
 import { FEATURED_MOVING } from "@/data/site";
 import { MOVING } from "@/constants/testIds";
+import YouTubeEmbed from "@/components/video/YouTubeEmbed";
 
 export default function FeaturedMoving() {
   return (
     <section className="py-24 md:py-36 border-b border-ki-border">
       <div className="container-ki grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
         <div className="lg:col-span-7 order-1">
-          <div className="relative aspect-video w-full overflow-hidden bg-ki-elevated border border-ki-border group">
-            <img
-              src={FEATURED_MOVING.image}
-              alt={FEATURED_MOVING.alt}
-              loading="lazy"
-              decoding="async"
-              className="absolute inset-0 w-full h-full object-cover opacity-85"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-ki-bg/55 via-transparent to-ki-bg/20" />
-            <div className="absolute top-5 left-5 text-[10px] uppercase tracking-[0.3em] text-ki-fg/80 flex items-center gap-3">
-              <span className="inline-block w-2 h-2 rounded-full bg-ki-gold" />
-              Featured Moving · Video Still
+          {FEATURED_MOVING.youtube_id ? (
+            <>
+              <YouTubeEmbed
+                videoId={FEATURED_MOVING.youtube_id}
+                title={`${FEATURED_MOVING.title} — by Kobi Israel`}
+                poster={FEATURED_MOVING.image}
+                posterAlt={FEATURED_MOVING.alt}
+              />
+              <p className="mt-3 text-[11px] uppercase tracking-[0.26em] text-ki-muted">
+                Hosted on YouTube · Click to play · No autoplay
+              </p>
+            </>
+          ) : (
+            <div className="relative aspect-video w-full overflow-hidden bg-ki-elevated border border-ki-border">
+              <img
+                src={FEATURED_MOVING.image}
+                alt={FEATURED_MOVING.alt}
+                loading="lazy"
+                decoding="async"
+                className="absolute inset-0 w-full h-full object-cover opacity-85"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-ki-bg/55 via-transparent to-ki-bg/20" />
+              <div className="absolute bottom-5 left-5 right-5 flex justify-between text-[10px] uppercase tracking-[0.28em] text-ki-fg/70">
+                <span>Excerpt · Placeholder</span>
+                <span>No autoplay · No sound</span>
+              </div>
             </div>
-            {/* Static play indicator */}
-            <button
-              type="button"
-              aria-label="Excerpt placeholder — to be supplied by artist"
-              disabled
-              className="absolute inset-0 m-auto w-20 h-20 md:w-24 md:h-24 rounded-full border border-ki-fg/35 bg-ki-bg/30 backdrop-blur-sm flex items-center justify-center transition-colors group-hover:border-ki-gold"
-            >
-              <Play size={22} className="text-ki-fg/85 ml-1 group-hover:text-ki-gold transition-colors" strokeWidth={1} />
-            </button>
-            <div className="absolute bottom-5 left-5 right-5 flex justify-between text-[10px] uppercase tracking-[0.28em] text-ki-fg/70">
-              <span>Excerpt · Placeholder</span>
-              <span>No autoplay · No sound</span>
-            </div>
-          </div>
+          )}
         </div>
 
         <div className="lg:col-span-5 order-2">
@@ -64,13 +65,15 @@ export default function FeaturedMoving() {
           </dl>
 
           <div className="mt-10 flex flex-col gap-3 max-w-md">
-            <Link
-              to={`/projects/${FEATURED_MOVING.slug}#film`}
+            <a
+              href="https://youtu.be/2fSc7oPVFOE"
+              target="_blank"
+              rel="noopener noreferrer"
               data-testid={MOVING.featuredWatchCta}
               className="inline-flex items-center justify-between border border-ki-gold text-ki-gold hover:bg-ki-gold hover:text-ki-bg px-6 py-4 text-xs uppercase tracking-[0.26em] transition-colors duration-300"
             >
-              Watch Excerpt <span aria-hidden>→</span>
-            </Link>
+              Watch on YouTube <span aria-hidden>→</span>
+            </a>
             <Link
               to={`/projects/${FEATURED_MOVING.slug}`}
               data-testid={MOVING.featuredPhotographyCta}

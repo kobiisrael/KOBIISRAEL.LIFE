@@ -408,7 +408,7 @@ export const MOVING_FILTERS = [
 export const MOVING_WORKS = [
   {
     slug: "cuba-love-story",
-    title: "Cuba, Love Story",
+    title: "Cuba, Love Story — Film",
     year_range: "Years to be confirmed by artist",
     duration: "Duration to be confirmed",
     format: "HD / digital — format to be confirmed",
@@ -417,6 +417,11 @@ export const MOVING_WORKS = [
       "A moving-image investigation into masculinity, militarism, desire, memory and the charged space between observation and longing.",
     tags: ["short-films", "autobiography", "queer", "travelogue"],
     featured: true,
+    youtube_id: "2fSc7oPVFOE",
+    youtube_url: "https://youtu.be/2fSc7oPVFOE",
+    poster_url: CUBA.i4.src,
+    poster_alt:
+      "Cuba, Love Story — film poster / video still by Kobi Israel. Details to be confirmed.",
   },
   {
     slug: "a-chaos-of-appearances",
@@ -543,12 +548,14 @@ export const MOVING_WORKS = [
 
 export const FEATURED_MOVING = {
   slug: "cuba-love-story",
-  title: "Cuba, Love Story",
+  title: "Cuba, Love Story — Film",
   description:
     "A moving-image and photographic investigation into masculinity, militarism, homoerotic codes, desire, memory and the tension between observation and longing.",
   image: CUBA.i4.src,
   alt:
     "Cuba, Love Story — featured moving-image still by Kobi Israel. Details to be confirmed.",
+  youtube_id: "2fSc7oPVFOE",
+  youtube_url: "https://youtu.be/2fSc7oPVFOE",
   duration: "Duration to be confirmed by artist",
   format: "HD / digital — format to be confirmed",
   language: "Language and subtitles to be confirmed",

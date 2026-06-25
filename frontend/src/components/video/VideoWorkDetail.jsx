@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { Play } from "lucide-react";
+import YouTubeEmbed, { getYouTubeId } from "@/components/video/YouTubeEmbed";
 
 /**
  * VideoWorkDetail — reusable video-work detail component template.
@@ -26,53 +27,71 @@ export default function VideoWorkDetail({ work = {} }) {
   const field = (v) => (v && String(v).trim() ? v : TBC);
   const listField = (arr) => (Array.isArray(arr) && arr.length > 0 ? arr : [TBC]);
 
+  const ytId = work.youtube_id || getYouTubeId(work.youtube_url) || getYouTubeId(work.excerpt_url);
+
   return (
-    <article className="border-t border-ki-border py-16 md:py-20" aria-label="Moving-image work detail">
+    <article className="border-t border-ki-border py-16 md:py-20" aria-label="Moving-image work detail" id="film">
       <header className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
         <div className="lg:col-span-7">
-          {/* Excerpt / poster — static, no autoplay */}
-          <div className="relative aspect-video w-full overflow-hidden bg-ki-elevated border border-ki-border group">
-            {work.poster_url ? (
-              <img
-                src={work.poster_url}
-                alt={work.poster_alt || `${field(work.title)} — video poster`}
-                loading="lazy"
-                decoding="async"
-                className="absolute inset-0 w-full h-full object-cover opacity-85"
+          {/* Embed if YouTube; otherwise static poster + disabled play */}
+          {ytId ? (
+            <>
+              <YouTubeEmbed
+                videoId={ytId}
+                title={`${field(work.title)} — by Kobi Israel`}
+                poster={work.poster_url}
+                posterAlt={work.poster_alt || `${field(work.title)} — video poster`}
               />
-            ) : (
-              <div className="absolute inset-0 flex items-center justify-center text-center px-6">
-                <div>
-                  <div className="text-[10px] uppercase tracking-[0.3em] text-ki-muted/70">
-                    Excerpt / Poster
+              <p className="mt-3 text-[11px] uppercase tracking-[0.26em] text-ki-muted">
+                Hosted on YouTube · Click to play · No autoplay · Captions and transcript to be supplied by artist
+              </p>
+            </>
+          ) : (
+            <>
+              <div className="relative aspect-video w-full overflow-hidden bg-ki-elevated border border-ki-border group">
+                {work.poster_url ? (
+                  <img
+                    src={work.poster_url}
+                    alt={work.poster_alt || `${field(work.title)} — video poster`}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 w-full h-full object-cover opacity-85"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center text-center px-6">
+                    <div>
+                      <div className="text-[10px] uppercase tracking-[0.3em] text-ki-muted/70">
+                        Excerpt / Poster
+                      </div>
+                      <div className="mt-3 font-serif text-lg text-ki-fg/45 leading-snug">
+                        {field(work.title)}
+                      </div>
+                      <div className="mt-3 text-[10px] uppercase tracking-[0.28em] text-ki-muted/60">
+                        Placeholder
+                      </div>
+                    </div>
                   </div>
-                  <div className="mt-3 font-serif text-lg text-ki-fg/45 leading-snug">
-                    {field(work.title)}
-                  </div>
-                  <div className="mt-3 text-[10px] uppercase tracking-[0.28em] text-ki-muted/60">
-                    Placeholder
-                  </div>
+                )}
+                <button
+                  type="button"
+                  aria-label="Excerpt placeholder — to be supplied by artist"
+                  disabled
+                  className="absolute inset-0 m-auto w-20 h-20 md:w-24 md:h-24 rounded-full border border-ki-fg/35 bg-ki-bg/40 backdrop-blur-sm flex items-center justify-center group-hover:border-ki-gold transition-colors"
+                >
+                  <Play size={22} className="text-ki-fg/85 ml-1 group-hover:text-ki-gold transition-colors" strokeWidth={1} />
+                </button>
+                <div className="absolute bottom-4 left-4 right-4 flex justify-between text-[10px] uppercase tracking-[0.28em] text-ki-fg/70">
+                  <span>Excerpt · Placeholder</span>
+                  <span>No autoplay · No sound</span>
                 </div>
               </div>
-            )}
-            <button
-              type="button"
-              aria-label="Excerpt placeholder — to be supplied by artist"
-              disabled
-              className="absolute inset-0 m-auto w-20 h-20 md:w-24 md:h-24 rounded-full border border-ki-fg/35 bg-ki-bg/40 backdrop-blur-sm flex items-center justify-center group-hover:border-ki-gold transition-colors"
-            >
-              <Play size={22} className="text-ki-fg/85 ml-1 group-hover:text-ki-gold transition-colors" strokeWidth={1} />
-            </button>
-            <div className="absolute bottom-4 left-4 right-4 flex justify-between text-[10px] uppercase tracking-[0.28em] text-ki-fg/70">
-              <span>Excerpt · Placeholder</span>
-              <span>No autoplay · No sound</span>
-            </div>
-          </div>
 
-          {/* Caption / transcript notice */}
-          <p className="mt-3 text-[11px] uppercase tracking-[0.26em] text-ki-muted">
-            Captions and transcript to be supplied by artist
-          </p>
+              {/* Caption / transcript notice */}
+              <p className="mt-3 text-[11px] uppercase tracking-[0.26em] text-ki-muted">
+                Captions and transcript to be supplied by artist
+              </p>
+            </>
+          )}
         </div>
 
         <div className="lg:col-span-5">
@@ -216,7 +235,17 @@ export default function VideoWorkDetail({ work = {} }) {
       </section>
 
       {/* Actions */}
-      <section className="mt-12 flex flex-col sm:flex-row gap-4">
+      <section className="mt-12 flex flex-col sm:flex-row gap-4 flex-wrap">
+        {(work.youtube_url || work.youtube_id) && (
+          <a
+            href={work.youtube_url || `https://youtu.be/${work.youtube_id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center border border-ki-fg/30 text-ki-fg hover:border-ki-fg px-8 py-4 text-xs uppercase tracking-[0.28em] transition-colors duration-300"
+          >
+            Watch on YouTube →
+          </a>
+        )}
         <Link
           to={work.curator_inquiry || "/#contact"}
           className="inline-flex items-center justify-center border border-ki-gold text-ki-gold hover:bg-ki-gold hover:text-ki-bg px-8 py-4 text-xs uppercase tracking-[0.28em] transition-colors duration-300"
