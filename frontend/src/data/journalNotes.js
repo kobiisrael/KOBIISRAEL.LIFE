@@ -6,10 +6,12 @@
 //   slug, title, subtitle, date, category, related_project, medium, excerpt, tags
 // And adds the fields used by the full entry template:
 //   theme, epigraph, date_location, body[], seo_title, meta_description,
-//   internal_links[], image_notes
+//   internal_links[], hero_image, hero_alt
 //
 // Body text is preserved verbatim from the artist's PDF "Journal Notes 01–08"
 // and split into paragraphs only on the natural double-line breaks.
+
+import { CUBA } from "@/data/cubaImages";
 
 export const KOBI_AUTHORED_NOTES = [
   {
@@ -17,6 +19,8 @@ export const KOBI_AUTHORED_NOTES = [
     number: "01",
     theme: "Memory",
     title: "Cuba as Mirror",
+    hero_image: CUBA.i1.src,
+    hero_alt: CUBA.i1.alt,
     subtitle:
       "How a foreign island returned me to childhood, fatherhood, fear and desire.",
     epigraph:
@@ -96,6 +100,8 @@ export const KOBI_AUTHORED_NOTES = [
     number: "02",
     theme: "Encounter",
     title: "The Man Waiting for the Bus",
+    hero_image: CUBA.i2.src,
+    hero_alt: CUBA.i2.alt,
     subtitle:
       "A stranger, a glance, and the beginning of a story I did not know I was entering.",
     epigraph:
@@ -169,6 +175,8 @@ export const KOBI_AUTHORED_NOTES = [
     number: "03",
     theme: "Stillness",
     title: "A Photograph Stops Time, But It Does Not Stop Memory",
+    hero_image: CUBA.i3.src,
+    hero_alt: CUBA.i3.alt,
     subtitle: "On stillness, delay and the movement that continues after the shutter.",
     epigraph:
       "After André Bazin: the photographic image is born from the desire to preserve what time carries away.",
@@ -238,6 +246,8 @@ export const KOBI_AUTHORED_NOTES = [
     number: "04",
     theme: "Masculinity",
     title: "Masculinity as Theatre",
+    hero_image: CUBA.i4.src,
+    hero_alt: CUBA.i4.alt,
     subtitle:
       "On soldiers, fathers, strangers, football fields, uniforms and the fragile border between fear and desire.",
     epigraph:
@@ -323,6 +333,8 @@ export const KOBI_AUTHORED_NOTES = [
     number: "05",
     theme: "Belonging",
     title: "The Football Field and the White Line",
+    hero_image: CUBA.i5.src,
+    hero_alt: CUBA.i5.alt,
     subtitle: "On boys, games, fear, desire and watching masculinity from the edge.",
     epigraph:
       "After Walter Benjamin: memory is not simply a way of looking back. It is the theatre where the past appears again.",
@@ -404,6 +416,8 @@ export const KOBI_AUTHORED_NOTES = [
     number: "06",
     theme: "Water",
     title: "The Chocolate River",
+    hero_image: CUBA.i1.src,
+    hero_alt: CUBA.i1.alt,
     subtitle:
       "On water, nakedness, childhood shame and the body crossing from fear into desire.",
     epigraph:
@@ -508,6 +522,8 @@ export const KOBI_AUTHORED_NOTES = [
     number: "07",
     theme: "Inheritance",
     title: "The Camera Given by Moshe",
+    hero_image: CUBA.i2.src,
+    hero_alt: CUBA.i2.alt,
     subtitle:
       "On John, a Nikon FM2, male grief, inheritance and the first ritual of looking through light.",
     epigraph:
@@ -631,6 +647,8 @@ export const KOBI_AUTHORED_NOTES = [
     number: "08",
     theme: "Looking",
     title: "The Viewer as Detective",
+    hero_image: CUBA.i3.src,
+    hero_alt: CUBA.i3.alt,
     subtitle:
       "On clues, fragments, withheld stories and the spectator who completes the image.",
     epigraph:

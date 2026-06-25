@@ -61,12 +61,22 @@ export default function JournalEntry() {
     <article data-testid={JOURNAL.entryPage} className="bg-ki-bg">
       {/* HERO IMAGE */}
       <section className="relative aspect-[16/8] w-full overflow-hidden border-b border-ki-border">
-        <div className="absolute inset-0 bg-ki-elevated flex items-center justify-center">
-          <span className="text-[10px] uppercase tracking-[0.28em] text-ki-muted/70">
-            Hero image · to be confirmed by artist
-          </span>
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-ki-bg/0 via-ki-bg/0 to-ki-bg" />
+        {note.hero_image ? (
+          <img
+            src={note.hero_image}
+            alt={note.hero_alt || `Hero image — ${note.title} by Kobi Israel`}
+            loading="eager"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover opacity-90"
+          />
+        ) : (
+          <div className="absolute inset-0 bg-ki-elevated flex items-center justify-center">
+            <span className="text-[10px] uppercase tracking-[0.28em] text-ki-muted/70">
+              Hero image · to be confirmed by artist
+            </span>
+          </div>
+        )}
+        <div className="absolute inset-0 bg-gradient-to-b from-ki-bg/30 via-ki-bg/0 to-ki-bg" />
       </section>
 
       {/* TITLE BLOCK */}
