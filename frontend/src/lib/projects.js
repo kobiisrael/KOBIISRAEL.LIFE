@@ -53,7 +53,20 @@ const ENRICHMENT = {
   "intimate-strangers": {
     subtitle: "Portrait photography",
     intro_statement:
-      "A study of brief encounters — men met, watched, photographed and remembered between cities.",
+      "A study of brief encounters — men met, watched, photographed and remembered in Soho, London, 2001–2006.",
+    hero_image:
+      "https://customer-assets.emergentagent.com/job_still-moving-1/artifacts/t6q72x65_Intimate%20Strangers_Kobi-Israel.01.jpg",
+    hero_alt:
+      "Intimate Strangers — image by Kobi Israel: nude figure on an orange bed beneath a KABARET poster, Soho interior. Details to be confirmed.",
+    gallery_images: [
+      {
+        url: "https://customer-assets.emergentagent.com/job_still-moving-1/artifacts/t6q72x65_Intimate%20Strangers_Kobi-Israel.01.jpg",
+        alt:
+          "Intimate Strangers — image by Kobi Israel: nude figure on an orange bed beneath a KABARET poster, Soho interior. Details to be confirmed.",
+        caption:
+          "Intimate Strangers · 01 — title, year and dimensions to be confirmed by artist.",
+      },
+    ],
   },
   views: {
     subtitle: "Photography",

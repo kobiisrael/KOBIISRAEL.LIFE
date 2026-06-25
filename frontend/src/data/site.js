@@ -140,6 +140,10 @@ export const STILL_PROJECTS = [
       "Portraits of foreigners in a city full of immigrants — the brief contract between watcher and watched.",
     tags: ["queer", "portraits", "urban", "prints"],
     status: "Available Prints",
+    image:
+      "https://customer-assets.emergentagent.com/job_still-moving-1/artifacts/t6q72x65_Intimate%20Strangers_Kobi-Israel.01.jpg",
+    image_alt:
+      "Intimate Strangers — image by Kobi Israel: nude figure on an orange bed beneath a KABARET poster, Soho interior. Details to be confirmed.",
   },
   {
     slug: "views",

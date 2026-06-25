@@ -339,3 +339,7 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 ### Views — "Views02" cover + hero image — 2026-06-25
 - ✅ Wired `sgvjsipp_Views02.jpg` (two soldiers at dusk) into the Views project: STILL_PROJECTS record (cover + alt) and `lib/projects.js` ENRICHMENT (`hero_image`, `hero_alt`, `gallery_images`)
 - ✅ Verified live: image now serves on `/projects/views` (hero + first thumbnail), `/still` Views card, and homepage "A connected body of work" Views card; remaining 9 unillustrated Still projects still show placeholder
+
+### Intimate Strangers — Soho/KABARET cover + hero image — 2026-06-25
+- ✅ Wired `Intimate Strangers_Kobi-Israel.01.jpg` into the Intimate Strangers project: STILL_PROJECTS (cover + alt) and `lib/projects.js` ENRICHMENT (`hero_image`, `hero_alt`, `gallery_images`)
+- ✅ Verified live on all 4 surfaces: `/projects/intimate-strangers` hero + thumbnail, `/still` Intimate Strangers card, homepage Intimate Strangers card; remaining 8 unillustrated Still projects still placeholder
