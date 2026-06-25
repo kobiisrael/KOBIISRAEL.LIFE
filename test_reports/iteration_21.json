@@ -1,0 +1,59 @@
+{
+  "summary": "Cuba photograph asset swap verified across all 9 public pages + cuba-love-story project page. All hero images map to the correct customer-assets.emergentagent.com filename hash; no unsplash.com URLs remain; no stale placeholder captions; project image-sequence thumbs 0-4 are in correct order; lightbox opens; contact form POSTs /api/inquiries with 201; mobile viewport (390x844) shows zero horizontal overflow on any tested page; SEO meta (unique titles, canonicals to kobiisrael.life<path>, robots=index,follow, JSON-LD blocks) intact on all 9 indexable pages; noindex,nofollow preserved on /seo-review, /conversion-review, /launch-checklist, /migration-review and on /legal/privacy, /legal/terms, /legal/cookies, /legal/accessibility.",
+  "backend_issues": { "critical": [], "minor": [] },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "hero_image_verification": {
+    "/": "7bp5yfi9_01.1029.07.jpg OK",
+    "/still": "3cvn8u5e_05.3143.10.jpg OK",
+    "/moving": "kvyze4pg_04.4648.05.jpg OK",
+    "/prints": "8kvjmiyn_03.3141.06.jpg OK",
+    "/books": "ok45ywq1_02.1017.09.jpg OK",
+    "/cv": "kvyze4pg_04.4648.05.jpg OK",
+    "/archive": "3cvn8u5e_05.3143.10.jpg OK",
+    "/journal": "ok45ywq1_02.1017.09.jpg OK",
+    "/contact": "8kvjmiyn_03.3141.06.jpg OK",
+    "/projects/cuba-love-story": "7bp5yfi9_01.1029.07.jpg OK (no 'Hero · Placeholder' overline)"
+  },
+  "project_sequence_order_verification": {
+    "thumb-0": "7bp5yfi9_01.1029.07.jpg OK",
+    "thumb-1": "ok45ywq1_02.1017.09.jpg OK",
+    "thumb-2": "8kvjmiyn_03.3141.06.jpg OK",
+    "thumb-3": "kvyze4pg_04.4648.05.jpg OK",
+    "thumb-4": "3cvn8u5e_05.3143.10.jpg OK",
+    "lightbox_opens_on_click": true
+  },
+  "broken_image_requests": "0 across all 10 pages tested (no requestfailed, no >=400 image responses)",
+  "unsplash_url_count": "0 across all 10 pages tested",
+  "stale_captions_check": "0 occurrences of 'Final hero image to be selected by artist', 'Final hero still or video loop to be selected by artist', 'Final hero artwork to be selected by artist', 'Final image to be selected by artist' or 'Hero · Placeholder' on any tested page",
+  "seo_regression_check": {
+    "indexable_pages_titles_unique": true,
+    "canonical_points_to_kobiisrael_life": "true for all 9 indexable pages",
+    "robots_index_follow_on_indexable": "true for all 9",
+    "json_ld_blocks_present": "true (2-3 blocks per indexable page)",
+    "noindex_nofollow_on_restricted_routes": "verified: /seo-review, /conversion-review, /launch-checklist, /migration-review, /legal/privacy, /legal/terms, /legal/cookies, /legal/accessibility"
+  },
+  "contact_form_integration": {
+    "endpoint": "POST /api/inquiries",
+    "status": 201,
+    "response_id_returned": true,
+    "success_toast_shown": true,
+    "consent_required_and_enforced": true
+  },
+  "mobile_viewport_overflow": "0 horizontal overflow on /, /still, /moving, /prints, /books, /archive, /cv, /journal, /contact, /projects/cuba-love-story at 390x844",
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Note (pre-existing, NOT a regression of this asset swap): /legal/imprint is requested in the spec as a 5th legal page with noindex,nofollow, but no 'imprint' slug exists in /app/frontend/src/pages/Legal.jsx PLACEHOLDERS. The route falls back to the NotFound component, which inherits default meta robots=index,follow. If imprint is intended as a real legal page, add an 'imprint' entry to PLACEHOLDERS; if not intended, remove any references to /legal/imprint from sitemaps/internal links. This was not introduced by the Cuba asset swap and does not block the current iteration."
+  ],
+  "updated_files": [],
+  "success_rate": { "backend": "n/a (skipped per request)", "frontend": "100%" },
+  "test_credentials": "n/a",
+  "seed_data_creation": "Submitted 1 TEST_QA inquiry via /api/inquiries (id 6c7769fc-d11d-4ec4-b339-29a2aae23c82) to verify form integration; can be cleaned up by main agent if desired.",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "All Cuba image swap acceptance criteria pass. Only outstanding observation is /legal/imprint route returning index,follow because no 'imprint' slug exists in Legal.jsx PLACEHOLDERS — pre-existing, unrelated to this iteration."
+}

@@ -1,5 +1,7 @@
 // Static site content — placeholders only (To be confirmed by artist).
 
+import { CUBA } from "@/data/cubaImages";
+
 export const NAV_ITEMS = [
   { slug: "home", label: "Home", to: "/" },
   { slug: "still", label: "Still", to: "/still" },
@@ -14,9 +16,8 @@ export const NAV_ITEMS = [
 ];
 
 export const HERO = {
-  image:
-    "https://images.unsplash.com/photo-1540172777610-b15b605dd68d?auto=format&fit=crop&q=85&w=1920",
-  alt: "Cinematic archive image by Kobi Israel, details to be confirmed.",
+  image: CUBA.i1.src,
+  alt: CUBA.i1.alt,
 };
 
 // Hero copy options — Option 2 (recommended) is currently used in Hero.jsx.
@@ -62,15 +63,13 @@ export const HERO_COPY_OPTIONS = {
 };
 
 export const STILL_HERO = {
-  image:
-    "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?auto=format&fit=crop&q=85&w=1920",
-  alt: "Still photography hero — placeholder (To be replaced with artist's selected work).",
+  image: CUBA.i5.src,
+  alt: CUBA.i5.alt,
 };
 
 export const STILL_CURATORIAL_IMAGE = {
-  image:
-    "https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?auto=format&fit=crop&q=85&w=1200",
-  alt: "Curatorial introduction visual — placeholder (To be replaced with artist's selected work).",
+  image: CUBA.i3.src,
+  alt: CUBA.i3.alt,
 };
 
 // Filter tag taxonomy used across the Still archive
@@ -233,9 +232,8 @@ export const FEATURED_PROJECT = {
   title: "Cuba, Love Story",
   description:
     "The confusing and bewildering paradox of the masculine and militarist blended with the homoerotic in Cuba — evoking the artist's own memories of growing up in young, macho and militarist Israel.",
-  image:
-    "https://images.unsplash.com/photo-1568322445389-495f4a7d20d4?auto=format&fit=crop&q=85&w=1600",
-  alt: "Image from Cuba, Love Story by Kobi Israel, details to be confirmed.",
+  image: CUBA.i1.src,
+  alt: CUBA.i1.alt,
 };
 
 export const FEATURED_STILL = {
@@ -243,23 +241,20 @@ export const FEATURED_STILL = {
   title: "Cuba, Love Story",
   description:
     "The confusing and bewildering paradox of the masculine and militarist blended with the homoerotic in Cuba — evoking the artist's own memories of growing up in young, macho and militarist Israel.",
-  image:
-    "https://images.unsplash.com/photo-1568322445389-495f4a7d20d4?auto=format&fit=crop&q=85&w=1800",
-  alt: "Image from Cuba, Love Story by Kobi Israel, details to be confirmed.",
+  image: CUBA.i2.src,
+  alt: CUBA.i2.alt,
 };
 
 export const SPLIT_MEDIA = {
   still: {
-    image:
-      "https://images.unsplash.com/photo-1610303871783-491dc6d0a165?auto=format&fit=crop&q=85&w=1200",
-    alt: "Still photography image by Kobi Israel, details to be confirmed.",
+    image: CUBA.i1.src,
+    alt: CUBA.i1.alt,
     description:
       "Photographs as held breath. Portraits, landscapes and remembered rooms carrying memory forward.",
   },
   moving: {
-    image:
-      "https://images.unsplash.com/photo-1638638977172-9f7169a77930?auto=format&fit=crop&q=85&w=1200",
-    alt: "Moving-image still by Kobi Israel, details to be confirmed.",
+    image: CUBA.i4.src,
+    alt: "Moving-image still by Kobi Israel — from the Cuba, Love Story sequence. Details to be confirmed.",
     description:
       "A Cuban Love Story, Parisian Postcards, Investigating Things Past. Time as another way of looking.",
   },
@@ -367,17 +362,15 @@ export const CONCEPT_BODY =
 // ============================================================
 
 export const MOVING_HERO = {
-  image:
-    "https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&q=85&w=1920",
+  image: CUBA.i4.src,
   alt:
-    "Cinematic moving-image hero placeholder — final hero still or video loop to be selected by artist.",
+    "Moving-image hero — video still from Cuba, Love Story by Kobi Israel. Details to be confirmed.",
 };
 
 export const MOVING_CURATORIAL_IMAGE = {
-  image:
-    "https://images.unsplash.com/photo-1478720568477-152d9b164e26?auto=format&fit=crop&q=85&w=1400",
+  image: CUBA.i2.src,
   alt:
-    "Curatorial moving-image still — placeholder. Final reference image to be supplied by artist.",
+    "Curatorial moving-image still — from Cuba, Love Story by Kobi Israel. Details to be confirmed.",
 };
 
 export const MOVING_FILTERS = [
@@ -535,10 +528,9 @@ export const FEATURED_MOVING = {
   title: "Cuba, Love Story",
   description:
     "A moving-image and photographic investigation into masculinity, militarism, homoerotic codes, desire, memory and the tension between observation and longing.",
-  image:
-    "https://images.unsplash.com/photo-1568322445389-495f4a7d20d4?auto=format&fit=crop&q=85&w=1800",
+  image: CUBA.i4.src,
   alt:
-    "Cuba, Love Story — featured moving-image still (placeholder, to be replaced with artist's selected still).",
+    "Cuba, Love Story — featured moving-image still by Kobi Israel. Details to be confirmed.",
   duration: "Duration to be confirmed by artist",
   format: "HD / digital — format to be confirmed",
   language: "Language and subtitles to be confirmed",
@@ -612,17 +604,15 @@ export const MOVING_FRAGMENTS = [
 // ============================================================
 
 export const PRINTS_HERO = {
-  image:
-    "https://images.unsplash.com/photo-1554907984-15263bfd63bd?auto=format&fit=crop&q=85&w=1920",
+  image: CUBA.i3.src,
   alt:
-    "Limited edition prints hero — placeholder. Final hero artwork to be selected by artist.",
+    "Limited edition prints hero — image from Cuba, Love Story by Kobi Israel. Details to be confirmed.",
 };
 
 export const PRINTS_VIEWING_IMAGE = {
-  image:
-    "https://images.unsplash.com/photo-1577083553180-e58dffe85ad7?auto=format&fit=crop&q=85&w=1200",
+  image: CUBA.i5.src,
   alt:
-    "Collector viewing room visual — placeholder. Final image to be selected by artist.",
+    "Collector viewing room — image from Cuba, Love Story by Kobi Israel. Details to be confirmed.",
 };
 
 // 10 print collection cards. Slugs match existing project slugs from STILL_PROJECTS so they can link.
@@ -848,15 +838,15 @@ export const INQUIRY_TYPE_OPTIONS = [
 // ============================================================
 
 export const BOOKS_HERO = {
-  image:
-    "https://images.unsplash.com/photo-1535954741680-a2e24eb05418?auto=format&fit=crop&q=85&w=1920",
-  alt: "Books hero — fine art photography book placeholder. Final hero image to be selected by artist.",
+  image: CUBA.i2.src,
+  alt:
+    "Books hero — image from Cuba, Love Story by Kobi Israel. Details to be confirmed.",
 };
 
 export const BOOKS_EDITORIAL_IMAGE = {
-  image:
-    "https://images.unsplash.com/photo-1519682337058-a94d519337bc?auto=format&fit=crop&q=85&w=1200",
-  alt: "Editorial introduction visual — book spreads / archive material placeholder.",
+  image: CUBA.i1.src,
+  alt:
+    "Editorial introduction — image from Cuba, Love Story by Kobi Israel. Details to be confirmed.",
 };
 
 // 10 publication cards. Slugs match project slugs where applicable so View Publication can link
@@ -1084,10 +1074,9 @@ export const BOOK_INQUIRY_TYPE_OPTIONS = [
 // ============================================================
 
 export const CV_HERO = {
-  image:
-    "https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&q=85&w=1600",
+  image: CUBA.i4.src,
   alt:
-    "Studio / archive image placeholder for the CV page. Final portrait or archive image to be selected by artist.",
+    "CV hero — image from Cuba, Love Story by Kobi Israel. Details to be confirmed.",
 };
 
 export const CV_BIOGRAPHY =
@@ -1298,8 +1287,9 @@ export const CV_CONTACT_TYPE_OPTIONS = [
 // ============================================================
 
 export const ARCHIVE_HERO = {
-  image: "https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?auto=format&fit=crop&q=85&w=1920",
-  alt: "Archive hero placeholder — contact sheet / archive material. Final archive image to be selected by artist.",
+  image: CUBA.i5.src,
+  alt:
+    "Archive hero — image from Cuba, Love Story by Kobi Israel. Details to be confirmed.",
 };
 
 export const ARCHIVE_CATEGORIES = [
@@ -1448,15 +1438,15 @@ export const ARCHIVE_INQUIRY_TYPE_OPTIONS = [
 // ============================================================
 
 export const JOURNAL_HERO = {
-  image:
-    "https://images.unsplash.com/photo-1455390582262-044cdead277a?auto=format&fit=crop&q=85&w=1920",
-  alt: "Journal hero — quiet archive image placeholder. Final hero image to be selected by artist.",
+  image: CUBA.i2.src,
+  alt:
+    "Journal hero — image from Cuba, Love Story by Kobi Israel. Details to be confirmed.",
 };
 
 export const JOURNAL_EDITORIAL_IMAGE = {
-  image:
-    "https://images.unsplash.com/photo-1457369804613-52c61a468e7d?auto=format&fit=crop&q=85&w=1200",
-  alt: "Editorial introduction visual — open book / archive notebook placeholder.",
+  image: CUBA.i3.src,
+  alt:
+    "Editorial introduction — image from Cuba, Love Story by Kobi Israel. Details to be confirmed.",
 };
 
 export const JOURNAL_FEATURED_NOTES = [
@@ -1593,17 +1583,15 @@ export const JOURNAL_RELATED_LINKS = [
 // ============================================================
 
 export const CONTACT_HERO = {
-  image:
-    "https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&q=85&w=1920",
+  image: CUBA.i3.src,
   alt:
-    "Studio / archive image placeholder for the contact page. Final image to be selected by artist.",
+    "Contact hero — image from Cuba, Love Story by Kobi Israel. Details to be confirmed.",
 };
 
 export const CONTACT_INTRO_IMAGE = {
-  image:
-    "https://images.unsplash.com/photo-1524678606370-a47ad25cb82a?auto=format&fit=crop&q=85&w=1200",
+  image: CUBA.i5.src,
   alt:
-    "Quiet archive / contact sheet placeholder visual for the contact introduction.",
+    "Contact introduction — image from Cuba, Love Story by Kobi Israel. Details to be confirmed.",
 };
 
 // Pathway cards rendered in the "How to Inquire" section.

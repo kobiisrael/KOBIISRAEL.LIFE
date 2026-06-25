@@ -528,15 +528,12 @@ export default function ProjectDetailTemplate({ project = {} }) {
           <div className="relative aspect-[21/9] w-full overflow-hidden bg-ki-elevated border border-ki-border grain">
             <img
               src={project.hero_image}
-              alt={project.hero_alt || `${projectTitle} — hero placeholder`}
+              alt={project.hero_alt || `${projectTitle} — hero image`}
               loading="lazy"
               decoding="async"
               className="absolute inset-0 w-full h-full object-cover opacity-85"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-ki-bg/40 to-transparent" />
-            <div className="absolute top-5 left-5 text-[10px] uppercase tracking-[0.3em] text-ki-fg/75">
-              Hero · Placeholder
-            </div>
           </div>
         </section>
       )}

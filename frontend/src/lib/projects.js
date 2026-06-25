@@ -3,6 +3,7 @@
 // ("To be confirmed by artist") unless and until the artist supplies it.
 
 import { STILL_PROJECTS, MOVING_WORKS } from "@/data/site";
+import { CUBA_IMAGES } from "@/data/cubaImages";
 
 // Optional richer per-slug placeholder content. Anything missing falls back
 // to template defaults. This is the editable hand-off file: the artist can
@@ -12,10 +13,13 @@ const ENRICHMENT = {
     subtitle: "Photography and moving image",
     intro_statement:
       "A long-term photographic and moving-image investigation into masculinity, militarism, homoerotic codes, memory and desire — moving between observation, longing and the trained body.",
-    hero_image:
-      "https://images.unsplash.com/photo-1568322445389-495f4a7d20d4?auto=format&fit=crop&q=85&w=1800",
-    hero_alt:
-      "Cuba, Love Story — hero placeholder still. To be replaced with artist's selected work.",
+    hero_image: CUBA_IMAGES[0].src,
+    hero_alt: CUBA_IMAGES[0].alt,
+    gallery_images: CUBA_IMAGES.map((img) => ({
+      url: img.src,
+      alt: img.alt,
+      caption: img.caption,
+    })),
     book: {
       title: "Cuba, Love Story — monograph (to be confirmed by artist)",
       publisher: "Publisher to be confirmed",

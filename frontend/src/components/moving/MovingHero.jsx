@@ -68,12 +68,6 @@ export default function MovingHero() {
               Film / Curator Inquiries
             </a>
           </div>
-          <p
-            className="mt-12 text-[11px] uppercase tracking-[0.3em] text-ki-muted animate-fade-up"
-            style={{ animationDelay: "0.7s" }}
-          >
-            Final hero still or video loop to be selected by artist
-          </p>
         </div>
       </div>
     </section>

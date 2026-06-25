@@ -385,9 +385,6 @@ export default function Contact() {
                 Request Print Availability
               </button>
             </div>
-            <p className="mt-12 text-[11px] uppercase tracking-[0.3em] text-ki-muted">
-              Final image to be selected by artist
-            </p>
           </div>
         </div>
       </section>

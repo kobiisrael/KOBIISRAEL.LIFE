@@ -67,12 +67,6 @@ export default function StillHero() {
               Collector Inquiries
             </Link>
           </div>
-          <p
-            className="mt-12 text-[11px] uppercase tracking-[0.3em] text-ki-muted animate-fade-up"
-            style={{ animationDelay: "0.7s" }}
-          >
-            Final hero image to be selected by artist
-          </p>
         </div>
       </div>
     </section>
