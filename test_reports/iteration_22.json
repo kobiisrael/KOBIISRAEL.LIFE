@@ -1,0 +1,70 @@
+{
+  "summary": "Frontend-only test for the 8 Kobi-Israel-authored journal notes. All acceptance criteria pass: /journal lists 8 cards in artist's intended order (cuba-as-mirror → the-viewer-as-detective); each individual entry page renders the required data-testid blocks (title, subtitle, epigraph in U+2018/U+2019 single quotes, date-location, byline 'By Kobi Israel' rendered as 'BY KOBI ISRAEL' via CSS letter-spacing, body, related, tags); paragraph counts 39–93 per note (all >=30); related links 4–6 per note (all >=3); tag pills 6–8 per note (all >=3); verbatim opening sentences present on all 8 entries; no 'Yaqov' / 'Grossi' / 'Yaqov Israel Grossi' on /journal or any entry page; no placeholder phrases ('Final text to be supplied by the artist', 'Pull quote placeholder', 'Image insert · placeholder', 'Closing paragraph placeholder') on any of the 8 entries. SEO on every entry: <title> ends with 'Kobi Israel Journal', canonical = https://kobiisrael.life/journal/<slug>, robots = 'index, follow', meta description 146–168 chars. Mobile 390x844 shows zero horizontal overflow on /journal and all 8 entry pages. Smoke regression: /, /still, /moving, /prints, /books, /archive, /cv, /contact all render with 0 console errors, unique titles, canonical kobiisrael.life<path>, 2–3 JSON-LD blocks. /projects/cuba-love-story still shows the 5-image cuba sequence + YouTube video facade (youtu.be/2fSc7oPVFOE present in HTML as click-to-play, iframe injected only after click — matches existing pattern from iteration_21).",
+  "backend_issues": { "critical": [], "minor": [] },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "journal_index_verification": {
+    "slug_order_on_/journal": [
+      "cuba-as-mirror",
+      "the-man-waiting-for-the-bus",
+      "a-photograph-stops-time-but-not-memory",
+      "masculinity-as-theatre",
+      "the-football-field-and-the-white-line",
+      "the-chocolate-river",
+      "the-camera-given-by-moshe",
+      "the-viewer-as-detective"
+    ],
+    "order_matches_spec": true,
+    "all_cards_clickable_to_/journal/<slug>": true,
+    "mobile_390x844_horizontal_overflow": false
+  },
+  "per_entry_verification": {
+    "cuba-as-mirror": {"title":"Cuba as Mirror","body_paragraphs":49,"related_links":4,"tags":7,"epigraph_curly_quotes":true,"opener_verbatim":true,"seo_title":"Cuba as Mirror | Kobi Israel Journal","canonical":"https://kobiisrael.life/journal/cuba-as-mirror","robots":"index, follow","desc_chars":158,"mobile_overflow":false},
+    "the-man-waiting-for-the-bus": {"title":"The Man Waiting for the Bus","body_paragraphs":44,"related_links":4,"tags":6,"epigraph_curly_quotes":true,"opener_verbatim":true,"canonical":"https://kobiisrael.life/journal/the-man-waiting-for-the-bus","robots":"index, follow","desc_chars":167,"mobile_overflow":false},
+    "a-photograph-stops-time-but-not-memory": {"title":"A Photograph Stops Time, But It Does Not Stop Memory","body_paragraphs":39,"related_links":5,"tags":6,"epigraph_curly_quotes":true,"opener_verbatim":true,"canonical":"https://kobiisrael.life/journal/a-photograph-stops-time-but-not-memory","robots":"index, follow","desc_chars":156,"mobile_overflow":false},
+    "masculinity-as-theatre": {"title":"Masculinity as Theatre","body_paragraphs":54,"related_links":5,"tags":7,"epigraph_curly_quotes":true,"opener_verbatim":true,"canonical":"https://kobiisrael.life/journal/masculinity-as-theatre","robots":"index, follow","desc_chars":146,"mobile_overflow":false},
+    "the-football-field-and-the-white-line": {"title":"The Football Field and the White Line","body_paragraphs":52,"related_links":4,"tags":8,"epigraph_curly_quotes":true,"opener_verbatim":true,"canonical":"https://kobiisrael.life/journal/the-football-field-and-the-white-line","robots":"index, follow","desc_chars":168,"mobile_overflow":false},
+    "the-chocolate-river": {"title":"The Chocolate River","body_paragraphs":73,"related_links":5,"tags":8,"epigraph_curly_quotes":true,"opener_verbatim":true,"canonical":"https://kobiisrael.life/journal/the-chocolate-river","robots":"index, follow","desc_chars":146,"mobile_overflow":false},
+    "the-camera-given-by-moshe": {"title":"The Camera Given by Moshe","body_paragraphs":93,"related_links":5,"tags":8,"epigraph_curly_quotes":true,"opener_verbatim":true,"canonical":"https://kobiisrael.life/journal/the-camera-given-by-moshe","robots":"index, follow","desc_chars":159,"mobile_overflow":false},
+    "the-viewer-as-detective": {"title":"The Viewer as Detective","body_paragraphs":75,"related_links":6,"tags":6,"epigraph_curly_quotes":true,"opener_verbatim":true,"canonical":"https://kobiisrael.life/journal/the-viewer-as-detective","robots":"index, follow","desc_chars":158,"mobile_overflow":false}
+  },
+  "verbatim_opener_check": {
+    "cuba-as-mirror": "PASS - 'I did not go to Cuba to remember Israel.'",
+    "the-man-waiting-for-the-bus": "PASS - 'I noticed Rafael before I knew his name.'",
+    "a-photograph-stops-time-but-not-memory": "PASS - 'A photograph stops time, but it does not stop memory.'",
+    "masculinity-as-theatre": "PASS - 'Masculinity was never natural to me.'",
+    "the-football-field-and-the-white-line": "PASS - 'I have spent much of my life standing behind the white line.'",
+    "the-chocolate-river": "PASS - 'The river arrived first as sound.'",
+    "the-camera-given-by-moshe": "PASS - 'The camera entered my life through another man' (apostrophe verified in body)",
+    "the-viewer-as-detective": "PASS - 'I do not want the viewer to understand too quickly.'"
+  },
+  "author_string_check": "0 occurrences of 'Yaqov', 'Grossi', 'Yaqov Israel Grossi' on /journal or on any of the 8 entry pages. All 8 entries render '[data-testid=journal-entry-byline]' with text matching /by kobi israel/i (rendered as 'BY KOBI ISRAEL' via CSS uppercase letter-spacing as expected).",
+  "placeholder_string_check": "0 occurrences of 'Final text to be supplied by the artist', 'Pull quote placeholder', 'Image insert · placeholder' or 'Closing paragraph placeholder' on any of the 8 authored entry pages.",
+  "smoke_regression": {
+    "/": {"title":"Kobi Israel | Photography, Moving Image and Prints","canonical":"https://kobiisrael.life/","json_ld_blocks":3,"console_errors":0},
+    "/still": {"title":"Still Photography | Kobi Israel","canonical":"https://kobiisrael.life/still","json_ld_blocks":2,"console_errors":0},
+    "/moving": {"title":"Moving Image | Kobi Israel","canonical":"https://kobiisrael.life/moving","json_ld_blocks":2,"console_errors":0},
+    "/prints": {"title":"Limited Edition Prints | Kobi Israel","canonical":"https://kobiisrael.life/prints","json_ld_blocks":2,"console_errors":0},
+    "/books": {"title":"Books and Publications | Kobi Israel","canonical":"https://kobiisrael.life/books","json_ld_blocks":2,"console_errors":0},
+    "/archive": {"title":"Archive | Kobi Israel","canonical":"https://kobiisrael.life/archive","json_ld_blocks":2,"console_errors":0},
+    "/cv": {"title":"CV and Biography | Kobi Israel","canonical":"https://kobiisrael.life/cv","json_ld_blocks":3,"console_errors":0},
+    "/contact": {"title":"Contact | Kobi Israel","canonical":"https://kobiisrael.life/contact","json_ld_blocks":2,"console_errors":0},
+    "/projects/cuba-love-story": "5-image cuba sequence rendered; YouTube reference 'youtu.be/2fSc7oPVFOE' present in HTML as click-to-play facade (iframe injected only after user click — same pattern verified in iteration_21)"
+  },
+  "test_report_links": [],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "Pre-existing observation only (not introduced by this iteration): /journal entry pages always render a 'Hero image · to be confirmed by artist' grey block above the title. If the artist intends to ship the 8 notes without per-note hero imagery for now, this is fine; otherwise main agent may want to remove the placeholder hero or wire it to a real per-note image when available."
+  ],
+  "updated_files": [],
+  "success_rate": { "backend": "n/a (skipped per request)", "frontend": "100%" },
+  "test_credentials": "n/a",
+  "seed_data_creation": "none",
+  "retest_needed": false,
+  "main_agent_can_self_test": true,
+  "context_for_next_testing_agent": "All 8 Kobi-authored journal notes ship verbatim and pass every acceptance criterion in the spec (order, data-testids, curly-quote epigraph, byline, >=30 body paragraphs, >=3 related, >=3 tags, verbatim openers, no Yaqov/Grossi, no placeholder phrases, SEO title/canonical/robots/desc, mobile no-overflow). Smoke regression on /, /still, /moving, /prints, /books, /archive, /cv, /contact, /projects/cuba-love-story all green. Byline data-testid renders 'By Kobi Israel' in DOM but innerText returns 'BY KOBI ISRAEL' due to CSS letter-spacing/uppercase — this is expected per the review_request note and was checked case-insensitively. The YouTube video on /projects/cuba-love-story is a click-to-play facade (URL in HTML, iframe injected on click) — same as iteration_21.",
+  "rca of the issue": "no issues to RCA"
+}
