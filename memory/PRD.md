@@ -323,3 +323,9 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 - ✅ Removed stale "Final hero image to be selected by artist" captions from `StillHero.jsx`, `BooksHero.jsx`, `MovingHero.jsx`, `PrintsHero.jsx` and `Contact.jsx`; removed the "Hero · Placeholder" overline from `ProjectDetailTemplate.jsx`
 - ✅ Resolved the 2 broken Unsplash 404s flagged by the Semrush audit (photos 1499781350541 + 1577083553180) — both replaced by artist photographs
 - ✅ Tested: testing_agent iteration_21 → 100% pass (16/16 features: 9 hero/page asset mappings verified by URL hash, 5 Cuba project thumbnails in correct order, lightbox works, 0 unsplash URLs remain, 0 stale captions, SEO + conversion regression preserved, inquiry form still 201, mobile 390px no overflow)
+
+### Cuba, Love Story — Still project card cover image — 2026-06-25
+- ✅ Added `image: CUBA.i1.src` + `image_alt` to the Cuba record in `STILL_PROJECTS` (`data/site.js`)
+- ✅ `StillProjectCard.jsx` + `ProjectCard.jsx` now conditionally render the artist's photograph when `project.image` is set, falling back to the placeholder block for the other 11 projects (no artist image yet)
+- ✅ Cuba card now displays the artist's photograph as cover on `/still` AND on the homepage "A connected body of work" grid; all 11 other project cards retain placeholder treatment as expected
+- ✅ Verified: image src ends with `7bp5yfi9_01.1029.07.jpg` on both `/still` Cuba card and `/` Cuba card; "PLACEHOLDER" text gone from Cuba card on both pages; other cards (River of Three Crossings, Fragments of Life, etc.) still show their placeholders correctly

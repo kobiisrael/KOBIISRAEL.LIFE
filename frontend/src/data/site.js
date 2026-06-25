@@ -101,6 +101,8 @@ export const STILL_PROJECTS = [
     tags: ["autobiography", "masculinity", "queer", "military", "travel", "books", "prints"],
     status: "Published",
     featured: true,
+    image: CUBA.i1.src,
+    image_alt: CUBA.i1.alt,
   },
   {
     slug: "river-of-three-crossings",

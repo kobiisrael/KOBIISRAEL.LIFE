@@ -10,19 +10,29 @@ export default function StillProjectCard({ project, index = 0 }) {
       aria-label={`${project.title} — photographic project`}
     >
       <div className="relative aspect-[4/5] w-full overflow-hidden bg-ki-elevated border border-ki-border/60">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center px-6">
-            <div className="text-[10px] uppercase tracking-[0.3em] text-ki-muted/70">
-              Image · {String(index + 1).padStart(2, "0")}
-            </div>
-            <div className="mt-3 font-serif text-lg text-ki-fg/45 leading-snug">
-              {project.title}
-            </div>
-            <div className="mt-3 text-[10px] uppercase tracking-[0.28em] text-ki-muted/60">
-              Placeholder
+        {project.image ? (
+          <img
+            src={project.image}
+            alt={project.image_alt || `${project.title} by Kobi Israel, details to be confirmed.`}
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center px-6">
+              <div className="text-[10px] uppercase tracking-[0.3em] text-ki-muted/70">
+                Image · {String(index + 1).padStart(2, "0")}
+              </div>
+              <div className="mt-3 font-serif text-lg text-ki-fg/45 leading-snug">
+                {project.title}
+              </div>
+              <div className="mt-3 text-[10px] uppercase tracking-[0.28em] text-ki-muted/60">
+                Placeholder
+              </div>
             </div>
           </div>
-        </div>
+        )}
         <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-[10px] uppercase tracking-[0.24em] text-ki-fg/55">
           <span className="bg-ki-bg/70 backdrop-blur-sm px-2 py-1 border border-ki-border/40">
             {project.status}

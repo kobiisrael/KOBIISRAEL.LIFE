@@ -9,20 +9,29 @@ export default function ProjectCard({ project, index = 0 }) {
       className="group flex flex-col"
     >
       <div className="relative aspect-[4/5] w-full overflow-hidden bg-ki-elevated border border-ki-border/60">
-        {/* Plain block placeholder as per user choice for project cards */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div className="text-center px-6">
-            <div className="text-[10px] uppercase tracking-[0.3em] text-ki-muted/70">
-              Image · 0{index + 1}
-            </div>
-            <div className="mt-3 font-serif text-lg text-ki-fg/45 leading-snug">
-              {project.title}
-            </div>
-            <div className="mt-3 text-[10px] uppercase tracking-[0.28em] text-ki-muted/60">
-              Placeholder
+        {project.image ? (
+          <img
+            src={project.image}
+            alt={project.image_alt || `${project.title} by Kobi Israel, details to be confirmed.`}
+            loading="lazy"
+            decoding="async"
+            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+          />
+        ) : (
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="text-center px-6">
+              <div className="text-[10px] uppercase tracking-[0.3em] text-ki-muted/70">
+                Image · 0{index + 1}
+              </div>
+              <div className="mt-3 font-serif text-lg text-ki-fg/45 leading-snug">
+                {project.title}
+              </div>
+              <div className="mt-3 text-[10px] uppercase tracking-[0.28em] text-ki-muted/60">
+                Placeholder
+              </div>
             </div>
           </div>
-        </div>
+        )}
         <div className="absolute inset-0 bg-gradient-to-t from-ki-bg/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
         <div className="absolute inset-0 border border-ki-gold/0 group-hover:border-ki-gold/30 transition-colors duration-500" />
       </div>
