@@ -329,3 +329,9 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 - ✅ `StillProjectCard.jsx` + `ProjectCard.jsx` now conditionally render the artist's photograph when `project.image` is set, falling back to the placeholder block for the other 11 projects (no artist image yet)
 - ✅ Cuba card now displays the artist's photograph as cover on `/still` AND on the homepage "A connected body of work" grid; all 11 other project cards retain placeholder treatment as expected
 - ✅ Verified: image src ends with `7bp5yfi9_01.1029.07.jpg` on both `/still` Cuba card and `/` Cuba card; "PLACEHOLDER" text gone from Cuba card on both pages; other cards (River of Three Crossings, Fragments of Life, etc.) still show their placeholders correctly
+
+### Fragments of Life — "1700" cover + hero image — 2026-06-25
+- ✅ Artist supplied `1700.jpg` (juice-stand portrait, Tel-Aviv) for the Fragments of Life project
+- ✅ Wired into `STILL_PROJECTS` (image + alt) → Cuba's Still card + homepage SelectedWorks card now show the photograph
+- ✅ Wired into `lib/projects.js` ENRICHMENT for `fragments-of-life` (`hero_image`, `hero_alt`, `gallery_images`) → project detail `/projects/fragments-of-life` now shows it as both the hero and first thumbnail in the image sequence
+- ✅ Verified live: all 3 surfaces serve `t49ma2n8_1700.jpg`; the other 10 Still projects (still awaiting artist imagery) continue to render the editorial placeholder treatment

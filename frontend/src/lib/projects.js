@@ -34,9 +34,21 @@ const ENRICHMENT = {
       "Three crossings between landscape, biography and the porous edges of a remembered self.",
   },
   "fragments-of-life": {
-    subtitle: "Photography and archive",
+    subtitle: "Photography — staged images",
     intro_statement:
-      "An ongoing diaristic series collecting fragments of daily life, intimacy and ordinary light.",
+      "Staged images of recollection, conflict and trapped emotion — adolescence in a deeply conservative and traditional society. Tel-Aviv, 2000–2007.",
+    hero_image:
+      "https://customer-assets.emergentagent.com/job_still-moving-1/artifacts/t49ma2n8_1700.jpg",
+    hero_alt:
+      "1700 — image from Fragments of Life by Kobi Israel. Staged portrait at a Tel-Aviv juice stand. Details to be confirmed.",
+    gallery_images: [
+      {
+        url: "https://customer-assets.emergentagent.com/job_still-moving-1/artifacts/t49ma2n8_1700.jpg",
+        alt:
+          "1700 — image from Fragments of Life by Kobi Israel. Staged portrait at a Tel-Aviv juice stand. Details to be confirmed.",
+        caption: "Fragments of Life · 1700 — title, year and dimensions to be confirmed by artist.",
+      },
+    ],
   },
   "intimate-strangers": {
     subtitle: "Portrait photography",

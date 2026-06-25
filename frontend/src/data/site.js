@@ -125,6 +125,10 @@ export const STILL_PROJECTS = [
       "Staged images of recollection, conflict and trapped emotion — adolescence in a deeply conservative and traditional society.",
     tags: ["autobiography", "portraits"],
     status: "Archive",
+    image:
+      "https://customer-assets.emergentagent.com/job_still-moving-1/artifacts/t49ma2n8_1700.jpg",
+    image_alt:
+      "1700 — image from Fragments of Life by Kobi Israel. Staged portrait at a Tel-Aviv juice stand. Details to be confirmed.",
   },
   {
     slug: "intimate-strangers",
