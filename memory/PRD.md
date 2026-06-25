@@ -347,3 +347,12 @@ collector-friendly. No invented biography, exhibitions, prices, awards or collec
 ### River of Three Crossings — Serial Landscapes 7.3 cover + hero — 2026-06-25
 - ✅ Wired `River-of-three-crossings_Serial_Landscapes7.3.jpg` (abandoned park with statue, castle and reflections) into STILL_PROJECTS (cover + alt) and `lib/projects.js` ENRICHMENT (`hero_image`, `hero_alt`, `gallery_images`)
 - ✅ Verified live on all 4 surfaces: `/projects/river-of-three-crossings` hero + thumbnail, `/still` card, homepage card; remaining 7 unillustrated Still projects still placeholder
+
+### Cuba, Love Story — Film embedded from YouTube — 2026-06-25
+- ✅ Built privacy-respecting `YouTubeEmbed` component at `/app/frontend/src/components/video/YouTubeEmbed.jsx` (click-to-load, `youtube-nocookie.com`, no autoplay until user click, custom poster, lazy iframe, full-screen + a11y label, fallback to hqdefault poster, `rel=0&modestbranding=1`)
+- ✅ Exposes `getYouTubeId(url)` helper that accepts full URL, short URL (`youtu.be/xxx`), embed URL, shorts URL or raw 11-char ID
+- ✅ Wired YouTube ID `2fSc7oPVFOE` (https://youtu.be/2fSc7oPVFOE) into `FEATURED_MOVING` + `MOVING_WORKS[cuba-love-story]` (renamed work to "Cuba, Love Story — Film"; added `youtube_id`, `youtube_url`, `poster_url` (CUBA.i4), `poster_alt`)
+- ✅ `FeaturedMoving.jsx` (Moving page hero section) now renders the click-to-load embed when `youtube_id` is set, with the Cuba photograph (CUBA.i4) as poster; "Watch Excerpt" CTA replaced with a `Watch on YouTube` external anchor opening the artist URL in a new tab
+- ✅ `VideoWorkDetail.jsx` (used on `/projects/cuba-love-story`) now embeds the YouTube video click-to-load when the work has a `youtube_id`/`youtube_url`/`excerpt_url`, otherwise falls back to the existing static-poster + disabled-play behaviour; adds a new `Watch on YouTube` action button alongside Curator Inquiry and Rights / Licensing
+- ✅ `pages/ProjectDetail.jsx` now threads `youtube_id`, `youtube_url`, `poster_url`, `poster_alt` from `getProject().moving` into the `movingWork` object passed to `VideoWorkDetail`
+- ✅ Verified live: 1 embed on `/moving` + 1 embed on `/projects/cuba-love-story`; after clicking the poster the iframe loads `https://www.youtube-nocookie.com/embed/2fSc7oPVFOE?rel=0&modestbranding=1&autoplay=1`; `Watch on YouTube` CTA opens the original `https://youtu.be/2fSc7oPVFOE` URL in a new tab

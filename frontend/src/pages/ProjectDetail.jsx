@@ -99,6 +99,10 @@ export default function ProjectDetail() {
             duration: project.moving.duration,
             format: project.moving.format,
             synopsis: project.moving.synopsis,
+            youtube_id: project.moving.youtube_id,
+            youtube_url: project.moving.youtube_url,
+            poster_url: project.moving.poster_url,
+            poster_alt: project.moving.poster_alt,
           }
         : null,
     [project]
