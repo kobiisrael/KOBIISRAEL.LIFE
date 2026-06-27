@@ -16,6 +16,7 @@ import {
   JOURNAL_NEWSLETTER_INTERESTS,
   JOURNAL_RELATED_LINKS,
 } from "@/data/site";
+import { CURATED_READING_PATH } from "@/data/curatedReadingPath";
 import { JOURNAL } from "@/constants/testIds";
 import { applyPageSeo, breadcrumbSchema } from "@/lib/seo";
 
@@ -232,6 +233,114 @@ export default function Journal() {
               Final hero image to be selected by artist
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* START HERE: CURATED READING PATH */}
+      <section
+        id="start-here"
+        data-testid="journal-start-here"
+        className="py-24 md:py-32 border-b border-ki-border bg-ki-surface"
+        aria-label="Start Here: Curated Reading Path"
+      >
+        <div className="container-ki">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-end mb-14">
+            <div className="lg:col-span-7">
+              <div className="overline">Start Here</div>
+              <h2
+                data-testid="journal-start-here-heading"
+                className="mt-5 font-serif text-3xl sm:text-4xl lg:text-5xl tracking-tight text-ki-fg text-balance"
+              >
+                A Curated Reading Path
+              </h2>
+              <p className="mt-5 text-base md:text-lg leading-relaxed text-ki-fg/80 max-w-2xl">
+                Twelve notes in the artist&apos;s intended reading order — a way into the
+                still and moving diaries through Rafael, Cuba, the chocolate river, Moshe&apos;s
+                Nikon FM2, my mother in Paris, recovered negatives, soldiers, the male body
+                as code, fragments and desire. The full 01–32 journal continues below.
+              </p>
+            </div>
+            <div className="lg:col-span-5 flex lg:justify-end">
+              <a
+                href="#journal-index"
+                data-testid="journal-start-here-jump-full"
+                className="inline-flex items-center gap-3 text-[11px] uppercase tracking-[0.28em] text-ki-fg/70 hover:text-ki-gold transition-colors"
+              >
+                Jump to the full journal index <span aria-hidden>↓</span>
+              </a>
+            </div>
+          </div>
+
+          <ol
+            data-testid="journal-start-here-list"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
+          >
+            {CURATED_READING_PATH.map((n) => (
+              <li key={n.slug} className="contents">
+                <article
+                  data-testid={`journal-curated-card-${n.slug}`}
+                  className="group flex flex-col border border-ki-border/70 bg-ki-bg hover:border-ki-gold/40 transition-colors"
+                >
+                  <Link
+                    to={`/journal/${n.slug}`}
+                    className="relative block aspect-[4/5] overflow-hidden bg-ki-elevated"
+                  >
+                    <img
+                      src={n.hero_image}
+                      alt={n.hero_alt}
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 w-full h-full object-cover opacity-85 group-hover:opacity-100 transition-opacity duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-ki-bg/70 via-ki-bg/10 to-transparent" />
+                    <div className="absolute top-4 left-4 right-4 flex items-center justify-between text-[10px] uppercase tracking-[0.22em] text-ki-fg/85">
+                      <span>
+                        Note · {n.original_number}
+                      </span>
+                      <span className="text-ki-gold">{n.theme}</span>
+                    </div>
+                    <div className="absolute bottom-4 left-4 text-[10px] uppercase tracking-[0.22em] text-ki-fg/80">
+                      Position {String(n.position).padStart(2, "0")} of 12
+                    </div>
+                  </Link>
+
+                  <div className="flex flex-col flex-1 p-6">
+                    <h3 className="font-serif text-xl md:text-2xl text-ki-fg leading-snug">
+                      <Link
+                        to={`/journal/${n.slug}`}
+                        className="hover:text-ki-gold transition-colors"
+                        data-testid={`journal-curated-title-${n.slug}`}
+                      >
+                        {n.title}
+                      </Link>
+                    </h3>
+                    <p className="mt-3 text-sm md:text-base leading-relaxed text-ki-fg/80">
+                      {n.excerpt}
+                    </p>
+                    <ul className="mt-5 flex flex-wrap gap-1.5 text-[10px] uppercase tracking-[0.18em] text-ki-muted">
+                      {n.tags.slice(0, 7).map((t) => (
+                        <li
+                          key={t}
+                          className="border border-ki-border px-2 py-0.5 rounded-full"
+                        >
+                          {t}
+                        </li>
+                      ))}
+                    </ul>
+                    <div className="mt-auto pt-6">
+                      <Link
+                        to={`/journal/${n.slug}`}
+                        data-testid={`journal-curated-readmore-${n.slug}`}
+                        className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-ki-gold hover:text-ki-fg transition-colors"
+                      >
+                        Read more <span aria-hidden>→</span>
+                      </Link>
+                    </div>
+                  </div>
+                </article>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
