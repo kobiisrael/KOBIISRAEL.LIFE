@@ -47,7 +47,7 @@ export default function CVHero() {
           </div>
           <p className="mt-12 text-[11px] uppercase tracking-[0.3em] text-ki-muted animate-fade-up"
             style={{ animationDelay: "0.7s" }}>
-            Download CV placeholder · file to be supplied · final portrait or archive image to be selected by artist
+            Download CV placeholder · file to be supplied by artist
           </p>
         </div>
       </div>

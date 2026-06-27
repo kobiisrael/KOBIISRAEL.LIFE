@@ -229,9 +229,6 @@ export default function Journal() {
                 Explore Projects
               </Link>
             </div>
-            <p className="mt-12 text-[11px] uppercase tracking-[0.3em] text-ki-muted">
-              Final hero image to be selected by artist
-            </p>
           </div>
         </div>
       </section>

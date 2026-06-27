@@ -54,3 +54,33 @@ export const CUBA = {
   i4: CUBA_IMAGES[3],
   i5: CUBA_IMAGES[4],
 };
+
+// Additional artist photographs already on the site as project covers.
+// Exposed here so they can be spread across page heroes / secondary intro
+// images, not only used as project covers.
+export const ARTIST_IMAGES = {
+  views: {
+    slug: "views-02",
+    src: `${ART}/sgvjsipp_Views02.jpg`,
+    alt:
+      "Views — image by Kobi Israel: two young soldiers at dusk in the Israeli landscape. Details to be confirmed.",
+  },
+  fragments: {
+    slug: "fragments-1700",
+    src: `${ART}/t49ma2n8_1700.jpg`,
+    alt:
+      "1700 — image from Fragments of Life by Kobi Israel. Staged portrait at a Tel-Aviv juice stand. Details to be confirmed.",
+  },
+  river: {
+    slug: "river-of-three-crossings-7-3",
+    src: `${ART}/bjuw8vt4_River-of-three-crossings_Serial_Landscapes7.3.jpg`,
+    alt:
+      "River of Three Crossings — image by Kobi Israel: abandoned park landscape with classical statue, fairy-tale castle and rusted infrastructure reflected in standing water. Details to be confirmed.",
+  },
+  intimateStrangers: {
+    slug: "intimate-strangers-01",
+    src: `${ART}/t6q72x65_Intimate%20Strangers_Kobi-Israel.01.jpg`,
+    alt:
+      "Intimate Strangers — image by Kobi Israel: nude figure on an orange bed beneath a KABARET poster, Soho interior. Details to be confirmed.",
+  },
+};

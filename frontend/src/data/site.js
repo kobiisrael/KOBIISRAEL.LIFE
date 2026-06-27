@@ -1,6 +1,6 @@
 // Static site content — placeholders only (To be confirmed by artist).
 
-import { CUBA } from "@/data/cubaImages";
+import { CUBA, ARTIST_IMAGES } from "@/data/cubaImages";
 
 export const NAV_ITEMS = [
   { slug: "home", label: "Home", to: "/" },
@@ -63,13 +63,15 @@ export const HERO_COPY_OPTIONS = {
 };
 
 export const STILL_HERO = {
-  image: CUBA.i5.src,
-  alt: CUBA.i5.alt,
+  image: ARTIST_IMAGES.views.src,
+  alt:
+    "Still photography hero by Kobi Israel — image from Views: two young soldiers at dusk in the Israeli landscape. Details to be confirmed.",
 };
 
 export const STILL_CURATORIAL_IMAGE = {
-  image: CUBA.i3.src,
-  alt: CUBA.i3.alt,
+  image: ARTIST_IMAGES.fragments.src,
+  alt:
+    "Still photography curatorial intro by Kobi Israel — image from Fragments of Life: staged Tel-Aviv portrait at a juice stand. Details to be confirmed.",
 };
 
 // Filter tag taxonomy used across the Still archive
@@ -629,9 +631,9 @@ export const MOVING_FRAGMENTS = [
 // ============================================================
 
 export const PRINTS_HERO = {
-  image: CUBA.i3.src,
+  image: ARTIST_IMAGES.river.src,
   alt:
-    "Limited edition prints hero — image from Cuba, Love Story by Kobi Israel. Details to be confirmed.",
+    "Limited edition prints hero by Kobi Israel — image from River of Three Crossings: abandoned park landscape with classical statue and rusted infrastructure reflected in standing water. Details to be confirmed.",
 };
 
 export const PRINTS_VIEWING_IMAGE = {
@@ -863,9 +865,9 @@ export const INQUIRY_TYPE_OPTIONS = [
 // ============================================================
 
 export const BOOKS_HERO = {
-  image: CUBA.i2.src,
+  image: ARTIST_IMAGES.fragments.src,
   alt:
-    "Books hero — image from Cuba, Love Story by Kobi Israel. Details to be confirmed.",
+    "Books hero by Kobi Israel — image from Fragments of Life: staged Tel-Aviv portrait at a juice stand. Details to be confirmed.",
 };
 
 export const BOOKS_EDITORIAL_IMAGE = {
@@ -1099,9 +1101,9 @@ export const BOOK_INQUIRY_TYPE_OPTIONS = [
 // ============================================================
 
 export const CV_HERO = {
-  image: CUBA.i4.src,
+  image: ARTIST_IMAGES.views.src,
   alt:
-    "CV hero — image from Cuba, Love Story by Kobi Israel. Details to be confirmed.",
+    "CV hero by Kobi Israel — image from Views: two young soldiers at dusk in the Israeli landscape. Details to be confirmed.",
 };
 
 export const CV_BIOGRAPHY =
@@ -1463,15 +1465,15 @@ export const ARCHIVE_INQUIRY_TYPE_OPTIONS = [
 // ============================================================
 
 export const JOURNAL_HERO = {
-  image: CUBA.i2.src,
+  image: ARTIST_IMAGES.intimateStrangers.src,
   alt:
-    "Journal hero — image from Cuba, Love Story by Kobi Israel. Details to be confirmed.",
+    "Journal hero by Kobi Israel — image from Intimate Strangers: nude figure on an orange bed beneath a KABARET poster, Soho interior. Details to be confirmed.",
 };
 
 export const JOURNAL_EDITORIAL_IMAGE = {
-  image: CUBA.i3.src,
+  image: ARTIST_IMAGES.river.src,
   alt:
-    "Editorial introduction — image from Cuba, Love Story by Kobi Israel. Details to be confirmed.",
+    "Journal editorial intro by Kobi Israel — image from River of Three Crossings: abandoned park landscape with statue and reflections. Details to be confirmed.",
 };
 
 import { KOBI_AUTHORED_NOTES } from "@/data/journalNotes";
@@ -1615,9 +1617,9 @@ export const CONTACT_HERO = {
 };
 
 export const CONTACT_INTRO_IMAGE = {
-  image: CUBA.i5.src,
+  image: ARTIST_IMAGES.intimateStrangers.src,
   alt:
-    "Contact introduction — image from Cuba, Love Story by Kobi Israel. Details to be confirmed.",
+    "Contact introduction by Kobi Israel — image from Intimate Strangers: Soho interior portrait. Details to be confirmed.",
 };
 
 // Pathway cards rendered in the "How to Inquire" section.

@@ -162,7 +162,6 @@ export default function Archive() {
               <a href="#archive-search-section" data-testid={ARCHIVE.heroCtaSearch}
                 className="inline-flex items-center justify-center border border-ki-fg/40 text-ki-fg hover:border-ki-fg px-8 py-4 text-xs uppercase tracking-[0.24em]">Search the Archive</a>
             </div>
-            <p className="mt-12 text-[11px] uppercase tracking-[0.3em] text-ki-muted">Final archive image to be selected by artist</p>
           </div>
         </div>
       </section>
