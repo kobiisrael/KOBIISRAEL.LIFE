@@ -10,6 +10,7 @@ import SoundVoiceMusic from "@/components/moving/SoundVoiceMusic";
 import ArchiveFragments from "@/components/moving/ArchiveFragments";
 import { MOVING } from "@/constants/testIds";
 import { applyPageSeo, breadcrumbSchema } from "@/lib/seo";
+import { MOVING_HERO } from "@/data/site";
 
 export default function Moving() {
   useEffect(() => {
@@ -19,6 +20,8 @@ export default function Moving() {
       description:
         "Moving image and film works by Kobi Israel — short films, video art, visual diaries and travelogue works. Screenings and curator inquiries.",
       path: "/moving",
+      image: MOVING_HERO.image,
+      imageAlt: MOVING_HERO.alt,
       jsonLd: [
         {
           id: "moving-breadcrumb",

@@ -7,6 +7,7 @@ import CollectorPathway from "@/components/still/CollectorPathway";
 import ArchiveNotes from "@/components/still/ArchiveNotes";
 import { STILL } from "@/constants/testIds";
 import { applyPageSeo, breadcrumbSchema } from "@/lib/seo";
+import { STILL_HERO } from "@/data/site";
 
 export default function Still() {
   useEffect(() => {
@@ -17,6 +18,8 @@ export default function Still() {
         "Still photography by Kobi Israel — autobiographical projects on masculinity, desire, exile and memory. Project index, prints and archive notes.",
       path: "/still",
       ogType: "website",
+      image: STILL_HERO.image,
+      imageAlt: STILL_HERO.alt,
       jsonLd: [
         {
           id: "still-breadcrumb",

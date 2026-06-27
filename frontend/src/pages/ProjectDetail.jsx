@@ -27,6 +27,10 @@ export default function ProjectDetail() {
         description: description.slice(0, 155),
         path,
         ogType: "article",
+        image: project.hero_image || undefined,
+        imageAlt:
+          project.hero_alt ||
+          `Image from ${project.title} by Kobi Israel, details to be confirmed.`,
         jsonLd: [
           {
             id: "project-breadcrumb",

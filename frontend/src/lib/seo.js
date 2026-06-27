@@ -5,6 +5,11 @@ export const SITE_ORIGIN = "https://kobiisrael.life";
 export const SITE_NAME = "Kobi Israel";
 export const ARTIST_NAME = "Kobi Israel";
 
+// Default sharing image used when a page does not supply its own. The Cuba.i1
+// candle-lit interior is the signature image of the site (homepage hero).
+export const DEFAULT_OG_IMAGE =
+  "https://customer-assets.emergentagent.com/job_still-moving-1/artifacts/7bp5yfi9_01.1029.07.jpg";
+
 export const setTitle = (title) => {
   if (typeof document === "undefined") return;
   document.title = title;
@@ -71,7 +76,7 @@ export const removeJsonLd = (id) => {
 };
 
 // Apply a full SEO payload for a public, indexable page.
-// payload = { title, description, path, ogTitle?, ogDescription?, ogType?, jsonLd?: { id, data } | Array }
+// payload = { title, description, path, ogTitle?, ogDescription?, ogType?, image?, imageAlt?, jsonLd?: { id, data } | Array }
 export const applyPageSeo = (payload) => {
   const {
     title,
@@ -81,6 +86,8 @@ export const applyPageSeo = (payload) => {
     ogDescription,
     ogType = "website",
     robots = "index, follow",
+    image,
+    imageAlt,
     jsonLd,
   } = payload || {};
   if (title) setTitle(title);
@@ -95,6 +102,18 @@ export const applyPageSeo = (payload) => {
   setMeta("twitter:card", "summary_large_image");
   if (title) setMeta("twitter:title", ogTitle || title);
   if (description) setMeta("twitter:description", ogDescription || description);
+  // Page-aware sharing image (LinkedIn, X, Slack, iMessage, etc.). Falls back
+  // to the homepage signature image when a page doesn't pass one.
+  const resolvedImage = image || DEFAULT_OG_IMAGE;
+  const resolvedImageAlt =
+    imageAlt ||
+    "Photograph by Kobi Israel — still and moving diaries from the unstable theatre of memory.";
+  setOG("og:image", resolvedImage);
+  setOG("og:image:alt", resolvedImageAlt);
+  setOG("og:image:width", "1600");
+  setOG("og:image:height", "1067");
+  setMeta("twitter:image", resolvedImage);
+  setMeta("twitter:image:alt", resolvedImageAlt);
 
   // JSON-LD: supports a single object or array
   if (jsonLd) {

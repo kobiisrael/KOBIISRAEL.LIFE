@@ -23,6 +23,10 @@ export default function JournalEntry() {
       description: (note.meta_description || note.excerpt || `${note.title} — archive note by Kobi Israel.`).slice(0, 200),
       path,
       ogType: "article",
+      image: note.hero_image || undefined,
+      imageAlt:
+        note.hero_alt ||
+        `Image accompanying the archive note "${note.title}" by Kobi Israel.`,
       jsonLd: [
         {
           id: "entry-breadcrumb",

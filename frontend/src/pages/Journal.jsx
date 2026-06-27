@@ -124,6 +124,8 @@ export default function Journal() {
       description:
         "Archive notes and writing by Kobi Israel — short reflective texts on photography, memory, masculinity, desire, exile and moving image.",
       path: "/journal",
+      image: JOURNAL_HERO.image,
+      imageAlt: JOURNAL_HERO.alt,
       jsonLd: [
         {
           id: "journal-breadcrumb",

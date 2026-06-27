@@ -299,6 +299,8 @@ export default function Contact() {
       description:
         "Contact and professional inquiries for Kobi Israel — collector, curator, museum, press, film/screening and book inquiries.",
       path: "/contact",
+      image: CONTACT_HERO.image,
+      imageAlt: CONTACT_HERO.alt,
       jsonLd: [
         {
           id: "contact-breadcrumb",

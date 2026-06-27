@@ -88,6 +88,8 @@ export default function Archive() {
       description:
         "Archive of Kobi Israel, including photography projects, moving-image works, books, prints, texts, exhibitions and research materials.",
       path: "/archive",
+      image: ARCHIVE_HERO.image,
+      imageAlt: ARCHIVE_HERO.alt,
       jsonLd: [
         {
           id: "archive-breadcrumb",

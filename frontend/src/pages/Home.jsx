@@ -16,6 +16,7 @@ import {
   personSchema,
   breadcrumbSchema,
 } from "@/lib/seo";
+import { HERO } from "@/data/site";
 
 const HOME_TITLE = "Kobi Israel | Photography, Moving Image and Prints";
 const HOME_DESC =
@@ -33,6 +34,8 @@ export default function Home() {
       ogTitle: HOME_OG_TITLE,
       ogDescription: HOME_OG_DESC,
       ogType: "website",
+      image: HERO.image,
+      imageAlt: HERO.alt,
       jsonLd: [
         { id: "home-website", data: websiteSchema() },
         { id: "home-person", data: personSchema() },

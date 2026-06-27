@@ -12,6 +12,7 @@ import ProfessionalInquiries from "@/components/cv/ProfessionalInquiries";
 import CVContactForm from "@/components/cv/CVContactForm";
 import { CV } from "@/constants/testIds";
 import { applyPageSeo, breadcrumbSchema, personSchema } from "@/lib/seo";
+import { CV_HERO } from "@/data/site";
 
 export default function CVPage() {
   const formRef = useRef(null);
@@ -24,6 +25,8 @@ export default function CVPage() {
         "CV and biography of Kobi Israel — exhibitions, collections, publications and press history of the photographer and filmmaker.",
       path: "/cv",
       ogType: "profile",
+      image: CV_HERO.image,
+      imageAlt: CV_HERO.alt,
       jsonLd: [
         {
           id: "cv-breadcrumb",

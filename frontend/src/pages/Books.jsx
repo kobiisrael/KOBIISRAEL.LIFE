@@ -11,6 +11,7 @@ import BooksInquiryForm from "@/components/books/BooksInquiryForm";
 import BooksRelatedArchive from "@/components/books/BooksRelatedArchive";
 import { BOOKS } from "@/constants/testIds";
 import { applyPageSeo, breadcrumbSchema } from "@/lib/seo";
+import { BOOKS_HERO } from "@/data/site";
 
 export default function Books() {
   const formRef = useRef(null);
@@ -22,6 +23,8 @@ export default function Books() {
       description:
         "Books, catalogues and publications by Kobi Israel. Monographs, artist publications, exhibition catalogues and PDF archive.",
       path: "/books",
+      image: BOOKS_HERO.image,
+      imageAlt: BOOKS_HERO.alt,
       jsonLd: [
         {
           id: "books-breadcrumb",

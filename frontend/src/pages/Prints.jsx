@@ -11,6 +11,7 @@ import SecondaryMarket from "@/components/prints/SecondaryMarket";
 import RelatedArchive from "@/components/prints/RelatedArchive";
 import { PRINTS } from "@/constants/testIds";
 import { applyPageSeo, breadcrumbSchema } from "@/lib/seo";
+import { PRINTS_HERO } from "@/data/site";
 
 export default function Prints() {
   const formRef = useRef(null);
@@ -22,6 +23,8 @@ export default function Prints() {
       description:
         "Signed limited edition photography prints by Kobi Israel. Collector inquiries for selected works exploring masculinity, desire, exile and memory.",
       path: "/prints",
+      image: PRINTS_HERO.image,
+      imageAlt: PRINTS_HERO.alt,
       jsonLd: [
         {
           id: "prints-breadcrumb",

@@ -1,0 +1,28 @@
+{
+  "summary": "Page-aware og:image regression — fully green. All 17 mapped routes resolve og:image AND twitter:image to the expected per-page artifact URL (homepage Cuba.i1, /still & /cv Views02, /moving Cuba.i3, /prints & /projects/river-... River 7.3, /books & /projects/fragments-of-life Fragments-1700, /archive Cuba.i4, /journal & /projects/intimate-strangers Intimate-Strangers, /contact Cuba.i5, /projects/cuba-love-story Cuba.i1, /projects/views Views02, /journal/cuba-as-mirror & /journal/the-chocolate-river Cuba.i1, /journal/the-man-waiting-for-the-bus 02.1017.09). og:image:alt present and non-empty on all 9 main routes. og:image:width=1600 / og:image:height=1067 verified on /, /still, /prints. Fallback path verified on /projects/parisian-postcards — og:image correctly falls back to DEFAULT_OG_IMAGE (Cuba.i1) when project.hero_image is undefined. First-paint HTML at / now contains the baked-in og:image=Cuba.i1, og:image:alt, og:image:width=1600, og:image:height=1067, twitter:image, twitter:image:alt before React hydration. All 17 routes render H1 + nav with ZERO console errors. Mobile 390x844 has no horizontal overflow on 10 sampled pages. POST /api/inquiries with minimal valid payload returns 201.",
+  "backend_issues": { "critical": [], "minor": [] },
+  "frontend_issues": {
+    "ui_bugs": [],
+    "integration_issues": [],
+    "design_issues": []
+  },
+  "test_report_links": [
+    "/app/backend/tests/test_og_image_regression.py",
+    "/app/test_reports/pytest/iter25_results.xml"
+  ],
+  "action_items": [],
+  "critical_code_review_comments": [
+    "lib/seo.js applyPageSeo correctly hard-codes og:image:width=1600 / og:image:height=1067 — this is a per-payload constant. If future hero images use non-1600x1067 ratios, the width/height meta will misrepresent dimensions to scrapers (LinkedIn renders the actual asset anyway, so impact is cosmetic in metadata only). Consider deriving from payload (image.width / image.height) if heros ever diverge from the 3:2 size.",
+    "Frontend dev server needed a manual restart to pick up edits to public/index.html (CRA serves the file on boot; HMR does not patch the HTML shell). First test run failed against the LIVE preview because the served HTML still lacked the new og:image/og:image:width/height/twitter:image tags. After `supervisorctl restart frontend`, first-paint HTML is correct. Not a code bug, but worth noting for future deploys: any change to public/index.html requires a frontend restart."
+  ],
+  "updated_files": [
+    "/app/backend/tests/test_og_image_regression.py"
+  ],
+  "success_rate": { "backend": "100%", "frontend": "100%" },
+  "test_credentials": "none required",
+  "seed_data_creation": "Posted one TEST_user_og_regression inquiry via POST /api/inquiries (201) to validate backend smoke.",
+  "retest_needed": false,
+  "should_main_agent_self_test": true,
+  "context_for_next_testing_agent": "iteration_25 is fully green for the page-aware og:image rollout. Frontend was restarted once during this run to pick up the updated public/index.html (required after any edit to that file). 18 routes verified (17 mapped + /projects/parisian-postcards fallback). Backend regression file at /app/backend/tests/test_og_image_regression.py covers (a) POST /api/inquiries -> 201 and (b) first-paint HTML at / contains Cuba.i1 og:image + width 1600 + height 1067. Reuse as a smoke regression in future iterations.",
+  "rca of the issue": "N/A — no issues found. Note: an apparent 'first-paint HTML missing og:image' failure on the first run was caused by the frontend dev server not having reloaded public/index.html since the edit. Restarting frontend via supervisorctl resolved it; this is expected CRA behaviour."
+}
